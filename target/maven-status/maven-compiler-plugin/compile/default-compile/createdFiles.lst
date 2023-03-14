@@ -1,9 +1,0 @@
-org/example/pageObjects/android/LibraryPage.class
-org/example/pageObjects/android/TabsPage.class
-utils/AppiumUtils.class
-org/example/pageObjects/android/PeoplePage.class
-utils/AndroidActions.class
-org/example/pageObjects/android/PlaylistsPage.class
-org/example/pageObjects/android/LanguagesPage.class
-org/example/pageObjects/android/SearchPage.class
-org/example/pageObjects/android/TopicsPage.class
