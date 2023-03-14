@@ -1,0 +1,13 @@
+[2/15 4:39 PM] Dexter John Drysdale
+.idea/**/workspace.xml
+.idea/**/libraries
+.idea/modules.xml
+.idea/
+*.class
+*.iml
+out/
+.DS_Store
+**/UI/EnvironmentConfig.java
+*.apk
+exportToHTML/
+Test Runs/

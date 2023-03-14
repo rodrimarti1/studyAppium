@@ -25,22 +25,17 @@ public class DriverFactory {
     private static AndroidDriver createDriver() {
         AppiumDriverLocalService service;
         AndroidDriver driver;
-        //LibraryPage libraryPage;
-        //TabsPage tabsPage;
 
-        //TODO Find a way to programatically get path to appium executable files
         String appiumPath = null;
 
         Map<String, String> map = System.getenv();
         for (Map.Entry <String, String> entry: map.entrySet()) {
-            System.out.println("Variable: " + entry.getKey() + " , Value: " + entry.getValue());
             if (entry.getKey().equals("APPIUM")) {
                 appiumPath = entry.getValue();
             }
         }
         assert appiumPath != null;
 
-        //service = new AppiumServiceBuilder().withAppiumJS(new File("//Users//ravn05//.nvm//versions//node//v19.4.0//bin//appium"))
         service = new AppiumServiceBuilder().withAppiumJS(new File(appiumPath))
                 .withIPAddress("127.0.0.1").usingPort(4723).build();
         service.start();
@@ -50,7 +45,6 @@ public class DriverFactory {
         options.setPlatformVersion("12.0");
         options.setNoReset(false);
         String currentDir = System.getProperty("user.dir");
-        //options.setApp("//Users/ravn05/Downloads/SacredMusicAndroid/src/test/resources/SMAndroidAlpha.apk");
         options.setApp(currentDir + "/src/main/resources/SM21083.apk");
 
         try {
