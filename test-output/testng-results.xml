@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-03-03T15:03:13 CST" name="All Android Tests Suite" finished-at="2023-03-03T15:04:28 CST" duration-ms="74708">
+    <groups>
+    </groups>
+    <test started-at="2023-03-03T15:03:13 CST" name="/Users/ravn05/Downloads/SacredMusicAndroid" finished-at="2023-03-03T15:04:28 CST" duration-ms="74708">
+      <class name="tests.LibraryTests">
+        <test-method is-config="true" signature="configureAppium()[pri:0, instance:tests.LibraryTests@fdefd3f]" started-at="2023-03-03T15:03:13 CST" name="configureAppium" finished-at="2023-03-03T15:03:28 CST" duration-ms="14213" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- configureAppium -->
+        <test-method signature="checkLibraryPageUIComponents()[pri:0, instance:tests.LibraryTests@fdefd3f]" started-at="2023-03-03T15:03:28 CST" name="checkLibraryPageUIComponents" finished-at="2023-03-03T15:03:35 CST" duration-ms="7206" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkLibraryPageUIComponents -->
+        <test-method signature="switchLanguagePortuguese()[pri:0, instance:tests.LibraryTests@fdefd3f]" started-at="2023-03-03T15:03:35 CST" name="switchLanguagePortuguese" finished-at="2023-03-03T15:03:42 CST" duration-ms="7152" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- switchLanguagePortuguese -->
+        <test-method signature="switchLanguageSpanish()[pri:0, instance:tests.LibraryTests@fdefd3f]" started-at="2023-03-03T15:03:42 CST" name="switchLanguageSpanish" finished-at="2023-03-03T15:03:47 CST" duration-ms="5466" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- switchLanguageSpanish -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.LibraryTests@fdefd3f]" started-at="2023-03-03T15:03:47 CST" name="tearDown" finished-at="2023-03-03T15:03:52 CST" duration-ms="5066" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- tests.LibraryTests -->
+      <class name="tests.SearchTests">
+        <test-method is-config="true" signature="configureAppium()[pri:0, instance:tests.SearchTests@1460a8c0]" started-at="2023-03-03T15:03:52 CST" name="configureAppium" finished-at="2023-03-03T15:04:05 CST" duration-ms="12097" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- configureAppium -->
+        <test-method signature="searchSongRegularCharacters()[pri:0, instance:tests.SearchTests@1460a8c0]" started-at="2023-03-03T15:04:05 CST" name="searchSongRegularCharacters" finished-at="2023-03-03T15:04:18 CST" duration-ms="13806" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- searchSongRegularCharacters -->
+        <test-method signature="searchSongSpecialCharacters()[pri:0, instance:tests.SearchTests@1460a8c0]" started-at="2023-03-03T15:04:18 CST" name="searchSongSpecialCharacters" finished-at="2023-03-03T15:04:24 CST" duration-ms="5796" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- searchSongSpecialCharacters -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.SearchTests@1460a8c0]" started-at="2023-03-03T15:04:24 CST" name="tearDown" finished-at="2023-03-03T15:04:28 CST" duration-ms="3868" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- tests.SearchTests -->
+    </test> <!-- /Users/ravn05/Downloads/SacredMusicAndroid -->
+  </suite> <!-- All Android Tests Suite -->
+</testng-results>
