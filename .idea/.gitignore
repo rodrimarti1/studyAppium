@@ -1,0 +1,15 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+.idea/**/workspace.xml
+.idea/**/libraries
+.idea/modules.xml
+.idea/
+*.class
+*.iml
+out/
+.DS_Store
+**/UI/EnvironmentConfig.java
+#*.apk
+exportToHTML/
+Test Runs/
