@@ -108,6 +108,10 @@ public class LibraryPage extends AndroidActions {
         return driver.findElement(By.xpath("//android.widget.TextView[@text='"+albumName+"']"));
     }
 
+    public WebElement findAlbumByIndex(int index) {
+        return driver.findElements(By.xpath("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View")).get(index);
+    }
+
     public WebElement getEllipseMenuOptionByName(String optionName) {
         return driver.findElement(By.xpath("//android.widget.TextView[@text='"+optionName+"']"));
     }

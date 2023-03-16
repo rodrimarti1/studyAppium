@@ -1,3 +1,5 @@
+@library
+
 Feature: Library Screen
   In order to see the Library screen
   As a user

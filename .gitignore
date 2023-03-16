@@ -11,3 +11,4 @@ out/
 *.apk
 exportToHTML/
 Test Runs/
+target/
