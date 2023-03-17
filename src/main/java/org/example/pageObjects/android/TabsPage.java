@@ -3,6 +3,7 @@ package org.example.pageObjects.android;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import utils.AndroidActions;
@@ -29,6 +30,13 @@ public class TabsPage extends AndroidActions {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Playlists']")
     private WebElement playlistsButton;
 
+    @AndroidFindBy(id = "org.lds.ldsmusic.alpha:id/bottomNavBar")
+    private WebElement navBar;
+
+    public WebElement getNavBar() {
+        return navBar;
+    }
+
     public LibraryPage goToLibraryPage() {
         libraryButton.click();
         return new LibraryPage(driver);
@@ -47,5 +55,24 @@ public class TabsPage extends AndroidActions {
     public PlaylistsPage goToPlaylistsPage() {
         playlistsButton.click();
         return new PlaylistsPage(driver);
+    }
+
+    public WebElement getOptionByText(String text) {
+        return driver.findElement(By.xpath("//android.widget.TextView[@text='"+ text +"']"));
+    }
+    public WebElement getLibraryButton() {
+        return libraryButton;
+    }
+
+    public WebElement getTopicsButton() {
+        return topicsButton;
+    }
+
+    public WebElement getPeopleButton() {
+        return peopleButton;
+    }
+
+    public WebElement getPlaylistButton() {
+        return playlistsButton;
     }
 }
