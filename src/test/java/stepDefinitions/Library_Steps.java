@@ -38,8 +38,7 @@ public class Library_Steps {
         Assert.assertTrue(isMainFrameVisible);
         LanguagesPage languagePage = libraryPage.goToLanguagePage();
         languagePage.searchAndSelectLanguageByName("Portuguese");
-        Boolean isMusicAlbumDisplayed = libraryPage.findAlbumByText("Músicas para Crianças\n" +
-                "\n").isDisplayed();
+        Boolean isMusicAlbumDisplayed = libraryPage.findAlbumByText("Músicas para Crianças").isDisplayed();
         Assert.assertTrue(isMusicAlbumDisplayed);
     }
 

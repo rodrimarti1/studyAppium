@@ -41,11 +41,12 @@ public class DriverFactory {
         service.start();
 
         UiAutomator2Options options = new UiAutomator2Options();
-        options.setDeviceName("Pixel 3");
-        options.setPlatformVersion("12.0");
+        //Make sure there's only device connected
+        options.setDeviceName("Android Device");
+        options.setPlatformVersion("13.0");
         options.setNoReset(false);
         String currentDir = System.getProperty("user.dir");
-        options.setApp(currentDir + "/src/main/resources/SM21083.apk");
+        options.setApp(currentDir + "/src/main/resources/app-alpha.apk");
 
         try {
             driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options );
