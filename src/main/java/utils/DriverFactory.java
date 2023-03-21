@@ -43,7 +43,7 @@ public class DriverFactory {
         UiAutomator2Options options = new UiAutomator2Options();
         //Make sure there's only device connected
         options.setDeviceName("Android Device");
-        options.setPlatformVersion("13.0");
+        options.setPlatformVersion("12.0");
         options.setNoReset(false);
         String currentDir = System.getProperty("user.dir");
         options.setApp(currentDir + "/src/main/resources/app-alpha.apk");

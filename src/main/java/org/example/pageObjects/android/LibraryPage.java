@@ -28,11 +28,14 @@ public class LibraryPage extends AndroidActions {
     @AndroidFindBy(accessibility = "More options")
     private WebElement moreOptionsMenu;
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Search']")
+    private WebElement searchMenu;
+
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Languages']")
     private WebElement languagesMenu;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Search']")
-    private WebElement searchMenu;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Settings']")
+    private WebElement settingsMenu;
 
     @AndroidFindBy(id = "org.lds.ldsmusic.alpha:id/bottomNavBar")
     private WebElement navBar;
@@ -82,6 +85,12 @@ public class LibraryPage extends AndroidActions {
         moreOptionsMenu.click();
         languagesMenu.click();
         return new LanguagesPage(driver);
+    }
+
+    public SettingsPage goToSettingsPage() {
+        moreOptionsMenu.click();
+        settingsMenu.click();
+        return new SettingsPage(driver);
     }
 
     public LibraryPage goToLibraryPage() {
