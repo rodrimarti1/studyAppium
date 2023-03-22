@@ -24,6 +24,12 @@ public class AboutPage extends AndroidActions {
     @AndroidFindBy(accessibility = "The Church of Jesus Christ of Latter-day Saints")
     private WebElement churchLogo;
 
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Back']")
+    private WebElement backButton;
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Information']")
+    private WebElement appInstanceButton;
+
     public String getAboutPageTitle() {
         return aboutTitle.getText();
     }
@@ -34,5 +40,14 @@ public class AboutPage extends AndroidActions {
 
     public WebElement getChurchLogo() {
         return churchLogo;
+    }
+
+    public SettingsPage clickBackButton() {
+        backButton.click();
+        return new SettingsPage(driver);
+    }
+
+    public WebElement getAppInstanceButton() {
+        return appInstanceButton;
     }
 }

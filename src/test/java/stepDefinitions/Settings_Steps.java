@@ -38,4 +38,15 @@ public class Settings_Steps {
         }
         Assert.assertEquals(elementsFound.size(), 9);
     }
+
+    @When("User taps on the Settings screen back button")
+    public void userTapsOnTheSettingsScreenBackButton() {
+        settingsPage.clickBackButton();
+    }
+
+    @Then("User is taken back to the Library screen")
+    public void userIsTakenBackToTheLibraryScreen() {
+        String actualTitle = libraryPage.getLibraryPageTitle();
+        Assert.assertEquals(actualTitle, "Library");
+    }
 }

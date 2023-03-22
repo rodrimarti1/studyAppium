@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 import io.appium.java_client.android.AndroidDriver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -41,5 +42,29 @@ public class About_Steps {
         }
         Assert.assertEquals(elementsFound.size(), 6);
         Assert.assertTrue(aboutPage.getChurchLogo().isDisplayed());
+    }
+
+    @Given("User is in About screen")
+    public void userIsInAboutScreen() {
+        libraryPage.goToSettingsPage();
+        settingsPage.goToAboutPage();
+        String actualTitle = aboutPage.getAboutPageTitle();
+        Assert.assertEquals(actualTitle, "About");
+    }
+
+    @When("User taps on the About screen back button")
+    public void userTapsOnAboutScreenTheBackButton() {
+        aboutPage.clickBackButton();
+    }
+
+    @Then("User is taken back to the Settings screen")
+    public void userIsTakenBackToTheSettingsScreen() {
+        String actualTitle = settingsPage.getSettingsPageTitle();
+        Assert.assertEquals(actualTitle, "Settings");
+    }
+
+    @And("User should see the App Instance button")
+    public void userShouldSeeTheAppInstanceButton() {
+        Assert.assertTrue(aboutPage.getAppInstanceButton().isDisplayed());
     }
 }

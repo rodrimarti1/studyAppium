@@ -24,6 +24,9 @@ public class SettingsPage extends AndroidActions {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='About']")
     private WebElement aboutOption;
 
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Back']")
+    private WebElement backButton;
+
     public String getSettingsPageTitle() {
         return settingsTitle.getText();
     }
@@ -39,6 +42,11 @@ public class SettingsPage extends AndroidActions {
     public AboutPage goToAboutPage() {
         aboutOption.click();
         return new AboutPage(driver);
+    }
+
+    public LibraryPage clickBackButton() {
+        backButton.click();
+        return new LibraryPage(driver);
     }
 
 }
