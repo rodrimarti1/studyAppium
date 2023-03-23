@@ -14,6 +14,7 @@ import java.util.Map;
 public class DriverFactory {
 
     private static ThreadLocal<AndroidDriver> webDriver = new ThreadLocal<>();
+    private static AppiumDriverLocalService service;
 
     public static AndroidDriver getDriver() {
         if(webDriver.get() == null) {
@@ -23,7 +24,6 @@ public class DriverFactory {
     }
 
     private static AndroidDriver createDriver() {
-        AppiumDriverLocalService service;
         AndroidDriver driver;
 
         String appiumPath = null;
@@ -61,5 +61,6 @@ public class DriverFactory {
     public static void cleanupDriver() {
         webDriver.get().quit();
         webDriver.remove();
+        service.stop();
     }
 }
