@@ -43,3 +43,34 @@ Feature: Settings Screen
     Given User is in About screen
     When User taps on the About screen back button
     Then User is taken back to the Settings screen
+
+  @feedback
+  Scenario: User is in Send Feedback screen and sees the following fields
+    Given User is in Settings screen and taps on Send Feedback option
+    When App renders Send Feedback Screen
+    Then User should see the following options in the Send Feedback Screen:
+      | Name (Optional) |
+      | Email |
+      | Category |
+      | Description |
+    And User should see the Attachments button
+    And User should see the Send button
+
+  @feedback
+  Scenario Outline: User is fill out all fields in Send Feedback screen and submits the form
+    Given User is in Send Feedback screen
+    When User enters text to all required fields: <Name> <Email> <Category> <Description>
+    Then Send Feedback form can be successfully submitted
+
+    Examples:
+      | Name | Email | Category | Description |
+      | "Test Automation User" | "test-automation-user@chruchofjesuschrist.org" | "Compliment" | "This feedback has been submitted by Sacred Music's test automation suite" |
+
+  @feedback
+  Scenario: User attempts to submit Send Feedback form when required fields have been left empty
+    Given User is in Send Feedback screen
+    When User taps on Submit button
+    Then User should the following error messages:
+      | Please enter a valid email address |
+      | Please select a category |
+      | Please enter a description |

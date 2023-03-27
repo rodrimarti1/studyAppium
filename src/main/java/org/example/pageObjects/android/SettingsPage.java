@@ -21,6 +21,9 @@ public class SettingsPage extends AndroidActions {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Settings']")
     private WebElement settingsTitle;
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Send Feedback']")
+    private WebElement sendFeedbackButton;
+
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='About']")
     private WebElement aboutOption;
 
@@ -37,6 +40,11 @@ public class SettingsPage extends AndroidActions {
 
     public String getOptionText(WebElement element) {
         return element.getText();
+    }
+
+    public FeedbackPage goToFeedbackPage() {
+        sendFeedbackButton.click();
+        return new FeedbackPage(driver);
     }
 
     public AboutPage goToAboutPage() {
