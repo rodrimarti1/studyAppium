@@ -21,27 +21,45 @@ public class SearchPage extends AndroidActions {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Search']")
+    private WebElement searchTitle;
+
     @AndroidFindBy(xpath = "//android.widget.EditText")
     private WebElement songSearchBar;
-
-    @AndroidFindBy(id = "//android.widget.EditText")
-    private List<WebElement> songSearchResults;
 
     @AndroidFindBy(accessibility = "Back")
     private WebElement backButton;
 
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Close']")
+    private WebElement clearButton;
+
+    public String getSearchPageTitle() {
+        return searchTitle.getText();
+    }
+
+    public void setSearchBar(String searchCriteria) {
+        songSearchBar.sendKeys(searchCriteria);
+    }
+
+    public WebElement getSearchBar() {
+        return  songSearchBar;
+    }
+
     public void searchSongByName(String songName) {
         songSearchBar.sendKeys(songName);
         driver.executeScript("mobile: performEditorAction", ImmutableMap.of("action", "search"));
-
     }
 
-    public WebElement getSongFromResults(String songName) {
-        return driver.findElements(By.xpath("//android.widget.TextView[@text='"+songName+"']")).get(0);
+    public List<WebElement> getSongFromSearchResults(String songName) {
+        return driver.findElements(By.xpath("//*[contains(@text, '"+songName+"')]"));
     }
 
-    public void clickBackButton() {
-        backButton.click();
+    public WebElement getBackButton() {
+        return backButton;
+    }
+
+    public WebElement getClearButton() {
+        return clearButton;
     }
 
 }

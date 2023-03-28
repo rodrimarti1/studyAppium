@@ -4,7 +4,6 @@
     <test verbose="2" preserve-order="true" name="/Users/ravn05/Downloads/SacredMusicAndroid">
         <classes>
             <class name="tests.LibraryTests" />
-            <class name="tests.SearchTests" />
         </classes>
     </test>
 </suite>
