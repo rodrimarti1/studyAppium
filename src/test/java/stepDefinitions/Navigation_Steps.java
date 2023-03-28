@@ -6,7 +6,11 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.pageObjects.android.LibraryPage;
 import org.example.pageObjects.android.TabsPage;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static utils.DriverFactory.getDriver;
 
@@ -25,8 +29,12 @@ public class Navigation_Steps {
         Assert.assertTrue(tabsPage.getNavBar().isDisplayed());
     }
 
-    @Then("Navigation bar displays {word} option")
-    public void navigationBarDisplaysOptionNameOption(String optionName) {
-        tabsPage.getOptionByText(optionName);
+    @Then("Navigation bar displays the following options:")
+    public void navigationBarDisplaysOptionNameOption(List<String> optionsList) {
+        List<WebElement> elementsFound = new ArrayList<>();
+        for(int i = 0; i < optionsList.size(); i++) {
+            elementsFound.add(tabsPage.getOptionByText(optionsList.get(i)));
+        }
+        Assert.assertEquals(elementsFound.size(), 4);
     }
 }

@@ -1,4 +1,4 @@
-@language
+@languages
 
 Feature: Languages Screen
   In order to see the Language screen
