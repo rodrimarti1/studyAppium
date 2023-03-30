@@ -30,7 +30,7 @@ public class SearchPage extends AndroidActions {
     @AndroidFindBy(accessibility = "Back")
     private WebElement backButton;
 
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Close']")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Clear']")
     private WebElement clearButton;
 
     public String getSearchPageTitle() {

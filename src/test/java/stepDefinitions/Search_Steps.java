@@ -71,8 +71,8 @@ public class Search_Steps {
         searchPage.getBackButton().click();
     }
 
-    @When("User enters search {word} in the search box but doesn't click on the seach button")
-    public void userEntersSearCriteriaInTheSearchBoxButDoesnTClickOnTheSeachButton(String searchCriteria) {
+    @When("User enters search {word} in the search box but doesn't click on the search button")
+    public void userEntersSearCriteriaInTheSearchBoxButDoesnTClickOnTheSearchButton(String searchCriteria) {
         searchPage.setSearchBar(searchCriteria);
     }
 

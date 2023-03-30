@@ -39,7 +39,7 @@ Feature: Search Screen
   @allSearch
   Scenario Outline: X button is displayed when users enters text in the search box
     Given User has navigated to the search page
-    When User enters search <criteria> in the search box but doesn't click on the seach button
+    When User enters search <criteria> in the search box but doesn't click on the search button
     Then X button is displayed at the left end of the search box
       Examples:
         | criteria |
