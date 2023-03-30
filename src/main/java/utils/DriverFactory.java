@@ -1,5 +1,6 @@
 package utils;
 
+import io.appium.java_client.Setting;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
@@ -54,6 +55,7 @@ public class DriverFactory {
             throw new RuntimeException(e);
         }
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(45));
+        driver.setSetting(Setting.WAIT_FOR_IDLE_TIMEOUT, 100);
 
         return driver;
     }

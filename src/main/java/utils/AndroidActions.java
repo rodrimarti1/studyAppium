@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
@@ -51,5 +52,9 @@ public class AndroidActions extends AppiumUtils{
     public void setActivity(String activityName) {
         Activity activity = new Activity("io.appium.android.apis", activityName);
         driver.startActivity(activity);
+    }
+
+    public WebElement getAnyElementByText(String text) {
+        return driver.findElement(By.xpath("//android.widget.TextView[@text='"+ text +"']"));
     }
 }

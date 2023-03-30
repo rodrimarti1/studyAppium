@@ -113,8 +113,13 @@ public class LibraryPage extends AndroidActions {
         return new PlaylistsPage(driver);
     }
 
+    public CollectionDetailsPage goToCollectionPage(String collectionName) {
+        getAnyElementByText(collectionName).click();
+        return new CollectionDetailsPage(driver);
+    }
+
     public WebElement findAlbumByText(String albumName) {
-        return driver.findElement(By.xpath("//android.widget.TextView[@text='"+albumName+"']"));
+        return getAnyElementByText(albumName);
     }
 
     public WebElement findAlbumByIndex(int index) {
@@ -122,8 +127,10 @@ public class LibraryPage extends AndroidActions {
     }
 
     public WebElement getEllipseMenuOptionByName(String optionName) {
-        return driver.findElement(By.xpath("//android.widget.TextView[@text='"+optionName+"']"));
+        return  getAnyElementByText(optionName);
     }
+
+
 
 
 }
