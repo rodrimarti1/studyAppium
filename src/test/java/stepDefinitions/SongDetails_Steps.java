@@ -1,6 +1,5 @@
 package stepDefinitions;
 
-import io.appium.java_client.Setting;
 import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -73,6 +72,39 @@ public class SongDetails_Steps {
 
     @And("Selected song should start playing")
     public void selectedSongShouldStartPlaying() {
+        String actualMiniPlayerCurrentTime = songDetailsPage.getMiniPlayerCurrentTime().getText();
+        Assert.assertNotEquals(actualMiniPlayerCurrentTime, "00:00");
+    }
+
+    @And("User taps on the next song button")
+    public void userTapsOnTheNextSongButton() {
+        songDetailsPage.getMiniPlayerNextButton().click();
+    }
+
+    @Then("Song next song named {string} should start playing")
+    public void songNextSongNamedShouldStartPlaying(String nextSongName) throws InterruptedException {
+        String actualSongName = songDetailsPage.getMiniPlayerSongName().getText();
+        Assert.assertEquals(actualSongName, nextSongName);
+        Thread.sleep(2000);
+        String actualMiniPlayerCurrentTime = songDetailsPage.getMiniPlayerCurrentTime().getText();
+        Assert.assertNotEquals(actualMiniPlayerCurrentTime, "00:00");
+    }
+
+    @And("User taps on the next song button twice")
+    public void userTapsOnTheNextSongButtonTwice() {
+        songDetailsPage.getMiniPlayerNextButton().click();
+        songDetailsPage.getMiniPlayerNextButton().click();
+    }
+
+    @And("User taps on the previous song button once")
+    public void userTapsOnThePreviousSongButtonOnce() {
+        songDetailsPage.getMiniPlayerPreviousButton().click();
+    }
+
+    @Then("Song previous song named {string} should start playing")
+    public void songPreviousSongNamedShouldStartPlaying(String previousSongName) {
+        String actualSongName = songDetailsPage.getMiniPlayerSongName().getText();
+        Assert.assertEquals(actualSongName, previousSongName);
         String actualMiniPlayerCurrentTime = songDetailsPage.getMiniPlayerCurrentTime().getText();
         Assert.assertNotEquals(actualMiniPlayerCurrentTime, "00:00");
     }
