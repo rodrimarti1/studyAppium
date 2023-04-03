@@ -124,12 +124,12 @@ public class SongDetails_Steps {
     public void userRotatesPhoneScreen() throws InterruptedException {
         DeviceRotation landscape = new DeviceRotation(0, 0 , 90);
         driver.rotate(landscape);
-        Thread.sleep(2000);
     }
 
     @Then("Song should keep playing")
-    public void songShouldKeepPlaying() {
+    public void songShouldKeepPlaying() throws InterruptedException {
         Assert.assertTrue(songDetailsPage.getMiniPlayer().isDisplayed());
+        Thread.sleep(2000);
         String actualMiniPlayerCurrentTime = songDetailsPage.getMiniPlayerCurrentTime().getText();
         Assert.assertNotEquals(actualMiniPlayerCurrentTime, "00:00");
     }
@@ -146,11 +146,12 @@ public class SongDetails_Steps {
     }
 
     @And("User goes back to collection {string} and song {string}")
-    public void userGoesBackToCollectionCollectionNameAndSongSongName(String collectionName, String songName) {
+    public void userGoesBackToCollectionCollectionNameAndSongSongName(String collectionName, String songName) throws InterruptedException {
         tabsPage.goToLibraryPage();
         collectionDetailsPage = libraryPage.goToCollectionPage(collectionName);
         songDetailsPage = collectionDetailsPage.goToSongDetailsPage(songName);
         Assert.assertTrue(songDetailsPage.getMiniPlayer().isDisplayed());
+        Thread.sleep(2000);
         String actualMiniPlayerCurrentTime = songDetailsPage.getMiniPlayerCurrentTime().getText();
         Assert.assertNotEquals(actualMiniPlayerCurrentTime, "00:00");
     }
