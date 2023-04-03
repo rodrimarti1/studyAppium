@@ -8,6 +8,8 @@ import io.cucumber.java.en.When;
 import org.example.pageObjects.android.CollectionDetailsPage;
 import org.example.pageObjects.android.LibraryPage;
 import org.example.pageObjects.android.SongDetailsPage;
+import org.example.pageObjects.android.TabsPage;
+import org.openqa.selenium.DeviceRotation;
 import org.testng.Assert;
 
 import static utils.DriverFactory.getDriver;
@@ -16,6 +18,7 @@ public class SongDetails_Steps {
 
     private AndroidDriver driver = getDriver();
     public LibraryPage libraryPage = new LibraryPage(driver);
+    public TabsPage tabsPage = new TabsPage(driver);
     public CollectionDetailsPage collectionDetailsPage = new CollectionDetailsPage(driver);
     public SongDetailsPage songDetailsPage = new SongDetailsPage(driver);
     @Given("User has selected collection {string} and song {string}")
@@ -102,9 +105,52 @@ public class SongDetails_Steps {
     }
 
     @Then("Song previous song named {string} should start playing")
-    public void songPreviousSongNamedShouldStartPlaying(String previousSongName) {
+    public void songPreviousSongNamedShouldStartPlaying(String previousSongName) throws InterruptedException {
         String actualSongName = songDetailsPage.getMiniPlayerSongName().getText();
         Assert.assertEquals(actualSongName, previousSongName);
+        Thread.sleep(2000);
+        String actualMiniPlayerCurrentTime = songDetailsPage.getMiniPlayerCurrentTime().getText();
+        Assert.assertNotEquals(actualMiniPlayerCurrentTime, "00:00");
+    }
+
+    @Given("User has selected and played collection {string} and song {string}")
+    public void userHasSelectedAndPlayedCollectionCollectionNameAndSongSongName(String collectionName, String songName) {
+        collectionDetailsPage = libraryPage.goToCollectionPage(collectionName);
+        songDetailsPage = collectionDetailsPage.goToSongDetailsPage(songName);
+        songDetailsPage.getHeadphonesButton().click();
+    }
+
+    @When("User rotates phone screen")
+    public void userRotatesPhoneScreen() throws InterruptedException {
+        DeviceRotation landscape = new DeviceRotation(0, 0 , 90);
+        driver.rotate(landscape);
+        Thread.sleep(2000);
+    }
+
+    @Then("Song should keep playing")
+    public void songShouldKeepPlaying() {
+        Assert.assertTrue(songDetailsPage.getMiniPlayer().isDisplayed());
+        String actualMiniPlayerCurrentTime = songDetailsPage.getMiniPlayerCurrentTime().getText();
+        Assert.assertNotEquals(actualMiniPlayerCurrentTime, "00:00");
+    }
+
+    @When("User switches to the {string} tab")
+    public void userSwitchesToTheTabNameTab(String tabName) {
+        switch (tabName) {
+            case "Topics" -> tabsPage.goToTopicsPage();
+            case "Playlists" -> tabsPage.goToPlaylistsPage();
+            case "Downloads" -> tabsPage.goToDownloadsPage();
+            default -> {
+            }
+        }
+    }
+
+    @And("User goes back to collection {string} and song {string}")
+    public void userGoesBackToCollectionCollectionNameAndSongSongName(String collectionName, String songName) {
+        tabsPage.goToLibraryPage();
+        collectionDetailsPage = libraryPage.goToCollectionPage(collectionName);
+        songDetailsPage = collectionDetailsPage.goToSongDetailsPage(songName);
+        Assert.assertTrue(songDetailsPage.getMiniPlayer().isDisplayed());
         String actualMiniPlayerCurrentTime = songDetailsPage.getMiniPlayerCurrentTime().getText();
         Assert.assertNotEquals(actualMiniPlayerCurrentTime, "00:00");
     }

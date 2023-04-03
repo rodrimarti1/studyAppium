@@ -24,8 +24,8 @@ public class TabsPage extends AndroidActions {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Topics']")
     private WebElement topicsButton;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='People']")
-    private WebElement peopleButton;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Downloads']")
+    private WebElement downloadsButton;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Playlists']")
     private WebElement playlistsButton;
@@ -47,8 +47,8 @@ public class TabsPage extends AndroidActions {
         return new TopicsPage(driver);
     }
 
-    public PeoplePage goToPeoplePage() {
-        peopleButton.click();
+    public PeoplePage goToDownloadsPage() {
+        downloadsButton.click();
         return new PeoplePage(driver);
     }
 
@@ -68,8 +68,8 @@ public class TabsPage extends AndroidActions {
         return topicsButton;
     }
 
-    public WebElement getPeopleButton() {
-        return peopleButton;
+    public WebElement getDownloadsButton() {
+        return downloadsButton;
     }
 
     public WebElement getPlaylistButton() {

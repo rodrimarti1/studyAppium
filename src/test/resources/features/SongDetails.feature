@@ -43,3 +43,26 @@ Feature: Song Details screen
     Examples:
       | collectionName | songName | previousSongName |
       | "Hymns" | "Now Let Us Rejoice" | "Truth Eternal" |
+
+  @songDetails
+  Scenario Outline: Songs should keep playing after screen rotation
+    Given User has selected and played collection <collectionName> and song <songName>
+    When User rotates phone screen
+    Then Song should keep playing
+
+    Examples:
+      | collectionName | songName |
+      | "Hymns" | "Now Let Us Rejoice" |
+
+  @songDetails
+  Scenario Outline: Songs should keep playing after switching tabs
+    Given User has selected and played collection <collectionName> and song <songName>
+    When User switches to the <tabName> tab
+    And User goes back to collection <collectionName> and song <songName>
+    Then Song should keep playing
+
+    Examples:
+      | tabName | collectionName | songName |
+      | "Topics"| "Hymns" | "Now Let Us Rejoice" |
+      | "Playlists"| "Hymns" | "Now Let Us Rejoice" |
+      | "Downloads"| "Hymns" | "Now Let Us Rejoice" |
