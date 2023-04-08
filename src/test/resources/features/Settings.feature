@@ -11,13 +11,13 @@ Feature: Settings Screen
     Then User should be able to see the following options:
       | Sheet Music |
       | Preferred Type |
+      | Size           |
       | Theming |
       | Adjust sheet music for dark mode |
       | Lyrics  |
       | Font Style |
       | Support    |
       | Send Feedback |
-      | Additional Info |
       | Featured Apps |
       | About |
 

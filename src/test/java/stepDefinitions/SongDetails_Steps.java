@@ -32,6 +32,11 @@ public class SongDetails_Steps {
         songDetailsPage.getHeadphonesButton().click();
     }
 
+    @And("User taps on the play button")
+    public void userTapsOnThePlayButton() {
+        songDetailsPage.getMiniPlayerPlayPauseButton().click();
+    }
+
 
     @Then("Mini player is displayed")
     public void miniPlayerIsDisplayed() {
@@ -50,7 +55,7 @@ public class SongDetails_Steps {
 
     @And("Pause button is displayed")
     public void pauseButtonIsDisplayed() {
-        Assert.assertTrue(songDetailsPage.getMiniPlayerPauseButton().isDisplayed());
+        Assert.assertTrue(songDetailsPage.getMiniPlayerPlayPauseButton().isDisplayed());
     }
 
     @And("Next Song button is displayed")
@@ -118,6 +123,7 @@ public class SongDetails_Steps {
         collectionDetailsPage = libraryPage.goToCollectionPage(collectionName);
         songDetailsPage = collectionDetailsPage.goToSongDetailsPage(songName);
         songDetailsPage.getHeadphonesButton().click();
+        songDetailsPage.getMiniPlayerPlayPauseButton().click();
     }
 
     @When("User rotates phone screen")

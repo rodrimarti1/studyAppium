@@ -7,8 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import utils.AndroidActions;
 
-import java.util.List;
-
 public class SongDetailsPage extends AndroidActions {
 
     AndroidDriver driver;
@@ -29,7 +27,7 @@ public class SongDetailsPage extends AndroidActions {
     WebElement miniPlayerPreviousButton;
 
     @AndroidFindBy(id = "org.lds.ldsmusic.alpha:id/mediaPlayPauseButton")
-    WebElement miniPlayerPauseButton;
+    WebElement miniPlayerPlayPauseButton;
 
     @AndroidFindBy(id = "org.lds.ldsmusic.alpha:id/mediaNextButton")
     WebElement miniPlayerNextButton;
@@ -43,7 +41,7 @@ public class SongDetailsPage extends AndroidActions {
     @AndroidFindBy(id = "org.lds.ldsmusic.alpha:id/mediaDurationTextView")
     WebElement miniPlayerDuration;
 
-    @AndroidFindBy(xpath = "(//android.widget.ImageView[@content-desc='More options'])[2]")
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc='More options']")
     WebElement miniPlayerMoreOptionsButton;
 
     @AndroidFindBy(xpath = "//android.view.ViewGroup[@id='org.lds.ldsmusic.alpha:id/mediaPlaybackToolbar']/android.widget.ImageButton")
@@ -64,8 +62,8 @@ public class SongDetailsPage extends AndroidActions {
         return miniPlayerPreviousButton;
     }
 
-    public WebElement getMiniPlayerPauseButton() {
-        return miniPlayerPauseButton;
+    public WebElement getMiniPlayerPlayPauseButton() {
+        return miniPlayerPlayPauseButton;
     }
 
     public WebElement getMiniPlayerNextButton() {

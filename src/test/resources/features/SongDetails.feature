@@ -7,6 +7,7 @@ Feature: Song Details screen
   Scenario Outline: User taps on a song and the mini player is displayed
     Given User has selected collection <collectionName> and song <songName>
     When User taps on the headphones button
+    And User taps on the play button
     Then Mini player is displayed
     And More Options button is displayed
     And Previous Song button is displayed
@@ -25,6 +26,7 @@ Feature: Song Details screen
   Scenario Outline: User taps on the next song button
     Given User has selected collection <collectionName> and song <songName>
     When User taps on the headphones button
+    And User taps on the play button
     And User taps on the next song button
     Then Song next song named <nextSongName> should start playing
 
@@ -36,6 +38,7 @@ Feature: Song Details screen
   Scenario Outline: User taps on the previous song button
     Given User has selected collection <collectionName> and song <songName>
     When User taps on the headphones button
+    And User taps on the play button
     And User taps on the next song button twice
     And User taps on the previous song button once
     Then Song previous song named <previousSongName> should start playing
