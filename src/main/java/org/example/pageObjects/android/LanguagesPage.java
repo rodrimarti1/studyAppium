@@ -21,7 +21,7 @@ public class LanguagesPage extends AndroidActions {
     @AndroidFindBy(xpath = "//android.widget.EditText")
     private WebElement languageSearchBar;
 
-    @AndroidFindBy(xpath = "//android.view.ViewGroup[@resource-id='org.lds.ldsmusic.alpha:id/mainToolbar']/android.widget.TextView")
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id='android:id/content']//android.widget.TextView[@text='Languages']")
     private WebElement languagesTitle;
 
     public String getLanguagesPageTitle() {

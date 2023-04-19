@@ -18,7 +18,7 @@ public class TabsPage extends AndroidActions {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Library']")
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id='android:id/content']//android.widget.TextView[@text='Library']")
     private WebElement libraryButton;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Topics']")

@@ -32,7 +32,6 @@ public class Languages_Steps {
     public void userIsTakenToTheLanguagesPage() {
         String languagesPageTitle = languagePage.getLanguagesPageTitle();
         Assert.assertEquals(languagesPageTitle, "Languages");
-        libraryPage.goToLibraryPage();
     }
 
     @Given("User has navigated to the Languages screen")
@@ -53,8 +52,8 @@ public class Languages_Steps {
 
     @And("Album called {} should be displayed")
     public void albumCalledAlbumShouldBeDisplayed(String albumName) {
-        WebElement albumCover = libraryPage.findAlbumByIndex(1);
-        String actualAlbumName = albumCover.findElement(By.xpath("//android.widget.TextView")).getText().trim();
+        WebElement album = libraryPage.findAlbumByText(albumName);
+        String actualAlbumName = album.getText().trim();
         Assert.assertEquals(actualAlbumName, albumName);
     }
 }

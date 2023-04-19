@@ -22,7 +22,7 @@ public class LibraryPage extends AndroidActions {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Library']")
     private WebElement libraryBtn;
 
-    @AndroidFindBy(xpath = "//android.view.ViewGroup[@resource-id='org.lds.ldsmusic.alpha:id/mainToolbar']/android.widget.TextView")
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id='android:id/content']//android.widget.TextView[@text='Library']")
     private WebElement libraryTitle;
 
     @AndroidFindBy(accessibility = "More options")
@@ -43,7 +43,7 @@ public class LibraryPage extends AndroidActions {
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id='org.lds.ldsmusic.alpha:id/mainNavHostFragment']")
     private WebElement mainFrame;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Library']")
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id='android:id/content']//android.widget.TextView[@text='Library']")
     private WebElement libraryButton;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Topics']")
@@ -119,7 +119,7 @@ public class LibraryPage extends AndroidActions {
     }
 
     public WebElement findAlbumByText(String albumName) {
-        return getAnyElementByText(albumName);
+        return driver.findElement(By.xpath("//android.widget.FrameLayout[@resource-id='android:id/content']//android.widget.TextView[@text='"+ albumName +"']"));
     }
 
     public WebElement findAlbumByIndex(int index) {

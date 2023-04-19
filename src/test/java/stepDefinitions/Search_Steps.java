@@ -27,14 +27,14 @@ public class Search_Steps {
     }
 
     @When("User enters valid criteria {word} in the search box")
-    public void userEntersValidSearchCriteriaInTheSearchBox(String searchCriteria) {
+    public void userEntersValidSearchCriteriaInTheSearchBox(String searchCriteria) throws InterruptedException {
         searchPage.searchSongByName(searchCriteria);
     }
 
     @Then("Global search returns at least {int} song that matches the search criteria {word}")
     public void globalSearchReturnsAtLeastASongThatMatchesTheSearchCriteria(int numberOfSongs, String searchCriteria) {
         int songsFound = searchPage.getSongFromSearchResults(searchCriteria).size();
-        if (songsFound > numberOfSongs) {
+        if (songsFound >= numberOfSongs) {
             Assert.assertTrue(true);
         } else {
             Assert.assertTrue(false);
@@ -42,7 +42,7 @@ public class Search_Steps {
     }
 
     @When("User enters invalid {word} in the search box")
-    public void userEntersInvalidSearchCriteriaInTheSearchBox(String searchCriteria) {
+    public void userEntersInvalidSearchCriteriaInTheSearchBox(String searchCriteria) throws InterruptedException {
         searchPage.searchSongByName(searchCriteria);
     }
 
@@ -57,13 +57,13 @@ public class Search_Steps {
     }
 
     @When("User enters {word} in the search box")
-    public void userEntersSpecialCharactersInTheSearchBox(String searchCriteria) {
+    public void userEntersSpecialCharactersInTheSearchBox(String searchCriteria) throws InterruptedException {
         searchPage.searchSongByName(searchCriteria);
     }
 
     @And("The app shouldn't crash")
     public void theAppShouldnTCrash() {
-        Assert.assertTrue(tabsPage.getNavBar().isDisplayed());
+        Assert.assertTrue(tabsPage.getLibraryButton().isDisplayed());
     }
 
     @When("User taps on the back button")

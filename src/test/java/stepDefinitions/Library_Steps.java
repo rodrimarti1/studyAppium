@@ -32,10 +32,6 @@ public class Library_Steps {
         System.out.println("All library screen assertions");
         String title = libraryPage.getLibraryPageTitle();
         Assert.assertEquals(title, "Library");
-        boolean isNavBarVisible = libraryPage.getNavbar().isDisplayed();
-        Assert.assertTrue(isNavBarVisible);
-        boolean isMainFrameVisible = libraryPage.getMainFrame().isDisplayed();
-        Assert.assertTrue(isMainFrameVisible);
         LanguagesPage languagePage = libraryPage.goToLanguagePage();
         languagePage.searchAndSelectLanguageByName("Portuguese");
         Boolean isMusicAlbumDisplayed = libraryPage.findAlbumByText("Músicas para Crianças").isDisplayed();

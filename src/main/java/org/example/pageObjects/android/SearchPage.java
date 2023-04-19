@@ -45,9 +45,10 @@ public class SearchPage extends AndroidActions {
         return  songSearchBar;
     }
 
-    public void searchSongByName(String songName) {
+    public void searchSongByName(String songName) throws InterruptedException {
         songSearchBar.sendKeys(songName);
         driver.executeScript("mobile: performEditorAction", ImmutableMap.of("action", "search"));
+        Thread.sleep(2000);
     }
 
     public List<WebElement> getSongFromSearchResults(String songName) {
