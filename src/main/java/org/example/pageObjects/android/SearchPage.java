@@ -33,6 +33,9 @@ public class SearchPage extends AndroidActions {
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Clear']")
     private WebElement clearButton;
 
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc='No search results found.']")
+    private WebElement searchEmptyState;
+
     public String getSearchPageTitle() {
         return searchTitle.getText();
     }
@@ -61,6 +64,10 @@ public class SearchPage extends AndroidActions {
 
     public WebElement getClearButton() {
         return clearButton;
+    }
+
+    public WebElement getSearchEmptyState() {
+        return searchEmptyState;
     }
 
 }

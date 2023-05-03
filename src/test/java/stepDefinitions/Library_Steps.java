@@ -54,12 +54,6 @@ public class Library_Steps {
     public void users_should_see_search_languages_and_settings_options() {
         libraryPage.getMoreOptionsMenu().click();
 
-        WebElement ellipseSearchOption = libraryPage.getEllipseMenuOptionByName("Search");
-        String ellipseOptionSearchOptionLabel = ellipseSearchOption.getText();
-        System.out.println("Search option text: " + ellipseOptionSearchOptionLabel);
-        Assert.assertTrue(ellipseSearchOption.isDisplayed());
-        Assert.assertEquals(ellipseOptionSearchOptionLabel, "Search");
-
         WebElement ellipseLanguagesOption = libraryPage.getEllipseMenuOptionByName("Languages");
         String ellipseOptionLanguagesOptionLabel = ellipseLanguagesOption.getText();
         System.out.println("Languages option text: " + ellipseOptionLanguagesOptionLabel);

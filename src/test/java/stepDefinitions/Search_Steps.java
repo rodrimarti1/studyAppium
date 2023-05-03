@@ -46,14 +46,10 @@ public class Search_Steps {
         searchPage.searchSongByName(searchCriteria);
     }
 
-    @Then("Global search shouldn't be able to find any song matching the search criteria {word}")
-    public void globalSearchShouldnTBeAbleToFindAnySongMatchingTheSearchCriteria(String searchCriteria) {
-        int songsFound = searchPage.getSongFromSearchResults(searchCriteria).size();
-        if (songsFound == 1) {
-            Assert.assertTrue(true);
-        } else {
-            Assert.assertTrue(false);
-        }
+    @Then("Global search shouldn't be able to find any song matching the search criteria")
+    public void globalSearchShouldnTBeAbleToFindAnySongMatchingTheSearchCriteria() {
+        boolean isEmptyState = searchPage.getSearchEmptyState().isDisplayed();
+        Assert.assertTrue(isEmptyState);
     }
 
     @When("User enters {word} in the search box")

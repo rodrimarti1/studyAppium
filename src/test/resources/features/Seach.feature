@@ -16,7 +16,7 @@ Feature: Search Screen
   Scenario Outline: User enters invalid search criteria and the search finds no songs
     Given User has navigated to the search page
     When User enters invalid <criteria> in the search box
-    Then Global search shouldn't be able to find any song matching the search criteria <criteria>
+    Then Global search shouldn't be able to find any song matching the search criteria
       Examples:
       | criteria |
       | Football |

@@ -28,8 +28,8 @@ public class LibraryPage extends AndroidActions {
     @AndroidFindBy(accessibility = "More options")
     private WebElement moreOptionsMenu;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Search']")
-    private WebElement searchMenu;
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Search']")
+    private WebElement searchButton;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Languages']")
     private WebElement languagesMenu;
@@ -76,8 +76,7 @@ public class LibraryPage extends AndroidActions {
     }
 
     public SearchPage goToSearchPage() {
-        moreOptionsMenu.click();
-        searchMenu.click();
+        searchButton.click();
         return new SearchPage(driver);
     }
 
