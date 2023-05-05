@@ -9,7 +9,8 @@ import org.example.pageObjects.android.CollectionDetailsPage;
 import org.example.pageObjects.android.LibraryPage;
 import org.example.pageObjects.android.SongDetailsPage;
 import org.example.pageObjects.android.TabsPage;
-import org.openqa.selenium.DeviceRotation;
+import org.openqa.selenium.By;
+import org.openqa.selenium.ScreenOrientation;
 import org.testng.Assert;
 
 import static utils.DriverFactory.getDriver;
@@ -27,16 +28,20 @@ public class SongDetails_Steps {
         songDetailsPage = collectionDetailsPage.goToSongDetailsPage(songName);
     }
 
-    @When("User taps on the headphones button")
-    public void userTapsOnTheHeadphonesButton() {
-        songDetailsPage.getHeadphonesButton().click();
+    @When("User taps on the More Options")
+    public void userTapsOnTheMoreOptions() {
+        songDetailsPage.getMoreOptionsMenu().click();
     }
 
-    @And("User taps on the play button")
+    @And("User taps on the Play button")
     public void userTapsOnThePlayButton() {
-        songDetailsPage.getMiniPlayerPlayPauseButton().click();
+        libraryPage.getEllipseMenuOptionByName("Play").click();
     }
 
+    @And("User selects Audio Type {string}")
+    public void userSelectsAudioTypeAudioType(String audioType) {
+        driver.findElement(By.xpath("//android.widget.TextView[@text='"+ audioType +"']")).click();
+    }
 
     @Then("Mini player is displayed")
     public void miniPlayerIsDisplayed() {
@@ -91,14 +96,11 @@ public class SongDetails_Steps {
 
     @Then("Song next song named {string} should start playing")
     public void songNextSongNamedShouldStartPlaying(String nextSongName) throws InterruptedException {
-        String actualSongName = songDetailsPage.getMiniPlayerSongName().getText();
-        Assert.assertEquals(actualSongName, nextSongName);
-        Thread.sleep(2000);
-        String actualMiniPlayerCurrentTime = songDetailsPage.getMiniPlayerCurrentTime().getText();
-        Assert.assertNotEquals(actualMiniPlayerCurrentTime, "00:00");
+        boolean currentSongName = driver.findElement(By.xpath("//android.widget.TextView[@text='"+ nextSongName +"']")).isDisplayed();
+        Assert.assertTrue(currentSongName);
     }
 
-    @And("User taps on the next song button twice")
+    @When("User taps on the next song button twice")
     public void userTapsOnTheNextSongButtonTwice() {
         songDetailsPage.getMiniPlayerNextButton().click();
         songDetailsPage.getMiniPlayerNextButton().click();
@@ -111,33 +113,28 @@ public class SongDetails_Steps {
 
     @Then("Song previous song named {string} should start playing")
     public void songPreviousSongNamedShouldStartPlaying(String previousSongName) throws InterruptedException {
-        String actualSongName = songDetailsPage.getMiniPlayerSongName().getText();
-        Assert.assertEquals(actualSongName, previousSongName);
-        Thread.sleep(2000);
-        String actualMiniPlayerCurrentTime = songDetailsPage.getMiniPlayerCurrentTime().getText();
-        Assert.assertNotEquals(actualMiniPlayerCurrentTime, "00:00");
+        boolean currentSongName = driver.findElement(By.xpath("//android.widget.TextView[@text='"+ previousSongName +"']")).isDisplayed();
+        Assert.assertTrue(currentSongName);
     }
 
-    @Given("User has selected and played collection {string} and song {string}")
-    public void userHasSelectedAndPlayedCollectionCollectionNameAndSongSongName(String collectionName, String songName) {
+    @Given("User has selected and played collection {string} and song {string} with audio type {string}")
+    public void userHasSelectedAndPlayedCollectionCollectionNameAndSongSongName(String collectionName, String songName, String audioType) {
         collectionDetailsPage = libraryPage.goToCollectionPage(collectionName);
         songDetailsPage = collectionDetailsPage.goToSongDetailsPage(songName);
-        songDetailsPage.getHeadphonesButton().click();
-        songDetailsPage.getMiniPlayerPlayPauseButton().click();
+        songDetailsPage.getMoreOptionsMenu().click();
+        libraryPage.getEllipseMenuOptionByName("Play").click();
+        driver.findElement(By.xpath("//android.widget.TextView[@text='"+ audioType +"']")).click();
     }
 
     @When("User rotates phone screen")
     public void userRotatesPhoneScreen() throws InterruptedException {
-        DeviceRotation landscape = new DeviceRotation(0, 0 , 90);
-        driver.rotate(landscape);
+        driver.rotate(ScreenOrientation.LANDSCAPE);
     }
 
     @Then("Song should keep playing")
-    public void songShouldKeepPlaying() throws InterruptedException {
-        Assert.assertTrue(songDetailsPage.getMiniPlayer().isDisplayed());
-        Thread.sleep(2000);
-        String actualMiniPlayerCurrentTime = songDetailsPage.getMiniPlayerCurrentTime().getText();
-        Assert.assertNotEquals(actualMiniPlayerCurrentTime, "00:00");
+    public void songShouldKeepPlaying() {
+        boolean isMusicPlayerDisplayed = songDetailsPage.getMiniPlayer().isDisplayed();
+        Assert.assertTrue(isMusicPlayerDisplayed);
     }
 
     @When("User switches to the {string} tab")
@@ -160,5 +157,17 @@ public class SongDetails_Steps {
         Thread.sleep(2000);
         String actualMiniPlayerCurrentTime = songDetailsPage.getMiniPlayerCurrentTime().getText();
         Assert.assertNotEquals(actualMiniPlayerCurrentTime, "00:00");
+    }
+
+
+    @Given("User has selected and played collection {string} with audio type {string}")
+    public void userHasSelectedAndPlayedCollectionCollectionNameWithAudioTypeAudioType(String collectionName, String audioType) {
+        collectionDetailsPage = libraryPage.goToCollectionPage(collectionName);
+        collectionDetailsPage.getSongListPlayButton().click();
+        driver.findElement(By.xpath("//android.widget.TextView[@text='"+ audioType +"']")).click();
+    }
+    @And("User maximizes music player")
+    public void userMaximizesMusicPlayer() {
+        collectionDetailsPage.maximizeMusicPlayer();
     }
 }

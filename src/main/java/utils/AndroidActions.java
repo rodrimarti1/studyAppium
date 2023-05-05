@@ -2,8 +2,10 @@ package utils;
 
 import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumBy;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -46,6 +48,14 @@ public class AndroidActions extends AppiumUtils{
                 "elementId", ((RemoteWebElement) element).getId(),
                 "direction", direction,
                 "percent", 0.75
+        ));
+    }
+
+    public void dragAction(WebElement element) {
+        ((JavascriptExecutor) driver).executeScript("mobile: dragGesture", ImmutableMap.of(
+                "elementId", ((RemoteWebElement) element).getId(),
+                "endX", 530,
+                "endY", 660
         ));
     }
 

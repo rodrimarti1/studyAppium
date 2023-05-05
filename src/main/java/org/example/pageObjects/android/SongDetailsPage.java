@@ -17,19 +17,19 @@ public class SongDetailsPage extends AndroidActions {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    @AndroidFindBy(id = "org.lds.ldsmusic.alpha:id/mediaFab")
-    WebElement headphonesButton;
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='More options']")
+    WebElement moreOptionsMenu;
 
-    @AndroidFindBy(id = "org.lds.ldsmusic.alpha:id/mediaControlsLayout")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Audio Track']")
     WebElement miniPlayer;
 
-    @AndroidFindBy(id = "org.lds.ldsmusic.alpha:id/mediaPreviousButton")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Previous song']")
     WebElement miniPlayerPreviousButton;
 
     @AndroidFindBy(id = "org.lds.ldsmusic.alpha:id/mediaPlayPauseButton")
     WebElement miniPlayerPlayPauseButton;
 
-    @AndroidFindBy(id = "org.lds.ldsmusic.alpha:id/mediaNextButton")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Next song']")
     WebElement miniPlayerNextButton;
 
     @AndroidFindBy(id = "org.lds.ldsmusic.alpha:id/currentTimeTextView")
@@ -50,8 +50,8 @@ public class SongDetailsPage extends AndroidActions {
     @AndroidFindBy(xpath = "(//android.view.ViewGroup[@resource-id='org.lds.ldsmusic.alpha:id/mediaPlaybackToolbar']/android.widget.TextView)[1]")
     WebElement miniPlayerSongName;
 
-    public WebElement getHeadphonesButton() {
-        return headphonesButton;
+    public WebElement getMoreOptionsMenu() {
+        return moreOptionsMenu;
     }
 
     public WebElement getMiniPlayer() {

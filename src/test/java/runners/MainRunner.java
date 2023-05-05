@@ -10,7 +10,7 @@ import static utils.DriverFactory.getDriver;
 
 
 @CucumberOptions(features = {"classpath:features"}, glue = {"stepDefinitions"},
-                tags = "@library", monochrome = false, dryRun = false,
+                monochrome = false, dryRun = false,
                 plugin = {"pretty", "html:target/cucumber", "json:target/cucumber.json"})
 public class MainRunner extends AbstractTestNGCucumberTests {
 }
