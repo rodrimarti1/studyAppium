@@ -5,11 +5,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.example.pageObjects.android.LibraryPage;
-import org.example.pageObjects.android.PlaylistsContentPage;
-import org.example.pageObjects.android.PlaylistsDetailsPage;
-import org.example.pageObjects.android.PlaylistsPage;
-import org.openqa.selenium.WebElement;
+import org.example.pageObjects.android.*;
 import org.testng.Assert;
 
 import static utils.DriverFactory.getDriver;
@@ -21,6 +17,7 @@ public class Playlists_Steps {
     public PlaylistsPage playlistsPage = new PlaylistsPage(driver);
     public PlaylistsDetailsPage playlistsDetailsPage = new PlaylistsDetailsPage(driver);
     public PlaylistsContentPage playlistsContentPage = new PlaylistsContentPage(driver);
+    public SongDetailsPage songDetailsPage = new SongDetailsPage(driver);
     @Given("User taps on the Playlists option in the navigation bar")
     public void userTapsOnThePlaylistsOptionInTheNavigationBar() {
         playlistsPage = libraryPage.goToPlaylistsPage();
@@ -73,6 +70,59 @@ public class Playlists_Steps {
     }
 
 
+    @Given("User has navigated to the Playlist screen")
+    public void userHasNavigatedToThePlaylistScreen() {
+        playlistsPage = libraryPage.goToPlaylistsPage();
+        String actualTitle = playlistsPage.getPlaylistsPageTitle().getText();
+        Assert.assertEquals(actualTitle, "Playlists");
+    }
 
+    @And("User has created a new playlist named {string}")
+    public void userHasCreatedANewPlaylistNamedPlaylistName(String playlistName) {
+        playlistsDetailsPage = playlistsPage.createNewPlaylist();
+        playlistsDetailsPage.getPlaylistName().sendKeys(playlistName);
+        playlistsDetailsPage.getPlaylistSaveButton().click();
+        playlistsPage = playlistsDetailsPage.dismissConfirmationMessage();
+    }
 
+    @When("User taps on the Delete Playlist option in the Ellipse Menu of the playlist named {string}")
+    public void userTapsOnTheDeletePlaylistOptionInTheEllipseMenuOfThePlaylistNamedPlaylistName(String playlistName) {
+        playlistsContentPage = playlistsPage.goToPlaylistContentPage(playlistName);
+        playlistsContentPage.deletePlaylistByName("Delete Playlist");
+    }
+
+    @Then("User should no longer be able to see the playlist")
+    public void userShouldNoLongerBeAbleToSeeThePlaylistNamedPlaylistName() {
+        Assert.assertTrue(playlistsPage.getNoPlaylistsIcon().isDisplayed());
+        Assert.assertTrue(playlistsPage.getNoPlaylistsMainText().isDisplayed());
+        Assert.assertTrue(playlistsPage.getNoPlaylistsSubText().isDisplayed());
+    }
+
+    @Given("User has created a new playlist named {string} and navigated to the Library screen")
+    public void userHasCreatedANewPlaylistNamedPlaylistNameAndNavigatedToTheLibraryScreen(String playlistName) {
+        playlistsPage = libraryPage.goToPlaylistsPage();
+        playlistsDetailsPage = playlistsPage.createNewPlaylist();
+        playlistsDetailsPage.getPlaylistName().sendKeys(playlistName);
+        playlistsDetailsPage.getPlaylistSaveButton().click();
+        playlistsDetailsPage.dismissConfirmationMessage();
+        libraryPage = libraryPage.goToLibraryPage();
+    }
+
+    @When("User taps on the Add to Playlist button in the Ellipse Menu")
+    public void userTapsOnTheAddToPlaylistButtonInTheEllipseMenu() {
+        songDetailsPage.getMoreOptionsMenu().click();
+        libraryPage.getEllipseMenuOptionByName("Add to Playlist").click();
+    }
+
+    @And("User selects Playlist named {string}")
+    public void userSelectsPlaylistNamedPlaylistName(String playlistName) {
+        songDetailsPage.selectPlaylistByName(playlistName);
+    }
+
+    @Then("User should see song named {string} added to the playlist named {string}")
+    public void userShouldSeeSongsAddedToThePlaylistNamedPlaylistName(String songName,String playlistName) {
+        playlistsPage = libraryPage.goToPlaylistsPage();
+        playlistsContentPage = playlistsPage.goToPlaylistContentPage(playlistName);
+        Assert.assertTrue(playlistsContentPage.getPlaylistContentByName(songName).isDisplayed());
+    }
 }

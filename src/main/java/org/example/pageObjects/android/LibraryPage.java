@@ -126,9 +126,8 @@ public class LibraryPage extends AndroidActions {
     }
 
     public WebElement getEllipseMenuOptionByName(String optionName) {
-        return  getAnyElementByText(optionName);
+        return getAnyElementByText(optionName);
     }
-
 
 
 

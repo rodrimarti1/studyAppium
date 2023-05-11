@@ -79,4 +79,9 @@ public class PlaylistsPage extends AndroidActions {
         newPlaylistButton.click();
         return new PlaylistsDetailsPage(driver);
      }
+
+     public PlaylistsContentPage goToPlaylistContentPage(String playlistName) {
+        getPlaylistByName(playlistName).click();
+        return new PlaylistsContentPage(driver);
+     }
 }

@@ -6,6 +6,7 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import utils.AndroidActions;
 
 public class PlaylistsContentPage extends AndroidActions {
@@ -30,23 +31,36 @@ public class PlaylistsContentPage extends AndroidActions {
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Add a Song']")
     WebElement addSongToPlaylistButton;
 
-    @AndroidFindBy(xpath = "//android.widget.Button[@content-desc='More options']")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='More options']")
     WebElement playlistsEllipseMenu;
 
     public WebElement getPlaylistsEllipseMenu() {
         return playlistsEllipseMenu;
     }
 
-    public WebElement getEllipseMenuOptionByName(String optionName) {
-        return getAnyElementByText(optionName);
+    public WebElement getNoSongsIcon() {
+        return noSongsIcon;
+    }
+
+    public WebElement getNoSongsMainText() {
+        return noSongsMainText;
+    }
+
+    public WebElement getNoSongsSubText() {
+        return noSongsSubText;
+    }
+
+    public PlaylistsPage deletePlaylistByName(String playlistName) {
+        playlistsEllipseMenu.click();
+        getAnyElementByText(playlistName).click();
+        return new PlaylistsPage(driver);
     }
 
     public WebElement validatePlaylistName(String playlistName) {
         return driver.findElement(By.xpath("//android.widget.TextView[@text='"+playlistName+"']"));
     }
 
-    public WebElement validateNumberOfSongsInPlaylist(int numberOfSongs) {
-        String actualText = Integer.toString(numberOfSongs) + " songs";
-        return driver.findElement(By.xpath("//android.widget.TextView[@text='"+actualText+"']"));
+    public WebElement getPlaylistContentByName(String songName) {
+        return getAnyElementByText(songName);
     }
 }
