@@ -8,6 +8,8 @@ import io.cucumber.java.en.When;
 import org.example.pageObjects.android.*;
 import org.testng.Assert;
 
+import java.util.List;
+
 import static utils.DriverFactory.getDriver;
 
 public class Playlists_Steps {
@@ -124,5 +126,27 @@ public class Playlists_Steps {
         playlistsPage = libraryPage.goToPlaylistsPage();
         playlistsContentPage = playlistsPage.goToPlaylistContentPage(playlistName);
         Assert.assertTrue(playlistsContentPage.getPlaylistContentByName(songName).isDisplayed());
+    }
+
+    @Given("User has created and navigated to a new playlist named {string}")
+    public void userHasCreatedAndNavigatedToANewPlaylistNamed(String arg0) {
+        playlistsPage = libraryPage.goToPlaylistsPage();
+        playlistsDetailsPage = playlistsPage.createNewPlaylist();
+        playlistsDetailsPage.getPlaylistName().sendKeys(arg0);
+        playlistsDetailsPage.getPlaylistSaveButton().click();
+        playlistsPage = playlistsDetailsPage.dismissConfirmationMessage();
+        playlistsContentPage = playlistsPage.goToPlaylistContentPage(arg0);
+    }
+
+    @When("User taps on the Playlists screen Ellipse Menu")
+    public void userTapsOnThePlaylistsScreenEllipseMenu() {
+        playlistsContentPage.getPlaylistsEllipseMenu().click();
+    }
+
+    @Then("User should see the following options in the Ellipse Menu:")
+    public void userShouldSeeTheFollowingOptionsInTheEllipseMenu(List<String> ellipseOptions) {
+        for (String option: ellipseOptions) {
+            Assert.assertTrue(playlistsContentPage.getEllipseOptionByText(option).isDisplayed());
+        }
     }
 }

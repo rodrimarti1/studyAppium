@@ -19,37 +19,37 @@ public class SongDetailsPage extends AndroidActions {
     }
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='More options']")
-    WebElement moreOptionsMenu;
+    private WebElement moreOptionsMenu;
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Audio Track']")
-    WebElement miniPlayer;
+    private WebElement miniPlayer;
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Previous song']")
-    WebElement miniPlayerPreviousButton;
+    private WebElement miniPlayerPreviousButton;
 
     @AndroidFindBy(id = "org.lds.ldsmusic.alpha:id/mediaPlayPauseButton")
-    WebElement miniPlayerPlayPauseButton;
+    private WebElement miniPlayerPlayPauseButton;
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Next song']")
-    WebElement miniPlayerNextButton;
+    private WebElement miniPlayerNextButton;
 
     @AndroidFindBy(id = "org.lds.ldsmusic.alpha:id/currentTimeTextView")
-    WebElement miniPlayerCurrentTime;
+    private WebElement miniPlayerCurrentTime;
 
     @AndroidFindBy(id = "org.lds.ldsmusic.alpha:id/mediaProgressSeekBar")
-    WebElement miniPlayerProgressBar;
+    private WebElement miniPlayerProgressBar;
 
     @AndroidFindBy(id = "org.lds.ldsmusic.alpha:id/mediaDurationTextView")
-    WebElement miniPlayerDuration;
+    private WebElement miniPlayerDuration;
 
     @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc='More options']")
-    WebElement miniPlayerMoreOptionsButton;
+    private WebElement miniPlayerMoreOptionsButton;
 
     @AndroidFindBy(xpath = "//android.view.ViewGroup[@id='org.lds.ldsmusic.alpha:id/mediaPlaybackToolbar']/android.widget.ImageButton")
-    WebElement miniPlayerCloseButton;
+    private WebElement miniPlayerCloseButton;
 
     @AndroidFindBy(xpath = "(//android.view.ViewGroup[@resource-id='org.lds.ldsmusic.alpha:id/mediaPlaybackToolbar']/android.widget.TextView)[1]")
-    WebElement miniPlayerSongName;
+    private WebElement miniPlayerSongName;
 
     public WebElement getMoreOptionsMenu() {
         return moreOptionsMenu;

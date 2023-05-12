@@ -23,7 +23,7 @@ Feature: Playlists screen
       | playlistName | descriptionText | confirmationText |
       | "Test Playlist 1" | "This is a test playlist" | "Playlist Created" |
 
-  @playlists1
+  @playlists
   Scenario Outline: User deletes an existing playlist
     Given User has navigated to the Playlist screen
     And User has created a new playlist named <playlistName>
@@ -46,3 +46,16 @@ Feature: Playlists screen
       Examples:
       | playlistName | collectionName | songName | audioType |
       | "Test Playlist for adding songs" | "Hymns" | "The Morning Breaks" | "Accompaniment" |
+
+  @playlists
+  Scenario: User navigates to an existing Playlist and taps on the Ellipse Menu
+    Given User has created and navigated to a new playlist named "Ellipse Menu Option Test Playlist"
+    When User taps on the Playlists screen Ellipse Menu
+    Then User should see the following options in the Ellipse Menu:
+      | Copy to Playlist |
+      | Share Playlist   |
+      | Download Playlist |
+      | Edit Description  |
+      | Edit Song List    |
+      | Delete Playlist   |
+      | Settings         |

@@ -18,13 +18,13 @@ public class CollectionDetailsPage extends AndroidActions {
     }
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Sort Icon']")
-    WebElement sortIcon;
+    private WebElement sortIcon;
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Search']")
-    WebElement searchIcon;
+    private WebElement searchIcon;
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Play']")
-    WebElement songListPlayButton;
+    private WebElement songListPlayButton;
 
     public SongDetailsPage goToSongDetailsPage(String songName) {
         getAnyElementByText(songName).click();

@@ -19,22 +19,22 @@ public class PlaylistsDetailsPage extends AndroidActions {
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='New Playlist']")
-    WebElement newPlaylistPageTitle;
+    private WebElement newPlaylistPageTitle;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Title']/ancestor::android.widget.EditText")
-    WebElement playlistName;
+    private WebElement playlistName;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Description']/ancestor::android.widget.EditText")
-    WebElement playlistDescription;
+    private WebElement playlistDescription;
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Back']")
-    WebElement playlistBackButton;
+    private WebElement playlistBackButton;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Save']")
-    WebElement playlistSaveButton;
+    private WebElement playlistSaveButton;
 
     @AndroidFindBy(xpath = "//android.widget.Button[@content-desc='More options']")
-    WebElement playlistsEllipseMenu;
+    private WebElement playlistsEllipseMenu;
 
     public WebElement getNewPlaylistPageTitle() {
         return newPlaylistPageTitle;

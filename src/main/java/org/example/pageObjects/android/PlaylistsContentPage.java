@@ -6,7 +6,6 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 import utils.AndroidActions;
 
 public class PlaylistsContentPage extends AndroidActions {
@@ -20,7 +19,7 @@ public class PlaylistsContentPage extends AndroidActions {
     }
 
     @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc='No Songs']")
-    WebElement noSongsIcon;
+    private WebElement noSongsIcon;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='No Songs']")
     private WebElement noSongsMainText;
@@ -29,10 +28,10 @@ public class PlaylistsContentPage extends AndroidActions {
     private WebElement noSongsSubText;
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Add a Song']")
-    WebElement addSongToPlaylistButton;
+    private WebElement addSongToPlaylistButton;
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='More options']")
-    WebElement playlistsEllipseMenu;
+    private WebElement playlistsEllipseMenu;
 
     public WebElement getPlaylistsEllipseMenu() {
         return playlistsEllipseMenu;
@@ -62,5 +61,9 @@ public class PlaylistsContentPage extends AndroidActions {
 
     public WebElement getPlaylistContentByName(String songName) {
         return getAnyElementByText(songName);
+    }
+
+    public WebElement getEllipseOptionByText(String optionName) {
+        return getAnyElementByText(optionName);
     }
 }

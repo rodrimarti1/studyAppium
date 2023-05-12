@@ -46,12 +46,12 @@ public class SendFeedback_Steps {
 
     @And("User should see the Attachments button")
     public void userShouldSeeTheAttachmentsButton() {
-        Assert.assertTrue(feedbackPage.attachButton.isDisplayed());
+        Assert.assertTrue(feedbackPage.getAttachmentButton().isDisplayed());
     }
 
     @And("User should see the Send button")
     public void userShouldSeeTheSendButton() {
-        Assert.assertTrue(feedbackPage.submitButton.isDisplayed());
+        Assert.assertTrue(feedbackPage.getSubmitButton().isDisplayed());
     }
 
     @Given("User is in Send Feedback screen")

@@ -21,28 +21,28 @@ public class FeedbackPage extends AndroidActions {
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Send Feedback']")
-    public WebElement feedbackTitle;
+    private WebElement feedbackTitle;
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Attach Image']")
-    public WebElement attachButton;
+    private WebElement attachButton;
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Submit']")
-    public WebElement submitButton;
+    private WebElement submitButton;
 
     @AndroidFindBy(xpath = "//android.widget.ScrollView/android.widget.EditText[1]")
-    public WebElement nameField;
+    private WebElement nameField;
 
     @AndroidFindBy(xpath = "//android.widget.ScrollView/android.widget.EditText[2]")
-    public WebElement emailField;
+    private WebElement emailField;
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Dropdown menu']")
-    public WebElement categoryDropdown;
+    private WebElement categoryDropdown;
 
     @AndroidFindBy(id = "android:id/content")
-    public WebElement categoryOptions;
+    private WebElement categoryOptions;
 
     @AndroidFindBy(xpath = "//android.widget.ScrollView/android.widget.EditText[4]")
-    public WebElement descriptionField;
+    private WebElement descriptionField;
 
     public String getFeedbackPageTitle() {
         return feedbackTitle.getText();
@@ -80,5 +80,11 @@ public class FeedbackPage extends AndroidActions {
         return driver.findElement(By.xpath("//android.widget.TextView[@text='"+ text +"']"));
     }
 
+    public WebElement getSubmitButton() {
+        return submitButton;
+    }
 
+    public WebElement getAttachmentButton() {
+        return  attachButton;
+    }
 }
