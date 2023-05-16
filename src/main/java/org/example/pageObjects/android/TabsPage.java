@@ -3,7 +3,6 @@ package org.example.pageObjects.android;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import utils.AndroidActions;
@@ -38,41 +37,41 @@ public class TabsPage extends AndroidActions {
     }
 
     public LibraryPage goToLibraryPage() {
-        libraryButton.click();
+        clickOnElement(libraryButton);
         return new LibraryPage(driver);
     }
 
     public TopicsPage goToTopicsPage() {
-        topicsButton.click();
+        clickOnElement(topicsButton);
         return new TopicsPage(driver);
     }
 
     public PeoplePage goToDownloadsPage() {
-        downloadsButton.click();
+        clickOnElement(downloadsButton);
         return new PeoplePage(driver);
     }
 
     public PlaylistsPage goToPlaylistsPage() {
-        playlistsButton.click();
+        clickOnElement(playlistsButton);
         return new PlaylistsPage(driver);
     }
 
     public WebElement getOptionByText(String text) {
-        return driver.findElement(By.xpath("//android.widget.TextView[@text='"+ text +"']"));
+        return getAnyElementByText(text);
     }
     public WebElement getLibraryButton() {
-        return libraryButton;
+        return getAnyElement(libraryButton);
     }
 
     public WebElement getTopicsButton() {
-        return topicsButton;
+        return getAnyElement(topicsButton);
     }
 
     public WebElement getDownloadsButton() {
-        return downloadsButton;
+        return getAnyElement(downloadsButton);
     }
 
     public WebElement getPlaylistButton() {
-        return playlistsButton;
+        return getAnyElement(playlistsButton);
     }
 }

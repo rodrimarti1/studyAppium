@@ -59,15 +59,15 @@ public class SearchPage extends AndroidActions {
     }
 
     public WebElement getBackButton() {
-        return backButton;
+        return getAnyElement(backButton);
     }
 
     public WebElement getClearButton() {
-        return clearButton;
+        return getAnyElement(clearButton);
     }
 
     public WebElement getSearchEmptyState() {
-        return searchEmptyState;
+        return getAnyElement(searchEmptyState);
     }
 
 }

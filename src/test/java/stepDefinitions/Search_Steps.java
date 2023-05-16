@@ -7,7 +7,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.pageObjects.android.LibraryPage;
 import org.example.pageObjects.android.SearchPage;
-import org.example.pageObjects.android.SettingsPage;
 import org.example.pageObjects.android.TabsPage;
 import org.testng.Assert;
 

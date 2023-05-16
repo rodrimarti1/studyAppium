@@ -72,53 +72,53 @@ public class LibraryPage extends AndroidActions {
     }
 
     public void clickLibraryButton() {
-        libraryBtn.click();
+        clickOnElement(libraryBtn);
     }
 
     public SearchPage goToSearchPage() {
-        searchButton.click();
+        clickOnElement(searchButton);
         return new SearchPage(driver);
     }
 
     public LanguagesPage goToLanguagePage() {
-        moreOptionsMenu.click();
-        languagesMenu.click();
+        clickOnElement(moreOptionsMenu);
+        clickOnElement(languagesMenu);
         return new LanguagesPage(driver);
     }
 
     public SettingsPage goToSettingsPage() {
-        moreOptionsMenu.click();
-        settingsMenu.click();
+        clickOnElement(moreOptionsMenu);
+        clickOnElement(settingsMenu);
         return new SettingsPage(driver);
     }
 
     public LibraryPage goToLibraryPage() {
-        libraryButton.click();
+        clickOnElement(libraryButton);
         return new LibraryPage(driver);
     }
 
     public TopicsPage goToTopicsPage() {
-        topicsButton.click();
+        clickOnElement(topicsButton);
         return new TopicsPage(driver);
     }
 
     public PeoplePage goToPeoplePage() {
-        peopleButton.click();
+        clickOnElement(peopleButton);
         return new PeoplePage(driver);
     }
 
     public PlaylistsPage goToPlaylistsPage() {
-        playlistsButton.click();
+        clickOnElement(playlistsButton);
         return new PlaylistsPage(driver);
     }
 
     public CollectionDetailsPage goToCollectionPage(String collectionName) {
-        getAnyElementByText(collectionName).click();
+        clickOnElement(getAnyElementByText(collectionName));
         return new CollectionDetailsPage(driver);
     }
 
     public WebElement findAlbumByText(String albumName) {
-        return driver.findElement(By.xpath("//android.widget.FrameLayout[@resource-id='android:id/content']//android.widget.TextView[@text='"+ albumName +"']"));
+        return getAnyElement(By.xpath("//android.widget.FrameLayout[@resource-id='android:id/content']//android.widget.TextView[@text='"+ albumName +"']"));
     }
 
     public WebElement findAlbumByIndex(int index) {

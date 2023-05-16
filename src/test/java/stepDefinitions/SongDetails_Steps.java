@@ -164,7 +164,6 @@ public class SongDetails_Steps {
     public void userHasSelectedAndPlayedCollectionCollectionNameWithAudioTypeAudioType(String collectionName, String audioType) {
         collectionDetailsPage = libraryPage.goToCollectionPage(collectionName);
         collectionDetailsPage.getSongListPlayButton().click();
-        driver.findElement(By.xpath("//android.widget.TextView[@text='"+ audioType +"']")).click();
     }
     @And("User maximizes music player")
     public void userMaximizesMusicPlayer() {

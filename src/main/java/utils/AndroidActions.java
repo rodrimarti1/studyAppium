@@ -2,14 +2,16 @@ package utils;
 
 import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumBy;
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class AndroidActions extends AppiumUtils{
 
@@ -65,6 +67,37 @@ public class AndroidActions extends AppiumUtils{
     }
 
     public WebElement getAnyElementByText(String text) {
-        return driver.findElement(By.xpath("//android.widget.TextView[@text='"+ text +"']"));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(45));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.TextView[@text='"+ text +"']")));
+    }
+
+    public WebElement getAnyElement(By by) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(45));
+        return wait.until(ExpectedConditions.elementToBeClickable(by));
+    }
+
+    public WebElement getAnyElement(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(45));
+        return wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public void clickOnElement(By by) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(45));
+        wait.until(ExpectedConditions.elementToBeClickable(by)).click();
+    }
+
+    public void clickOnElement(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(45));
+        wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+    }
+
+    public void sendKeysToElement(By by, String textToType) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(45));
+        wait.until(ExpectedConditions.elementToBeClickable(by)).sendKeys(textToType);
+    }
+
+    public void sendKeysToElement(WebElement element, String textToType) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(45));
+        wait.until(ExpectedConditions.elementToBeClickable(element)).sendKeys(textToType);
     }
 }

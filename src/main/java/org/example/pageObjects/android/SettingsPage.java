@@ -43,17 +43,17 @@ public class SettingsPage extends AndroidActions {
     }
 
     public FeedbackPage goToFeedbackPage() {
-        sendFeedbackButton.click();
+        clickOnElement(sendFeedbackButton);
         return new FeedbackPage(driver);
     }
 
     public AboutPage goToAboutPage() {
-        aboutOption.click();
+        clickOnElement(aboutOption);
         return new AboutPage(driver);
     }
 
     public LibraryPage clickBackButton() {
-        backButton.click();
+        clickOnElement(backButton);
         return new LibraryPage(driver);
     }
 

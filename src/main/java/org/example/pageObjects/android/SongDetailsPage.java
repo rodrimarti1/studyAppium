@@ -52,51 +52,51 @@ public class SongDetailsPage extends AndroidActions {
     private WebElement miniPlayerSongName;
 
     public WebElement getMoreOptionsMenu() {
-        return moreOptionsMenu;
+        return getAnyElement(moreOptionsMenu);
     }
 
     public WebElement getMiniPlayer() {
-        return miniPlayer;
+        return getAnyElement(miniPlayer);
     }
 
     public WebElement getMiniPlayerPreviousButton() {
-        return miniPlayerPreviousButton;
+        return getAnyElement(miniPlayerPreviousButton);
     }
 
     public WebElement getMiniPlayerPlayPauseButton() {
-        return miniPlayerPlayPauseButton;
+        return getAnyElement(miniPlayerPlayPauseButton);
     }
 
     public WebElement getMiniPlayerNextButton() {
-        return miniPlayerNextButton;
+        return getAnyElement(miniPlayerNextButton);
     }
 
     public WebElement getMiniPlayerCurrentTime() {
-        return miniPlayerCurrentTime;
+        return getAnyElement(miniPlayerCurrentTime);
     }
 
     public WebElement getMiniPlayerProgressBar() {
-        return miniPlayerProgressBar;
+        return getAnyElement(miniPlayerProgressBar);
     }
 
     public WebElement getMiniPlayerDuration() {
-        return miniPlayerDuration;
+        return getAnyElement(miniPlayerDuration);
     }
 
     public WebElement getMiniPlayerMoreOptionsButton() {
-        return miniPlayerMoreOptionsButton;
+        return getAnyElement(miniPlayerMoreOptionsButton);
     }
 
     public WebElement getMiniPlayerCloseButton() {
-        return miniPlayerCloseButton;
+        return getAnyElement(miniPlayerCloseButton);
     }
 
     public WebElement getMiniPlayerSongName() {
-        return miniPlayerSongName;
+        return getAnyElement(miniPlayerSongName);
     }
 
     public void selectPlaylistByName(String playlistName) {
-        getAnyElementByText(playlistName).click();
+        clickOnElement(getAnyElementByText(playlistName));
     }
 
     public WebElement getConfirmationToast(String confirmationText) {

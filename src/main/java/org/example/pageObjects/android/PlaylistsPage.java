@@ -3,7 +3,6 @@ package org.example.pageObjects.android;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import utils.AndroidActions;
@@ -39,27 +38,27 @@ public class PlaylistsPage extends AndroidActions {
     private WebElement playlistsEllipseMenu;
 
     public WebElement getPlaylistsPageTitle() {
-        return playlistsPageTitle;
+        return getAnyElement(playlistsPageTitle);
     }
 
     public WebElement getNoPlaylistsIcon() {
-        return noPlaylistsIcon;
+        return getAnyElement(noPlaylistsIcon);
     }
 
     public WebElement getNoPlaylistsMainText() {
-        return noPlaylistsMainText;
+        return getAnyElement(noPlaylistsMainText);
     }
 
     public WebElement getNoPlaylistsSubText() {
-        return noPlaylistsSubText;
+        return getAnyElement(noPlaylistsSubText);
     }
 
     public WebElement getNewPlaylistButton() {
-        return newPlaylistButton;
+        return getAnyElement(newPlaylistButton);
     }
 
     public WebElement getPlaylistsEllipseMenu() {
-        return playlistsEllipseMenu;
+        return getAnyElement(playlistsEllipseMenu);
     }
 
     public WebElement getEllipseMenuOptionByName(String optionName) {
@@ -67,21 +66,21 @@ public class PlaylistsPage extends AndroidActions {
     }
 
     public WebElement getPlaylistByName(String playlistName) {
-        return driver.findElement(By.xpath("//android.widget.TextView[@text='"+playlistName+"']"));
+        return getAnyElementByText(playlistName);
     }
 
      public PlaylistsDetailsPage goToPlaylistsDetailsPage() {
-        newPlaylistButton.click();
+        clickOnElement(newPlaylistButton);
         return new PlaylistsDetailsPage(driver);
      }
 
      public PlaylistsDetailsPage createNewPlaylist() {
-        newPlaylistButton.click();
+        clickOnElement(newPlaylistButton);
         return new PlaylistsDetailsPage(driver);
      }
 
      public PlaylistsContentPage goToPlaylistContentPage(String playlistName) {
-        getPlaylistByName(playlistName).click();
+        clickOnElement(getPlaylistByName(playlistName));
         return new PlaylistsContentPage(driver);
      }
 }

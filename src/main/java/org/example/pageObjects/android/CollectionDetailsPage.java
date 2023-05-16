@@ -27,15 +27,16 @@ public class CollectionDetailsPage extends AndroidActions {
     private WebElement songListPlayButton;
 
     public SongDetailsPage goToSongDetailsPage(String songName) {
-        getAnyElementByText(songName).click();
+        clickOnElement(getAnyElementByText(songName));
         return new SongDetailsPage(driver);
     }
 
     public WebElement getSongListPlayButton() {
-        return songListPlayButton;
+        return getAnyElement(songListPlayButton);
     }
 
     public void maximizeMusicPlayer() {
-        driver.findElement(By.xpath("(//android.view.View[@content-desc='Audio Track']/following-sibling::android.widget.TextView)[2]")).click();
+        WebElement miniMusicPlayer = getAnyElement(By.xpath("(//android.view.View[@content-desc='Audio Track']/following-sibling::android.widget.TextView)[2]"));
+        clickOnElement(miniMusicPlayer);
     }
 }

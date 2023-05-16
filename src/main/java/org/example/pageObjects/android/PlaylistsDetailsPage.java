@@ -3,7 +3,6 @@ package org.example.pageObjects.android;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import utils.AndroidActions;
@@ -37,23 +36,23 @@ public class PlaylistsDetailsPage extends AndroidActions {
     private WebElement playlistsEllipseMenu;
 
     public WebElement getNewPlaylistPageTitle() {
-        return newPlaylistPageTitle;
+        return getAnyElement(newPlaylistPageTitle);
     }
 
     public WebElement getPlaylistName() {
-        return playlistName;
+        return getAnyElement(playlistName);
     }
 
     public WebElement getPlaylistDescription() {
-        return playlistDescription;
+        return getAnyElement(playlistDescription);
     }
 
     public WebElement getPlaylistBackButton() {
-        return playlistBackButton;
+        return getAnyElement(playlistBackButton);
     }
 
     public WebElement getPlaylistSaveButton() {
-        return playlistSaveButton;
+        return getAnyElement(playlistSaveButton);
     }
 
     public WebElement getConfirmationMessageByText(String confirmationText) {
@@ -65,7 +64,7 @@ public class PlaylistsDetailsPage extends AndroidActions {
     }
 
     public PlaylistsPage dismissConfirmationMessage() {
-        getAnyElementByText("Dismiss").click();
+        clickOnElement(getAnyElementByText("Dismiss"));
         return new PlaylistsPage(driver);
     }
 
@@ -74,7 +73,7 @@ public class PlaylistsDetailsPage extends AndroidActions {
     }
 
     public WebElement getPlaylistsEllipseMenu() {
-        return playlistsEllipseMenu;
+        return getAnyElement(playlistsEllipseMenu);
     }
 
     public WebElement getEllipseMenuOptionByName(String optionName) {

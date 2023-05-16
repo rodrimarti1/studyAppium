@@ -25,20 +25,22 @@ public class LanguagesPage extends AndroidActions {
     private WebElement languagesTitle;
 
     public String getLanguagesPageTitle() {
-        return languagesTitle.getText();
+        return getAnyElement(languagesTitle).getText();
     }
 
     public void searchAndSelectLanguageByName(String languageName) {
-        languageSearchBar.sendKeys(languageName);
-        driver.findElement(By.xpath("//android.widget.TextView[@text='"+languageName+"']")).click();
+        sendKeysToElement(languageSearchBar, languageName);
+        clickOnElement(By.xpath("//android.widget.TextView[@text='"+languageName+"']"));
     }
 
     public void selectLanguageByName(String languageName) {
-        driver.findElement(By.xpath("//android.widget.TextView[@text='"+languageName+"']")).click();
+        WebElement languageBox = getAnyElement(By.xpath("//android.widget.TextView[@text='"+languageName+"']"));
+        clickOnElement(languageBox);
     }
 
     public void scrollAndSelectLanguageByText(String languageName) {
         scrollToText(languageName);
-        driver.findElement(By.xpath("//android.widget.TextView[@text='"+languageName+"']"));
+        WebElement languageBox = getAnyElement(By.xpath("//android.widget.TextView[@text='"+languageName+"']"));
+        clickOnElement(languageBox);
     }
 }

@@ -45,19 +45,19 @@ public class FeedbackPage extends AndroidActions {
     private WebElement descriptionField;
 
     public String getFeedbackPageTitle() {
-        return feedbackTitle.getText();
+        return getAnyElement(feedbackTitle).getText();
     }
 
     public void setNameField(String name) {
-        nameField.sendKeys(name);
+        sendKeysToElement(nameField, name);
     }
 
     public void setEmailField(String email) {
-        emailField.sendKeys(email);
+        sendKeysToElement(emailField, email);
     }
 
     public void setCategory(String category) {
-        categoryDropdown.click();
+        clickOnElement(categoryDropdown);
         List<WebElement> allCategories = categoryOptions.findElements(By.xpath("//android.widget.ScrollView/android.view.View/android.widget.TextView"));
         for (int i = 0; i < allCategories.size(); i++) {
             if(allCategories.get(i).getText().equals(category)) {
@@ -69,15 +69,15 @@ public class FeedbackPage extends AndroidActions {
     }
 
     public void setDescriptionField(String description) {
-        descriptionField.sendKeys(description);
+        sendKeysToElement(descriptionField, description);
     }
 
     public void clickSubmitButton() {
-        submitButton.click();
+        clickOnElement(submitButton);
     }
 
     public WebElement getOptionByText(String text) {
-        return driver.findElement(By.xpath("//android.widget.TextView[@text='"+ text +"']"));
+        return getAnyElementByText(text);
     }
 
     public WebElement getSubmitButton() {
@@ -85,6 +85,6 @@ public class FeedbackPage extends AndroidActions {
     }
 
     public WebElement getAttachmentButton() {
-        return  attachButton;
+        return attachButton;
     }
 }

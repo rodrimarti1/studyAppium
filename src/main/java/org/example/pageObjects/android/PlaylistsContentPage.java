@@ -3,7 +3,6 @@ package org.example.pageObjects.android;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import utils.AndroidActions;
@@ -34,29 +33,29 @@ public class PlaylistsContentPage extends AndroidActions {
     private WebElement playlistsEllipseMenu;
 
     public WebElement getPlaylistsEllipseMenu() {
-        return playlistsEllipseMenu;
+        return getAnyElement(playlistsEllipseMenu);
     }
 
     public WebElement getNoSongsIcon() {
-        return noSongsIcon;
+        return getAnyElement(noSongsIcon);
     }
 
     public WebElement getNoSongsMainText() {
-        return noSongsMainText;
+        return getAnyElement(noSongsMainText);
     }
 
     public WebElement getNoSongsSubText() {
-        return noSongsSubText;
+        return getAnyElement(noSongsSubText);
     }
 
     public PlaylistsPage deletePlaylistByName(String playlistName) {
-        playlistsEllipseMenu.click();
-        getAnyElementByText(playlistName).click();
+        clickOnElement(playlistsEllipseMenu);
+        clickOnElement(getAnyElementByText(playlistName));
         return new PlaylistsPage(driver);
     }
 
     public WebElement validatePlaylistName(String playlistName) {
-        return driver.findElement(By.xpath("//android.widget.TextView[@text='"+playlistName+"']"));
+        return getAnyElementByText(playlistName);
     }
 
     public WebElement getPlaylistContentByName(String songName) {

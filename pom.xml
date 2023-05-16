@@ -18,7 +18,7 @@
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
-            <version>8.3.0</version>
+            <version>8.5.0</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
@@ -26,10 +26,16 @@
             <version>7.7.1</version>
             <scope>compile</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.9.1</version>
+        </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-support</artifactId>
-            <version>4.8.0</version>
+            <version>4.9.1</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
         <dependency>
