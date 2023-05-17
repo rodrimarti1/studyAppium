@@ -1,20 +1,13 @@
 package org.example.pageObjects.android;
 
-import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
-import utils.AndroidActions;
 
-public class TabsPage extends AndroidActions {
+public class TabsPage extends BasePage {
 
-    AndroidDriver driver;
-
-    public TabsPage(AndroidDriver driver) {
-        super(driver);
-        this.driver = driver;
-        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+    public TabsPage(AppiumDriver appiumDriver) {
+        super(appiumDriver);
     }
 
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id='android:id/content']//android.widget.TextView[@text='Library']")

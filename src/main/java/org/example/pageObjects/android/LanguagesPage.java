@@ -1,21 +1,14 @@
 package org.example.pageObjects.android;
 
-import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
-import utils.AndroidActions;
 
-public class LanguagesPage extends AndroidActions {
+public class LanguagesPage extends BasePage {
 
-    AndroidDriver driver;
-
-    public LanguagesPage(AndroidDriver driver) {
+    public LanguagesPage(AppiumDriver driver) {
         super(driver);
-        this.driver = driver;
-        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
     @AndroidFindBy(xpath = "//android.widget.EditText")
@@ -39,7 +32,7 @@ public class LanguagesPage extends AndroidActions {
     }
 
     public void scrollAndSelectLanguageByText(String languageName) {
-        scrollToText(languageName);
+        //scrollToText(languageName);
         WebElement languageBox = getAnyElement(By.xpath("//android.widget.TextView[@text='"+languageName+"']"));
         clickOnElement(languageBox);
     }
