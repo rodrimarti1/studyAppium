@@ -20,6 +20,8 @@ public class Playlists_Steps {
     public PlaylistsDetailsPage playlistsDetailsPage = new PlaylistsDetailsPage(driver);
     public PlaylistsContentPage playlistsContentPage = new PlaylistsContentPage(driver);
     public SongDetailsPage songDetailsPage = new SongDetailsPage(driver);
+    public PlaylistContentSearchPage playlistContentSearchPage = new PlaylistContentSearchPage(driver);
+
     @Given("User taps on the Playlists option in the navigation bar")
     public void userTapsOnThePlaylistsOptionInTheNavigationBar() {
         playlistsPage = libraryPage.goToPlaylistsPage();
@@ -148,5 +150,95 @@ public class Playlists_Steps {
         for (String option: ellipseOptions) {
             Assert.assertTrue(playlistsContentPage.getEllipseOptionByText(option).isDisplayed());
         }
+    }
+
+    @Given("User has created a new playlist named {string} and clicked on it")
+    public void userHasCreatedANewPlaylistNamedPlaylistNameAndClickedOnIt(String playlistName) {
+        playlistsPage = libraryPage.goToPlaylistsPage();
+        playlistsDetailsPage = playlistsPage.createNewPlaylist();
+        playlistsDetailsPage.getPlaylistName().sendKeys(playlistName);
+        playlistsDetailsPage.getPlaylistSaveButton().click();
+        playlistsPage = playlistsDetailsPage.dismissConfirmationMessage();
+        playlistsContentPage = playlistsPage.goToPlaylistContentPage(playlistName);
+    }
+
+    @And("User taps on the Add a Song button")
+    public void userTapsOnTheAddASongButton() {
+        playlistContentSearchPage = playlistsContentPage.clickAddASong();
+    }
+
+    @When("User searches and selects {string} song")
+    public void userSearchesAndSelectsSongNameSong(String songName) {
+        playlistContentSearchPage.searchForContentByText(songName);
+        playlistContentSearchPage.selectSongByName(songName);
+        playlistContentSearchPage.clickAddSelectedButton();
+    }
+
+    @And("User taps on the Add Songs option in the pop up")
+    public void userTapsOnTheAddSongsOptionInThePopUp() {
+        playlistsContentPage = playlistContentSearchPage.clickAddSongsConfirmationButton();
+    }
+
+    @Then("User should see song named {string} added to the newly created playlist")
+    public void userShouldSeeSongNamedSongNameAddedToTheNewlyCreatedPlaylist(String songName) {
+        Assert.assertTrue(playlistsContentPage.getPlaylistContentByName(songName).isDisplayed());
+    }
+
+    @And("User should see the following options in the Ellipse Menu of each song")
+    public void userShouldSeeTheFollowingOptionsInTheEllipseMenuOfEachSong(List<String> ellipseOptions) {
+        playlistsContentPage.clickSongMoreOptionsMenu();
+        for (String option: ellipseOptions) {
+            Assert.assertTrue(playlistsContentPage.getEllipseOptionByText(option).isDisplayed());
+        }
+    }
+
+    @Given("User has created a new playlist named {string} and added song named {string} to it")
+    public void userHasCreatedANewPlaylistNamedPlaylistNameAndAddedSongNamedSongNameToIt(String playlistName, String songName) {
+        playlistsPage = libraryPage.goToPlaylistsPage();
+        playlistsDetailsPage = playlistsPage.createNewPlaylist();
+        playlistsDetailsPage.getPlaylistName().sendKeys(playlistName);
+        playlistsDetailsPage.getPlaylistSaveButton().click();
+        playlistsPage = playlistsDetailsPage.dismissConfirmationMessage();
+        playlistsContentPage = playlistsPage.goToPlaylistContentPage(playlistName);
+        playlistContentSearchPage = playlistsContentPage.clickAddASong();
+        playlistContentSearchPage.searchForContentByText(songName);
+        playlistContentSearchPage.selectSongByName(songName);
+        playlistContentSearchPage.clickAddSelectedButton();
+        playlistsContentPage = playlistContentSearchPage.clickAddSongsConfirmationButton();
+    }
+
+    @When("User taps on the More Options menu for that song")
+    public void userTapsOnTheMoreOptionsMenuForThatSong() {
+        playlistsContentPage.clickSongMoreOptionsMenu();
+    }
+
+    @And("User taps on the Remove from Playlist button")
+    public void userTapsOnTheRemoveFromPlaylistButton() {
+        playlistsContentPage.clickOnOptionByName("Remove from Playlist");
+    }
+
+    @Then("User should no longer see the song in the playlist")
+    public void userShouldNoLongerSeeTheSongNamedSongNameInThePlaylist() {
+        Assert.assertTrue(playlistsContentPage.isPlaylistEmpty());
+    }
+
+    @When("User taps on the Playlist Play button")
+    public void userTapsOnThePlaylistPlayButton() {
+        playlistsContentPage.clickPlayButton();
+    }
+
+    @Then("Mini player should be displayed")
+    public void miniPlayerShouldBeDisplayed() {
+        Assert.assertTrue(playlistsContentPage.isMiniPlayerDisplayed());
+    }
+
+    @And("Mini player should reproduce song named {string}")
+    public void miniPlayerShouldReproduceSongNamedSongName(String songName) {
+        Assert.assertEquals(playlistsContentPage.getMiniPlayerSongName(songName), songName);
+    }
+
+    @When("User taps on the Playlist Shuffle button")
+    public void userTapsOnThePlaylistShuffleButton() {
+        playlistsContentPage.clickShuffleButton();
     }
 }

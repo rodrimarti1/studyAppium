@@ -48,6 +48,60 @@ Feature: Playlists screen
       | "Test Playlist for adding songs" | "Hymns" | "The Morning Breaks" | "Accompaniment" |
 
   @playlists
+  Scenario Outline: User adds songs to an existing playlist from Search
+    Given User has created a new playlist named <playlistName> and clicked on it
+    And User taps on the Add a Song button
+    When User searches and selects <songName> song
+    And User taps on the Add Songs option in the pop up
+    Then User should see song named <songName> added to the newly created playlist
+    And User should see the following options in the Ellipse Menu of each song
+      | Play Song |
+      | Play Next |
+      | Play Last |
+      | Add to Playlist |
+      | Remove from Playlist |
+      | Download Song        |
+      | Share Song           |
+      | Album                |
+
+    Examples:
+      | playlistName |  songName |
+      | "Add songs from using search option" | "The Morning Breaks" |
+
+  @playlists
+  Scenario Outline: User removes songs from an existing playlist
+    Given User has created a new playlist named <playlistName> and added song named <songName> to it
+    When User taps on the More Options menu for that song
+    And User taps on the Remove from Playlist button
+    Then User should no longer see the song in the playlist
+
+    Examples:
+      | playlistName |  songName |
+      | "Remove songs from playlist" | "The Morning Breaks" |
+
+  @playlists
+  Scenario Outline: User plays a playlist
+    Given User has created a new playlist named <playlistName> and added song named <songName> to it
+    When User taps on the Playlist Play button
+    Then Mini player should be displayed
+    And Mini player should reproduce song named <songName>
+
+    Examples:
+      | playlistName |  songName |
+      | "Play a playlist" | "The Morning Breaks" |
+
+  @playlists
+  Scenario Outline: User shuffles a playlist
+    Given User has created a new playlist named <playlistName> and added song named <songName> to it
+    When User taps on the Playlist Shuffle button
+    Then Mini player should be displayed
+    And Mini player should reproduce song named <songName>
+
+    Examples:
+      | playlistName |  songName |
+      | "Shuffle a playlist" | "The Morning Breaks" |
+
+  @playlists
   Scenario: User navigates to an existing Playlist and taps on the Ellipse Menu
     Given User has created and navigated to a new playlist named "Ellipse Menu Option Test Playlist"
     When User taps on the Playlists screen Ellipse Menu
