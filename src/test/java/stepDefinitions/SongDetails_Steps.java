@@ -163,6 +163,8 @@ public class SongDetails_Steps {
     @Given("User has selected and played collection {string} with audio type {string}")
     public void userHasSelectedAndPlayedCollectionCollectionNameWithAudioTypeAudioType(String collectionName, String audioType) {
         collectionDetailsPage = libraryPage.goToCollectionPage(collectionName);
+        //TODO Remove the following line when LMFA-518 is fixed
+        collectionDetailsPage.selectAudioType("Words and Music");
         collectionDetailsPage.getSongListPlayButton().click();
     }
     @And("User maximizes music player")

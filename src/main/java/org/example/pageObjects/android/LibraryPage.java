@@ -24,7 +24,7 @@ public class LibraryPage extends BasePage {
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Search']")
     private WebElement searchButton;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Languages']")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Language']")
     private WebElement languagesMenu;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Settings']")
