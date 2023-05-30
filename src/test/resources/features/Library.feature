@@ -13,4 +13,4 @@ Feature: Library Screen
   Scenario: User lands in Library screen and taps on the Ellipse Menu
     Given Users lands in Library Screen
     When User taps on the Ellipse Menu
-    Then Users should see Search, Languages and Settings options
+    Then Users should see Language and Settings options

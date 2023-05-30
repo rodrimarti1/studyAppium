@@ -46,6 +46,7 @@ public class DriverFactory {
         options.setDeviceName("Android Device");
         options.setPlatformVersion("13.0");
         options.setNoReset(false);
+        options.setFullReset(false);
         String currentDir = System.getProperty("user.dir");
         options.setApp(currentDir + "/src/main/resources/app-alpha.apk");
 

@@ -49,15 +49,15 @@ public class Library_Steps {
 
     }
 
-    @Then("Users should see Search, Languages and Settings options")
+    @Then("Users should see Language and Settings options")
     public void users_should_see_search_languages_and_settings_options() {
         libraryPage.getMoreOptionsMenu().click();
 
-        WebElement ellipseLanguagesOption = libraryPage.getEllipseMenuOptionByName("Languages");
+        WebElement ellipseLanguagesOption = libraryPage.getEllipseMenuOptionByName("Language");
         String ellipseOptionLanguagesOptionLabel = ellipseLanguagesOption.getText();
         System.out.println("Languages option text: " + ellipseOptionLanguagesOptionLabel);
         Assert.assertTrue(ellipseLanguagesOption.isDisplayed());
-        Assert.assertEquals(ellipseOptionLanguagesOptionLabel, "Languages");
+        Assert.assertEquals(ellipseOptionLanguagesOptionLabel, "Language");
 
         WebElement ellipseSettingsOption = libraryPage.getEllipseMenuOptionByName("Settings");
         String ellipseOptionSettingsOptionLabel = ellipseSettingsOption.getText();
