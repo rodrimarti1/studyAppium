@@ -49,4 +49,15 @@ public class CollectionDetailsPage extends BasePage {
         WebElement miniMusicPlayer = getAnyElement(By.xpath("(//android.view.View[@content-desc='Audio Track']/following-sibling::android.widget.TextView)[2]"));
         clickOnElement(miniMusicPlayer);
     }
+
+    public void downloadSong(String songName, String audioType) {
+        selectAudioType("Words and Music");
+        clickOnElement(By.xpath("//android.widget.TextView[@text='"+ songName +"']/following-sibling::android.widget.Button[@content-desc='More options']"));
+        clickOnElement(getAnyElementByText("Download"));
+        clickOnElement(getAnyElementByText(audioType));
+    }
+
+    public boolean isSongDownloaded(String songName) {
+        return getAnyElement(By.xpath("//android.widget.TextView[@text='"+ songName +"']/following-sibling::android.view.View[@content-desc='Downloaded']")).isDisplayed();
+    }
 }

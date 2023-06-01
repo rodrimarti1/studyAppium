@@ -39,9 +39,9 @@ public class TabsPage extends BasePage {
         return new TopicsPage(driver);
     }
 
-    public PeoplePage goToDownloadsPage() {
+    public DownloadsPage goToDownloadsPage() {
         clickOnElement(downloadsButton);
-        return new PeoplePage(driver);
+        return new DownloadsPage(driver);
     }
 
     public PlaylistsPage goToPlaylistsPage() {
