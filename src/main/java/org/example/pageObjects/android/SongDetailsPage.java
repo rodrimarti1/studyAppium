@@ -92,11 +92,25 @@ public class SongDetailsPage extends BasePage {
         clickOnElement(getAnyElementByText(playlistName));
     }
 
+    public void confirmAddToPlaylist() {
+        clickOnElement(getAnyElementByText("Add"));
+    }
+
+    public PlaylistsContentPage viewPlaylist() {
+        clickOnElement(getAnyElementByText("View Playlist"));
+        return new PlaylistsContentPage(driver);
+    }
+
     public WebElement getConfirmationToast(String confirmationText) {
         return driver.findElement(By.xpath("//android.widget.Toast[@text='"+ confirmationText +"']"));
     }
 
     public WebElement getEllipseMenuOptionByName(String optionName) {
         return getAnyElementByText(optionName);
+    }
+
+    public PlaylistsPage selectAudioType(String audioType) {
+        clickOnElement(getAnyElementByText(audioType));
+        return new PlaylistsPage(driver);
     }
 }

@@ -36,7 +36,7 @@ public class Settings_Steps {
         for(int i = 0; i < optionsList.size(); i++) {
             elementsFound.add(settingsPage.getOptionByText(optionsList.get(i)));
         }
-        Assert.assertEquals(elementsFound.size(), 11);
+        Assert.assertEquals(elementsFound.size(), 10);
     }
 
     @When("User taps on the Settings screen back button")

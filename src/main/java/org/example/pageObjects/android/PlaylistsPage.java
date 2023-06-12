@@ -21,7 +21,7 @@ public class PlaylistsPage extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='No Playlists']")
     private WebElement noPlaylistsMainText;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Add playlists to organize songs.']")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Tap the button below to create one.']")
     private WebElement noPlaylistsSubText;
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Add to Playlist']")
@@ -75,5 +75,19 @@ public class PlaylistsPage extends BasePage {
      public PlaylistsContentPage goToPlaylistContentPage(String playlistName) {
         clickOnElement(getPlaylistByName(playlistName));
         return new PlaylistsContentPage(driver);
+     }
+
+     public PlaylistsPage selectExistingPlaylist(String playlistName) {
+        clickOnElement(getPlaylistByName(playlistName));
+        return new PlaylistsPage(driver);
+     }
+
+     public void confirmAddToPlaylist() {
+        clickOnElement(getAnyElementByText("Add"));
+     }
+
+     public PlaylistsPage viewPlaylistOrDismissPopup(String action) {
+        clickOnElement(getAnyElementByText(action));
+        return new PlaylistsPage(driver);
      }
 }

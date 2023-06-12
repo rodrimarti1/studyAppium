@@ -5,8 +5,6 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import java.util.List;
-
 public class DownloadsPage extends BasePage {
 
     public DownloadsPage(AppiumDriver appiumDriver) {
@@ -19,7 +17,7 @@ public class DownloadsPage extends BasePage {
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Search']")
     private WebElement searchIcon;
 
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Search']/parent::android.view.View/following-sibling::android.widget.Button[@content-desc='More options']")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Search']/parent::*/following-sibling::android.view.View/*[@content-desc='More options']")
     private WebElement moreOptionsMenu;
 
     @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc='No songs are currently downloaded to this device.']")
@@ -59,7 +57,7 @@ public class DownloadsPage extends BasePage {
     }
 
     public WebElement findDownloadedSongByName(String songName) {
-        return getAnyElement(By.xpath("//android.view.View[@content-desc='"+ songName +"']"));
+        return getAnyElementByText(songName);
     }
 
     public boolean isSongDownloaded(String songName) {

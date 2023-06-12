@@ -38,11 +38,6 @@ public class SongDetails_Steps {
         libraryPage.getEllipseMenuOptionByName("Play").click();
     }
 
-    @And("User selects Audio Type {string}")
-    public void userSelectsAudioTypeAudioType(String audioType) {
-        driver.findElement(By.xpath("//android.widget.TextView[@text='"+ audioType +"']")).click();
-    }
-
     @Then("Mini player is displayed")
     public void miniPlayerIsDisplayed() {
         Assert.assertTrue(songDetailsPage.getMiniPlayer().isDisplayed());
@@ -117,13 +112,12 @@ public class SongDetails_Steps {
         Assert.assertTrue(currentSongName);
     }
 
-    @Given("User has selected and played collection {string} and song {string} with audio type {string}")
-    public void userHasSelectedAndPlayedCollectionCollectionNameAndSongSongName(String collectionName, String songName, String audioType) {
+    @Given("User has selected and played collection {string} and song {string}")
+    public void userHasSelectedAndPlayedCollectionCollectionNameAndSongSongName(String collectionName, String songName) {
         collectionDetailsPage = libraryPage.goToCollectionPage(collectionName);
         songDetailsPage = collectionDetailsPage.goToSongDetailsPage(songName);
         songDetailsPage.getMoreOptionsMenu().click();
         libraryPage.getEllipseMenuOptionByName("Play").click();
-        driver.findElement(By.xpath("//android.widget.TextView[@text='"+ audioType +"']")).click();
     }
 
     @When("User rotates phone screen")
@@ -160,8 +154,8 @@ public class SongDetails_Steps {
     }
 
 
-    @Given("User has selected and played collection {string} with audio type {string}")
-    public void userHasSelectedAndPlayedCollectionCollectionNameWithAudioTypeAudioType(String collectionName, String audioType) {
+    @Given("User has selected and played collection {string}")
+    public void userHasSelectedAndPlayedCollectionCollectionNameWithAudioTypeAudioType(String collectionName) {
         collectionDetailsPage = libraryPage.goToCollectionPage(collectionName);
         //TODO Remove the following line when LMFA-518 is fixed
         collectionDetailsPage.selectAudioType("Words and Music");

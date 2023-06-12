@@ -8,54 +8,53 @@ Feature: Song Details screen
     Given User has selected collection <collectionName> and song <songName>
     When User taps on the More Options
     And User taps on the Play button
-    And User selects Audio Type <audioType>
     Then Mini player is displayed
 
     Examples:
-      | collectionName | songName | audioType |
-      | "Hymns" | "The Morning Breaks" | "Accompaniment" |
+      | collectionName | songName |
+      | "Hymns" | "The Morning Breaks" |
 
   @songDetails
   Scenario Outline: User taps on the next song button
-    Given User has selected and played collection <collectionName> with audio type <audioType>
+    Given User has selected and played collection <collectionName>
     And User maximizes music player
     When User taps on the next song button
     Then Song next song named <nextSongName> should start playing
 
     Examples:
-      | collectionName | audioType | nextSongName |
-      | "Hymns" | "Accompaniment" | "The Spirit of God" |
+      | collectionName | nextSongName |
+      | "Hymns" | "The Spirit of God" |
 
   @songDetails
   Scenario Outline: User taps on the previous song button
-    Given User has selected and played collection <collectionName> with audio type <audioType>
+    Given User has selected and played collection <collectionName>
     And User maximizes music player
     When User taps on the next song button twice
     And User taps on the previous song button once
     Then Song previous song named <previousSongName> should start playing
 
     Examples:
-      | collectionName | audioType | previousSongName |
-      | "Hymns" | "Accompaniment" | "The Spirit of God" |
+      | collectionName | previousSongName |
+      | "Hymns" | "The Spirit of God" |
 
   @songDetails
   Scenario Outline: Songs should keep playing after screen rotation
-    Given User has selected and played collection <collectionName> and song <songName> with audio type <audioType>
+    Given User has selected and played collection <collectionName> and song <songName>
     When User rotates phone screen
     Then Song should keep playing
 
     Examples:
-      | collectionName | songName | audioType |
-      | "Hymns" | "Now Let Us Rejoice" | "Accompaniment" |
+      | collectionName | songName |
+      | "Hymns" | "Now Let Us Rejoice" |
 
   @songDetails
   Scenario Outline: Songs should keep playing after switching tabs
-    Given User has selected and played collection <collectionName> and song <songName> with audio type <audioType>
+    Given User has selected and played collection <collectionName> and song <songName>
     When User switches to the <tabName> tab
     Then Song should keep playing
 
     Examples:
-      | tabName | collectionName | songName | audioType |
-      | "Topics"| "Hymns" | "Now Let Us Rejoice" | "Accompaniment" |
-      | "Playlists"| "Hymns" | "Now Let Us Rejoice" | "Accompaniment" |
-      | "Downloads"| "Hymns" | "Now Let Us Rejoice" | "Accompaniment" |
+      | tabName | collectionName | songName |
+      | "Topics"| "Hymns" | "Now Let Us Rejoice" |
+      | "Playlists"| "Hymns" | "Now Let Us Rejoice" |
+      | "Downloads"| "Hymns" | "Now Let Us Rejoice" |

@@ -5,12 +5,11 @@ Feature: Settings Screen
   I have to tap on the Ellipse menu and select the Settings option
 
   @settings
-  Scenario: User lands in Library page and is able to see the Ellipse Menu
+  Scenario: List of all options available in Settings
     Given User taps on the Ellipse Menu and selects Settings option
     When Settings page is visible
     Then User should be able to see the following options:
       | Sheet Music |
-      | Preferred Type |
       | Size           |
       | Theming |
       | Adjust sheet music for dark mode |

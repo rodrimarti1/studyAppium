@@ -1,9 +1,12 @@
 package org.example.pageObjects.android;
 
+import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebElement;
 
 public class CollectionDetailsPage extends BasePage {
 
@@ -46,8 +49,13 @@ public class CollectionDetailsPage extends BasePage {
     }
 
     public void maximizeMusicPlayer() {
-        WebElement miniMusicPlayer = getAnyElement(By.xpath("(//android.view.View[@content-desc='Audio Track']/following-sibling::android.widget.TextView)[2]"));
-        clickOnElement(miniMusicPlayer);
+        WebElement miniMusicPlayer = getAnyElement(By.xpath("//android.view.View[@content-desc='Pause song']"));
+        // Drag
+        ((JavascriptExecutor) driver).executeScript("mobile: dragGesture", ImmutableMap.of(
+                "elementId", ((RemoteWebElement) miniMusicPlayer).getId(),
+                "endX", 0,
+                "endY", 100
+        ));
     }
 
     public void downloadSong(String songName, String audioType) {

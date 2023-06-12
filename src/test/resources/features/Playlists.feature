@@ -41,6 +41,8 @@ Feature: Playlists screen
     When User taps on the Add to Playlist button in the Ellipse Menu
     And User selects Audio Type <audioType>
     And User selects Playlist named <playlistName>
+    And User confirms song addition to the playlist
+    And User chooses View Playlist option in the confirmation modal
     Then User should see song named <songName> added to the playlist named <playlistName>
 
       Examples:

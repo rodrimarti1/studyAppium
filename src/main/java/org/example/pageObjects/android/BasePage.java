@@ -1,6 +1,9 @@
 package org.example.pageObjects.android;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -57,5 +60,9 @@ public class BasePage {
     public void sendKeysToElement(WebElement element, String textToType) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(45));
         wait.until(ExpectedConditions.elementToBeClickable(element)).sendKeys(textToType);
+    }
+
+    public void hideAndroidKeyboard() {
+        ((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.BACK));
     }
 }

@@ -125,8 +125,8 @@ public class Playlists_Steps {
 
     @Then("User should see song named {string} added to the playlist named {string}")
     public void userShouldSeeSongsAddedToThePlaylistNamedPlaylistName(String songName,String playlistName) {
-        playlistsPage = libraryPage.goToPlaylistsPage();
-        playlistsContentPage = playlistsPage.goToPlaylistContentPage(playlistName);
+        //playlistsPage = libraryPage.goToPlaylistsPage();
+        //playlistsContentPage = playlistsPage.goToPlaylistContentPage(playlistName);
         Assert.assertTrue(playlistsContentPage.getPlaylistContentByName(songName).isDisplayed());
     }
 
@@ -240,5 +240,20 @@ public class Playlists_Steps {
     @When("User taps on the Playlist Shuffle button")
     public void userTapsOnThePlaylistShuffleButton() {
         playlistsContentPage.clickShuffleButton();
+    }
+
+    @And("User confirms song addition to the playlist")
+    public void userConfirmsSongAdditionToThePlaylist() {
+        songDetailsPage.confirmAddToPlaylist();
+    }
+
+    @And("User chooses View Playlist option in the confirmation modal")
+    public void userChoosesViewPlaylistOptionInTheConfirmationModal() {
+        playlistsContentPage = songDetailsPage.viewPlaylist();
+    }
+
+    @And("User selects Audio Type {string}")
+    public void userSelectsAudioTypeAudioType(String audioType) {
+        songDetailsPage.selectAudioType(audioType);
     }
 }

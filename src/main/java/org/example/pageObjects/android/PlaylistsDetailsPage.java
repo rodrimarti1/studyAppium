@@ -72,4 +72,41 @@ public class PlaylistsDetailsPage extends BasePage {
     public WebElement getEllipseMenuOptionByName(String optionName) {
         return getAnyElementByText(optionName);
     }
+
+    public void setPlaylistName(String name) {
+        sendKeysToElement(playlistName, name);
+    }
+
+    public void setPlaylistDescription(String description) {
+        sendKeysToElement(playlistDescription, description);
+    }
+
+    public void clickSaveButton() {
+        clickOnElement(playlistSaveButton);
+    }
+
+    public PlaylistsPage createPlaylist(String name, String description) {
+        setPlaylistName(name);
+        setPlaylistDescription(description);
+        clickSaveButton();
+        return new PlaylistsPage(driver);
+    }
+
+    public PlaylistsContentPage topicsCreatePlaylistAndView(String name, String description) {
+        setPlaylistName(name);
+        setPlaylistDescription(description);
+        clickSaveButton();
+        clickOnElement(getAnyElementByText("Add"));
+        clickOnElement(getAnyElementByText("View Playlist"));
+        return new PlaylistsContentPage(driver);
+    }
+
+    public TopicsDetailsPage topicsCreatePlaylistAndDone(String name, String description) {
+        setPlaylistName(name);
+        setPlaylistDescription(description);
+        clickSaveButton();
+        clickOnElement(getAnyElementByText("Add"));
+        clickOnElement(getAnyElementByText("View Playlist"));
+        return new TopicsDetailsPage(driver);
+    }
 }

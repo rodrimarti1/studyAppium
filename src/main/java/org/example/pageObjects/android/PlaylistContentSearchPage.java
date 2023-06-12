@@ -25,6 +25,7 @@ public class PlaylistContentSearchPage extends BasePage {
     public void searchForContentByText(String songName) {
         clickOnElement(searchBar);
         sendKeysToElement(getAnyElement(By.xpath("//android.widget.EditText")), songName);
+        hideAndroidKeyboard();
     }
 
     public void selectSongByName(String songName) {
