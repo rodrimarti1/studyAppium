@@ -242,11 +242,6 @@ public class Playlists_Steps {
         playlistsContentPage.clickShuffleButton();
     }
 
-    @And("User confirms song addition to the playlist")
-    public void userConfirmsSongAdditionToThePlaylist() {
-        songDetailsPage.confirmAddToPlaylist();
-    }
-
     @And("User chooses View Playlist option in the confirmation modal")
     public void userChoosesViewPlaylistOptionInTheConfirmationModal() {
         playlistsContentPage = songDetailsPage.viewPlaylist();

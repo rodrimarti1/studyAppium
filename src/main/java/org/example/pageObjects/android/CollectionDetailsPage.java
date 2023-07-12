@@ -23,7 +23,7 @@ public class CollectionDetailsPage extends BasePage {
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Play']")
     private WebElement songListPlayButton;
 
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Audio Type']")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Audio Types']")
     private WebElement audioTypeFilter;
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Features']")
@@ -33,9 +33,7 @@ public class CollectionDetailsPage extends BasePage {
     private WebElement topicsFilter;
 
     public SongDetailsPage goToSongDetailsPage(String songName) {
-        //TODO Remove the following line when LMFA-518 is fixed
-        selectAudioType("Words and Music");
-        clickOnElement(getAnyElementByText(songName));
+        clickOnElement(getAnyElement(By.xpath("//android.widget.TextView[contains(@text, '"+ songName +"')]")));
         return new SongDetailsPage(driver);
     }
 
