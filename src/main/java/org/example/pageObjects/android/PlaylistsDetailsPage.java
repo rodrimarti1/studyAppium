@@ -96,7 +96,6 @@ public class PlaylistsDetailsPage extends BasePage {
         setPlaylistName(name);
         setPlaylistDescription(description);
         clickSaveButton();
-        clickOnElement(getAnyElementByText("Add"));
         clickOnElement(getAnyElementByText("View Playlist"));
         return new PlaylistsContentPage(driver);
     }
@@ -105,7 +104,6 @@ public class PlaylistsDetailsPage extends BasePage {
         setPlaylistName(name);
         setPlaylistDescription(description);
         clickSaveButton();
-        clickOnElement(getAnyElementByText("Add"));
         clickOnElement(getAnyElementByText("View Playlist"));
         return new TopicsDetailsPage(driver);
     }

@@ -110,7 +110,6 @@ public class Topics_Steps {
     @And("User selects the existing playlist named {string}")
     public void userSelectsTheExistingPlaylistNamed(String playlistName) {
         playlistsPage.selectExistingPlaylist(playlistName);
-        playlistsPage.confirmAddToPlaylist();
         playlistsPage.viewPlaylistOrDismissPopup("View Playlist");
     }
 

@@ -57,13 +57,13 @@ public class CollectionDetailsPage extends BasePage {
     }
 
     public void downloadSong(String songName, String audioType) {
-        selectAudioType("Words and Music");
-        clickOnElement(By.xpath("//android.widget.TextView[@text='"+ songName +"']/following-sibling::android.widget.Button[@content-desc='More options']"));
+        //selectAudioType("Words and Music");
+        clickOnElement(By.xpath("//android.widget.TextView[contains(@text, '"+ songName +"')]/following-sibling::android.widget.Button[@content-desc='More options']"));
         clickOnElement(getAnyElementByText("Download"));
         clickOnElement(getAnyElementByText(audioType));
     }
 
     public boolean isSongDownloaded(String songName) {
-        return getAnyElement(By.xpath("//android.widget.TextView[@text='"+ songName +"']/following-sibling::android.view.View[@content-desc='Downloaded']")).isDisplayed();
+        return getAnyElement(By.xpath("//android.widget.TextView[contains(@text, '"+ songName +"')]/following-sibling::android.view.View[@content-desc='Downloaded']")).isDisplayed();
     }
 }

@@ -16,7 +16,7 @@ public class TopicsPage extends BasePage {
     @AndroidFindBy(xpath = "(//android.view.View[@content-desc='Search'])[2]")
     private WebElement searchIcon;
 
-    @AndroidFindBy(xpath = "//android.widget.Button[@content-desc='More options']")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='More options']")
     private WebElement moreOptions;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Find by name']/parent::android.view.View/parent::android.widget.EditText")

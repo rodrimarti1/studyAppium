@@ -17,7 +17,7 @@ public class TopicsDetailsPage extends BasePage {
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Search']")
     private WebElement searchIcon;
 
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Audio Type']")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Audio Types']")
     private WebElement audioTypeFilter;
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Features']")
