@@ -64,7 +64,6 @@ public class Topics_Steps {
 
     @When("User taps on the More Options menu for the song called {string} and chooses to {string} it audio type {string}")
     public void userTapsOnTheMoreOptionsMenuForTheSongCalledAndChoosesToItAudioType(String songName, String action, String audioType) {
-        topicsDetailsPage.selectAudioType("Words and Music");
         topicsDetailsPage.performActionOnSpecificSong(songName, action, audioType);
     }
 
@@ -75,7 +74,6 @@ public class Topics_Steps {
 
     @When("User taps on the More Options menu and chooses to add song called {string} with audio type {string} to a new playlist")
     public void userTapsOnTheMoreOptionsMenuAndChoosesToAddSongCalledSongNameWithAudioTypeAudioTypeToAPlaylist(String songName, String audioType) {
-        topicsDetailsPage.selectAudioType("Words and Music");
         playlistsPage = topicsDetailsPage.addSongToPlaylist(songName, audioType);
         playlistsDetailsPage = playlistsPage.createNewPlaylist();
     }
@@ -103,7 +101,6 @@ public class Topics_Steps {
 
     @When("User taps on the More Options menu and chooses to add song called {string} with audio type {string} to an existing playlist")
     public void userTapsOnTheMoreOptionsMenuAndChoosesToAddSongCalledSongNameWithAudioTypeAudioTypeToAnExistingPlaylist(String songName, String audioType) {
-        topicsDetailsPage.selectAudioType("Words and Music");
         playlistsPage = topicsDetailsPage.addSongToPlaylist(songName, audioType);
     }
 
