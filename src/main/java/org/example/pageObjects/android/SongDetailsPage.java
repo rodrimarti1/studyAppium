@@ -23,7 +23,7 @@ public class SongDetailsPage extends BasePage {
     @AndroidFindBy(id = "org.lds.ldsmusic.alpha:id/mediaPlayPauseButton")
     private WebElement miniPlayerPlayPauseButton;
 
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Next song']")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Next song']/following-sibling::android.widget.Button")
     private WebElement miniPlayerNextButton;
 
     @AndroidFindBy(id = "org.lds.ldsmusic.alpha:id/currentTimeTextView")

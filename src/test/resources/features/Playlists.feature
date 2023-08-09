@@ -39,7 +39,6 @@ Feature: Playlists screen
     Given User has created a new playlist named <playlistName> and navigated to the Library screen
     And User has selected collection <collectionName> and song <songName>
     When User taps on the Add to Playlist button in the Ellipse Menu
-    And User selects Audio Type <audioType>
     And User selects Playlist named <playlistName>
     And User chooses View Playlist option in the confirmation modal
     Then User should see song named <songName> added to the playlist named <playlistName>
@@ -108,7 +107,6 @@ Feature: Playlists screen
     When User taps on the Playlists screen Ellipse Menu
     Then User should see the following options in the Ellipse Menu:
       | Copy to Playlist |
-      | Share Playlist   |
       | Download Playlist |
       | Edit Description  |
       | Edit Song List    |

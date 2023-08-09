@@ -47,12 +47,12 @@ public class CollectionDetailsPage extends BasePage {
     }
 
     public void maximizeMusicPlayer() {
-        WebElement miniMusicPlayer = getAnyElement(By.xpath("//android.view.View[@content-desc='Pause song']"));
-        // Drag
-        ((JavascriptExecutor) driver).executeScript("mobile: dragGesture", ImmutableMap.of(
+        WebElement miniMusicPlayer = getAnyElement(By.xpath("//android.view.View[@content-desc='Stop']/parent::android.view.View/parent::android.view.View/parent::android.view.View"));
+
+        ((JavascriptExecutor) driver).executeScript("mobile: swipeGesture", ImmutableMap.of(
                 "elementId", ((RemoteWebElement) miniMusicPlayer).getId(),
-                "endX", 0,
-                "endY", 100
+                "direction", "up",
+                "percent", 1.0
         ));
     }
 

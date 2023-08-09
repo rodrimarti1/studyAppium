@@ -26,7 +26,7 @@ Feature: Topics screen
       | songName | action | audioType |
       | "We Are Sowing" | "Download" | "Accompaniment" |
 
-
+  #This test will keep failing unless LMFA-674 is fixed
   @topics
   Scenario Outline: User navigates to a topic and adds a song to a new playlist
     Given User is in the Topics screen and taps on Topic called "Accountability"

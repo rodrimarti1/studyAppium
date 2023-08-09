@@ -17,7 +17,7 @@ public class PlaylistsContentPage extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='No Songs']")
     private WebElement noSongsMainText;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Add songs to this playlist from the menu on any song.']")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='No songs have been added to this playlist. Tap the button below to add songs.']")
     private WebElement noSongsSubText;
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Add a Song']")
@@ -38,6 +38,9 @@ public class PlaylistsContentPage extends BasePage {
     @AndroidFindBy(xpath = "(//android.view.View[@content-desc='Audio Track']/following-sibling::android.widget.TextView)[2]")
     private WebElement miniPlayer;
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Delete']/following-sibling::android.widget.Button")
+    private WebElement confirmDeletionButton;
+
     public WebElement getPlaylistsEllipseMenu() {
         return getAnyElement(playlistsEllipseMenu);
     }
@@ -57,6 +60,7 @@ public class PlaylistsContentPage extends BasePage {
     public PlaylistsPage deletePlaylistByName(String playlistName) {
         clickOnElement(playlistsEllipseMenu);
         clickOnElement(getAnyElementByText(playlistName));
+        clickOnElement(confirmDeletionButton);
         return new PlaylistsPage(driver);
     }
 

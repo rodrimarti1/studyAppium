@@ -30,6 +30,12 @@ public class PlaylistsPage extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.Button[@content-desc='More options']")
     private WebElement playlistsEllipseMenu;
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='View Playlist']")
+    private WebElement viewPlaylistButton;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Done']")
+    private WebElement doneButton;
+
     public WebElement getPlaylistsPageTitle() {
         return getAnyElement(playlistsPageTitle);
     }
@@ -60,6 +66,24 @@ public class PlaylistsPage extends BasePage {
 
     public WebElement getPlaylistByName(String playlistName) {
         return getAnyElementByText(playlistName);
+    }
+
+    public WebElement getViewPlaylistButton() {
+        return getAnyElement(viewPlaylistButton);
+    }
+
+    public PlaylistsContentPage clickViewPlaylistButton() {
+        clickOnElement(getViewPlaylistButton());
+        return new PlaylistsContentPage(driver);
+    }
+
+    public WebElement getDoneButton() {
+        return getAnyElement(doneButton);
+    }
+
+    public PlaylistsPage clickDoneButton() {
+        clickOnElement(getDoneButton());
+        return new PlaylistsPage(driver);
     }
 
      public PlaylistsDetailsPage goToPlaylistsDetailsPage() {
