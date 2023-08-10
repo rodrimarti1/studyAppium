@@ -61,7 +61,7 @@ Feature: Playlists screen
       | Add to Playlist |
       | Remove from Playlist |
       | Download Song        |
-      | Share Song           |
+      #| Share Song           | To be enabled in the future
       | Album                |
 
     Examples:
