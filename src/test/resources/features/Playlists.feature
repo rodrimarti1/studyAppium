@@ -62,7 +62,7 @@ Feature: Playlists screen
       | Remove from Playlist |
       | Download Song        |
       #| Share Song           | To be enabled in the future
-      | Album                |
+      #| Album                | To be enabled in the future
 
     Examples:
       | playlistName |  songName |
