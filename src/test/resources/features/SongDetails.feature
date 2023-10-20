@@ -59,7 +59,7 @@ Feature: Song Details screen
       | "Playlists"| "Hymns" | "Now Let Us Rejoice" |
       | "Downloads"| "Hymns" | "Now Let Us Rejoice" |
 
-  @releaseScreenshots_english
+  @releaseScreenshots_english @songDetailsScreenshotEnglish @songDetailsScreenshot
   Scenario Outline: Take screenshot of the Sheet Music song view - English
     Given User has selected and played collection <collectionName> and song <songName> and waited for song views to load <languageName>
     And User has selected the Sheet Music PDF song view <languageName>
@@ -70,7 +70,7 @@ Feature: Song Details screen
       | languageName | languageSearch | collectionName | songName | viewType | featureName  | fileName |
       | "English" | "English"         | "Hymns" | "The Morning Breaks"  | "Sheet Music (PDF)" | "sheetMusicSongView"  | "english" |
 
-  @releaseScreenshots_french
+  @releaseScreenshots_french @songDetailsScreenshotFrench @songDetailsScreenshot
   Scenario Outline: Take screenshot of the Sheet Music song view - French
     Given User has selected and played collection <collectionName> and song <songName> and waited for song views to load <languageName>
     And User has selected the Sheet Music PDF song view <languageName>
@@ -81,7 +81,7 @@ Feature: Song Details screen
       | languageName | languageSearch | collectionName | songName | viewType | featureName  | fileName |
       | "French" | "Français"         | "Hymns" | "The Morning Breaks"  | "Partition (PDF)"  | "sheetMusicSongView"  | "french" |
 
-  @releaseScreenshots_portuguese
+  @releaseScreenshots_portuguese @songDetailsScreenshotPortuguese @songDetailsScreenshot
   Scenario Outline: Take screenshot of the Sheet Music song view - Portuguese
     Given User has selected and played collection <collectionName> and song <songName> and waited for song views to load <languageName>
     And User has selected the Sheet Music PDF song view <languageName>
@@ -92,7 +92,7 @@ Feature: Song Details screen
       | languageName | languageSearch | collectionName | songName | viewType | featureName  | fileName |
       | "Portuguese" | "Português"    | "Hymns" | "The Morning Breaks"  | "Partitura (PDF)" | "sheetMusicSongView"  | "portuguese" |
 
-  @releaseScreenshots_spanish
+  @releaseScreenshots_spanish @songDetailsScreenshotSpanish @songDetailsScreenshot
   Scenario Outline: Take screenshot of the Sheet Music song view - Spanish
     Given User has selected and played collection <collectionName> and song <songName> and waited for song views to load <languageName>
     And User switches app language to <languageName> <languageSearch>

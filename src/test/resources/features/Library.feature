@@ -15,7 +15,7 @@ Feature: Library Screen
     When User taps on the Ellipse Menu
     Then Users should see Language and Settings options
 
-  @releaseScreenshots_english
+  @releaseScreenshots_english @libraryScreenshotEnglish @libraryScreenshot
   Scenario Outline: Take screenshot of the Library screen - English
     Given User switches app language to <languageName> <languageSearch>
     When Users lands in Library Screen <languageName>
@@ -24,7 +24,7 @@ Feature: Library Screen
       | languageName | languageSearch | featureName  | fileName |
       | "English"    | "English"      | "library"    |"english" |
 
-  @releaseScreenshots_spanish
+  @releaseScreenshots_spanish @libraryScreenshotSpanish @libraryScreenshot
   Scenario Outline: Take screenshot of the Library screen - Spanish
     Given User switches app language to <languageName> <languageSearch>
     When Users lands in Library Screen <languageName>
@@ -33,7 +33,7 @@ Feature: Library Screen
       | languageName | languageSearch | featureName  | fileName |
       | "Spanish"    | "Español"      |"library"    |"spanish"  |
 
-  @releaseScreenshots_french
+  @releaseScreenshots_french @libraryScreenshotFrench @libraryScreenshot
   Scenario Outline: Take screenshot of the Library screen - French
     Given User switches app language to <languageName> <languageSearch>
     When Users lands in Library Screen <languageName>
@@ -42,7 +42,7 @@ Feature: Library Screen
       | languageName | languageSearch | featureName  | fileName |
       | "French"    | "Français" |"library"  |"french" |
 
-  @releaseScreenshots_portuguese
+  @releaseScreenshots_portuguese @libraryScreenshotPortuguese @libraryScreenshot
   Scenario Outline: Take screenshot of the Library screen - Portuguese
     Given User switches app language to <languageName> <languageSearch>
     When Users lands in Library Screen <languageName>

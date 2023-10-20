@@ -3,7 +3,7 @@ Feature: Collection Details screen
   As a user
   I have to tap on a collection in the Library screen
 
-  @releaseScreenshots_english @collectionContentEnglish
+  @releaseScreenshots_english @collectionContentEnglish @collectionContent
   Scenario Outline: Take screenshot of collection content view - English
     Given User has navigated to the collection <collectionName>
     When User switches app language to <languageName> <languageSearch>
@@ -13,7 +13,7 @@ Feature: Collection Details screen
       | collectionName | languageName | languageSearch | featureName | fileName |
       | "Hymns"   | "English"  | "English"  |"collectionContent" | "english" |
 
-  @releaseScreenshots_spanish @collectionContentSpanish
+  @releaseScreenshots_spanish @collectionContentSpanish @collectionContent
   Scenario Outline: Take screenshot of collection content view - Spanish
     Given User has navigated to the collection <collectionName>
     When User switches app language to <languageName> <languageSearch>
@@ -23,7 +23,7 @@ Feature: Collection Details screen
       | collectionName | languageName | languageSearch | featureName | fileName |
       | "Hymns"   | "Spanish"  | "Español"  | "collectionContent" | "spanish" |
 
-  @releaseScreenshots_french @collectionContentFrench
+  @releaseScreenshots_french @collectionContentFrench @collectionContent
   Scenario Outline: Take screenshot of collection content view - French
     Given User has navigated to the collection <collectionName>
     When User switches app language to <languageName> <languageSearch>
@@ -33,7 +33,7 @@ Feature: Collection Details screen
       | collectionName | languageName | languageSearch | featureName | fileName |
       | "Hymns"   | "French"  | "Français"  | "collectionContent" | "french" |
 
-  @releaseScreenshots_portuguese @collectionContentPortuguese
+  @releaseScreenshots_portuguese @collectionContentPortuguese @collectionContent
   Scenario Outline: Take screenshot of collection content view - Portuguese
     Given User has navigated to the collection <collectionName>
     When User switches app language to <languageName> <languageSearch>
@@ -43,7 +43,7 @@ Feature: Collection Details screen
       | collectionName | languageName | languageSearch | featureName | fileName |
       | "Hymns"   | "Portuguese"  | "Português" | "collectionContent" | "portuguese" |
 
-  @releaseScreenshots_english @maximizedPlayerEnglish
+  @releaseScreenshots_english @maximizedPlayerEnglish @maximizedPlayer
   Scenario Outline: Take screenshot of maximized music player - English
     Given User has navigated to the collection <collectionName>
     When User switches app language to <languageName> <languageSearch>
@@ -55,7 +55,7 @@ Feature: Collection Details screen
       | collectionName | languageName | languageSearch | featureName | fileName |
       | "Hymns"   | "English"  | "English" | "maximizedPlayer" | "english" |
 
-  @releaseScreenshots_spanish @maximizedPlayerSpanish
+  @releaseScreenshots_spanish @maximizedPlayerSpanish @maximizedPlayer
   Scenario Outline: Take screenshot of maximized music player - Spanish
     Given User has navigated to the collection <collectionName>
     When User switches app language to <languageName> <languageSearch>
@@ -67,7 +67,7 @@ Feature: Collection Details screen
       | collectionName | languageName | languageSearch | featureName | fileName |
       | "Hymns"   | "Spanish"  | "Español" | "maximizedPlayer" | "spanish" |
 
-  @releaseScreenshots_french @maximizedPlayerFrench
+  @releaseScreenshots_french @maximizedPlayerFrench @maximizedPlayer
   Scenario Outline: Take screenshot of maximized music player - French
     Given User has navigated to the collection <collectionName>
     When User switches app language to <languageName> <languageSearch>
@@ -79,7 +79,7 @@ Feature: Collection Details screen
       | collectionName | languageName | languageSearch | featureName | fileName |
       | "Hymns"   | "French"  | "Français" | "maximizedPlayer" | "french" |
 
-  @releaseScreenshots_portuguese @maximizedPlayerPortuguese
+  @releaseScreenshots_portuguese @maximizedPlayerPortuguese @maximizedPlayer
   Scenario Outline: Take screenshot of maximized music player - Portuguese
     Given User has navigated to the collection <collectionName>
     When User switches app language to <languageName> <languageSearch>

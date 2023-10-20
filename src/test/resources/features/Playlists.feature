@@ -113,7 +113,7 @@ Feature: Playlists screen
       | Delete Playlist   |
       | Settings         |
 
-  @releaseScreenshots_english
+  @releaseScreenshots_english @playlistScreenshotEnglish @playlistScreenshot
   Scenario Outline: Take screenshot of playlists with several songs - English
     Given User switches app language to <languageName> <languageSearch>
     And User has created a new playlist named <playlistName> and selected the Add Songs option <languageName>
@@ -125,7 +125,7 @@ Feature: Playlists screen
       | playlistName | collectionName | languageName | languageSearch | featureName | fileName |
       | "My favorite hymns playlist" | "Hymns" | "English" | "English" | "playlistContent" | "english"|
 
-  @releaseScreenshots_spanish
+  @releaseScreenshots_spanish @playlistScreenshotSpanish @playlistScreenshot
   Scenario Outline: Take screenshot of playlists with several songs - Spanish
     Given User switches app language to <languageName> <languageSearch>
     And User has created a new playlist named <playlistName> and selected the Add Songs option <languageName>
@@ -137,7 +137,7 @@ Feature: Playlists screen
       | playlistName | collectionName | languageName | languageSearch | featureName | fileName |
       | "Mis favoritos" | "Himnos" | "Spanish" | "Español" | "playlistContent" | "spanish"|
 
-  @releaseScreenshots_french
+  @releaseScreenshots_french @playlistScreenshotFrench @playlistScreenshot
   Scenario Outline: Take screenshot of playlists with several songs - French
     Given User switches app language to <languageName> <languageSearch>
     And User has created a new playlist named <playlistName> and selected the Add Songs option <languageName>
@@ -149,7 +149,7 @@ Feature: Playlists screen
       | playlistName | collectionName | languageName | languageSearch | featureName | fileName |
       | "Mes preferes" | "Cantiques" | "French" | "Français"   | "playlistContent" | "french"|
 
-  @releaseScreenshots_portuguese
+  @releaseScreenshots_portuguese @playlistScreenshotPortuguese @playlistScreenshot
   Scenario Outline: Take screenshot of playlists with several songs - Portuguese
     Given User switches app language to <languageName> <languageSearch>
     And User has created a new playlist named <playlistName> and selected the Add Songs option <languageName>
