@@ -46,7 +46,7 @@ public class Settings_Steps {
 
     @Then("User is taken back to the Library screen")
     public void userIsTakenBackToTheLibraryScreen() {
-        String actualTitle = libraryPage.getLibraryPageTitle();
+        String actualTitle = libraryPage.getLibraryPageTitle(null);
         Assert.assertEquals(actualTitle, "Library");
     }
 }

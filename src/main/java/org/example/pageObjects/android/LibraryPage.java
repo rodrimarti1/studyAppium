@@ -1,5 +1,6 @@
 package org.example.pageObjects.android;
 
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
@@ -16,10 +17,28 @@ public class LibraryPage extends BasePage {
     private WebElement libraryBtn;
 
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id='android:id/content']//android.widget.TextView[@text='Library']")
-    private WebElement libraryTitle;
+    private WebElement libraryTitleEnglish;
 
-    @AndroidFindBy(accessibility = "More options")
-    private WebElement moreOptionsMenu;
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id='android:id/content']//android.widget.TextView[@text='Biblioteca']")
+    private WebElement libraryTitleSpanish;
+
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id='android:id/content']//android.widget.TextView[@text='Biblioteca']")
+    private WebElement libraryTitlePortuguese;
+
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id='android:id/content']//android.widget.TextView[@text='Bibliothèque']")
+    private WebElement libraryTitleFrench;
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='More options']")
+    private WebElement moreOptionsMenuEnglish;
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Más opciones']")
+    private WebElement moreOptionsMenuSpanish;
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Autres options']")
+    private WebElement moreOptionsMenuFrench;
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Mais opções']")
+    private WebElement moreOptionsMenuPortuguese;
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Search']")
     private WebElement searchButton;
@@ -46,14 +65,35 @@ public class LibraryPage extends BasePage {
     private WebElement peopleButton;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Playlists']")
-    private WebElement playlistsButton;
+    private WebElement playlistsButtonEnglish;
 
-    public String getLibraryPageTitle() {
-        return libraryTitle.getText();
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Listas de reproducción']")
+    private WebElement playlistsButtonSpanish;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Listes de lecture']")
+    private WebElement playlistsButtonFrench;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Listas de reprodução']")
+    private WebElement playlistsButtonPortuguese;
+
+    public String getLibraryPageTitle(String languageName) {
+        return switch (languageName) {
+            case "English" -> libraryTitleEnglish.getText();
+            case "Spanish" -> libraryTitleSpanish.getText();
+            case "Portuguese" -> libraryTitlePortuguese.getText();
+            case "French" -> libraryTitleFrench.getText();
+            default -> null;
+        };
     }
 
-    public WebElement getMoreOptionsMenu() {
-        return moreOptionsMenu;
+    public WebElement getMoreOptionsMenu(String languageName) {
+        return switch (languageName) {
+            case "English" -> moreOptionsMenuEnglish;
+            case "Spanish" -> moreOptionsMenuSpanish;
+            case "Portuguese" -> moreOptionsMenuPortuguese;
+            case "French" -> moreOptionsMenuFrench;
+            default -> null;
+        };
     }
 
     public WebElement getNavbar() {
@@ -74,13 +114,13 @@ public class LibraryPage extends BasePage {
     }
 
     public LanguagesPage goToLanguagePage() {
-        clickOnElement(moreOptionsMenu);
+        clickOnElement(moreOptionsMenuEnglish);
         clickOnElement(languagesMenu);
         return new LanguagesPage(driver);
     }
 
     public SettingsPage goToSettingsPage() {
-        clickOnElement(moreOptionsMenu);
+        clickOnElement(moreOptionsMenuEnglish);
         clickOnElement(settingsMenu);
         return new SettingsPage(driver);
     }
@@ -100,8 +140,13 @@ public class LibraryPage extends BasePage {
         return new PeoplePage(driver);
     }
 
-    public PlaylistsPage goToPlaylistsPage() {
-        clickOnElement(playlistsButton);
+    public PlaylistsPage goToPlaylistsPage(String languageName) {
+        switch (languageName) {
+            case "Spanish" -> clickOnElement(playlistsButtonSpanish);
+            case "French" -> clickOnElement(playlistsButtonFrench);
+            case "Portuguese" -> clickOnElement(playlistsButtonPortuguese);
+            default -> clickOnElement(playlistsButtonEnglish);
+        }
         return new PlaylistsPage(driver);
     }
 

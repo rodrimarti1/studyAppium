@@ -25,7 +25,16 @@ public class PlaylistsPage extends BasePage {
     private WebElement noPlaylistsSubText;
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Add to Playlist']")
-    private WebElement newPlaylistButton;
+    private WebElement newPlaylistButtonEnglish;
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Agregar a una lista de reproducción']")
+    private WebElement newPlaylistButtonSpanish;
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Ajouter à la liste de lecture']")
+    private WebElement newPlaylistButtonFrench;
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Acrescentar à lista de reprodução']")
+    private WebElement newPlaylistButtonPortuguese;
 
     @AndroidFindBy(xpath = "//android.widget.Button[@content-desc='More options']")
     private WebElement playlistsEllipseMenu;
@@ -53,7 +62,7 @@ public class PlaylistsPage extends BasePage {
     }
 
     public WebElement getNewPlaylistButton() {
-        return getAnyElement(newPlaylistButton);
+        return getAnyElement(newPlaylistButtonEnglish);
     }
 
     public WebElement getPlaylistsEllipseMenu() {
@@ -87,12 +96,17 @@ public class PlaylistsPage extends BasePage {
     }
 
      public PlaylistsDetailsPage goToPlaylistsDetailsPage() {
-        clickOnElement(newPlaylistButton);
+        clickOnElement(newPlaylistButtonEnglish);
         return new PlaylistsDetailsPage(driver);
      }
 
-     public PlaylistsDetailsPage createNewPlaylist() {
-        clickOnElement(newPlaylistButton);
+     public PlaylistsDetailsPage createNewPlaylist(String languageName) {
+        switch (languageName) {
+            case "Spanish" -> clickOnElement(newPlaylistButtonSpanish);
+            case "French" -> clickOnElement(newPlaylistButtonFrench);
+            case "Portuguese" -> clickOnElement(newPlaylistButtonPortuguese);
+            default -> clickOnElement(newPlaylistButtonEnglish);
+        }
         return new PlaylistsDetailsPage(driver);
      }
 

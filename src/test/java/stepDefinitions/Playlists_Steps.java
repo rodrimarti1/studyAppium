@@ -24,7 +24,7 @@ public class Playlists_Steps {
 
     @Given("User taps on the Playlists option in the navigation bar")
     public void userTapsOnThePlaylistsOptionInTheNavigationBar() {
-        playlistsPage = libraryPage.goToPlaylistsPage();
+        playlistsPage = libraryPage.goToPlaylistsPage(null);
     }
 
     @When("User lands in Playlists screen")
@@ -42,7 +42,7 @@ public class Playlists_Steps {
 
     @When("User taps on the New Playlist button")
     public void userTapsOnTheNewPlaylistButton() {
-        playlistsDetailsPage = playlistsPage.createNewPlaylist();
+        playlistsDetailsPage = playlistsPage.createNewPlaylist("English");
     }
 
     @And("User fills out Title field with text {string}")
@@ -76,14 +76,14 @@ public class Playlists_Steps {
 
     @Given("User has navigated to the Playlist screen")
     public void userHasNavigatedToThePlaylistScreen() {
-        playlistsPage = libraryPage.goToPlaylistsPage();
+        playlistsPage = libraryPage.goToPlaylistsPage("English");
         String actualTitle = playlistsPage.getPlaylistsPageTitle().getText();
         Assert.assertEquals(actualTitle, "Playlists");
     }
 
     @And("User has created a new playlist named {string}")
     public void userHasCreatedANewPlaylistNamedPlaylistName(String playlistName) {
-        playlistsDetailsPage = playlistsPage.createNewPlaylist();
+        playlistsDetailsPage = playlistsPage.createNewPlaylist("English");
         playlistsDetailsPage.getPlaylistName().sendKeys(playlistName);
         playlistsDetailsPage.getPlaylistSaveButton().click();
         playlistsPage = playlistsDetailsPage.dismissConfirmationMessage();
@@ -104,8 +104,8 @@ public class Playlists_Steps {
 
     @Given("User has created a new playlist named {string} and navigated to the Library screen")
     public void userHasCreatedANewPlaylistNamedPlaylistNameAndNavigatedToTheLibraryScreen(String playlistName) {
-        playlistsPage = libraryPage.goToPlaylistsPage();
-        playlistsDetailsPage = playlistsPage.createNewPlaylist();
+        playlistsPage = libraryPage.goToPlaylistsPage("English");
+        playlistsDetailsPage = playlistsPage.createNewPlaylist("English");
         playlistsDetailsPage.getPlaylistName().sendKeys(playlistName);
         playlistsDetailsPage.getPlaylistSaveButton().click();
         playlistsDetailsPage.dismissConfirmationMessage();
@@ -132,8 +132,8 @@ public class Playlists_Steps {
 
     @Given("User has created and navigated to a new playlist named {string}")
     public void userHasCreatedAndNavigatedToANewPlaylistNamed(String arg0) {
-        playlistsPage = libraryPage.goToPlaylistsPage();
-        playlistsDetailsPage = playlistsPage.createNewPlaylist();
+        playlistsPage = libraryPage.goToPlaylistsPage("English");
+        playlistsDetailsPage = playlistsPage.createNewPlaylist("English");
         playlistsDetailsPage.getPlaylistName().sendKeys(arg0);
         playlistsDetailsPage.getPlaylistSaveButton().click();
         playlistsPage = playlistsDetailsPage.dismissConfirmationMessage();
@@ -154,8 +154,8 @@ public class Playlists_Steps {
 
     @Given("User has created a new playlist named {string} and clicked on it")
     public void userHasCreatedANewPlaylistNamedPlaylistNameAndClickedOnIt(String playlistName) {
-        playlistsPage = libraryPage.goToPlaylistsPage();
-        playlistsDetailsPage = playlistsPage.createNewPlaylist();
+        playlistsPage = libraryPage.goToPlaylistsPage("English");
+        playlistsDetailsPage = playlistsPage.createNewPlaylist("English");
         playlistsDetailsPage.getPlaylistName().sendKeys(playlistName);
         playlistsDetailsPage.getPlaylistSaveButton().click();
         playlistsPage = playlistsDetailsPage.dismissConfirmationMessage();
@@ -171,7 +171,7 @@ public class Playlists_Steps {
     public void userSearchesAndSelectsSongNameSong(String songName) {
         playlistContentSearchPage.searchForContentByText(songName);
         playlistContentSearchPage.selectSongByName(songName);
-        playlistContentSearchPage.clickAddSelectedButton();
+        playlistContentSearchPage.clickAddSelectedButton("English");
     }
 
     @And("User taps on the Add Songs option in the pop up")
@@ -194,8 +194,8 @@ public class Playlists_Steps {
 
     @Given("User has created a new playlist named {string} and added song named {string} to it")
     public void userHasCreatedANewPlaylistNamedPlaylistNameAndAddedSongNamedSongNameToIt(String playlistName, String songName) {
-        playlistsPage = libraryPage.goToPlaylistsPage();
-        playlistsDetailsPage = playlistsPage.createNewPlaylist();
+        playlistsPage = libraryPage.goToPlaylistsPage("English");
+        playlistsDetailsPage = playlistsPage.createNewPlaylist("English");
         playlistsDetailsPage.getPlaylistName().sendKeys(playlistName);
         playlistsDetailsPage.getPlaylistSaveButton().click();
         playlistsPage = playlistsDetailsPage.dismissConfirmationMessage();
@@ -203,7 +203,7 @@ public class Playlists_Steps {
         playlistContentSearchPage = playlistsContentPage.clickAddASong();
         playlistContentSearchPage.searchForContentByText(songName);
         playlistContentSearchPage.selectSongByName(songName);
-        playlistContentSearchPage.clickAddSelectedButton();
+        playlistContentSearchPage.clickAddSelectedButton("English");
         playlistsContentPage = playlistContentSearchPage.clickAddSongsConfirmationButton();
     }
 
@@ -250,5 +250,25 @@ public class Playlists_Steps {
     @And("User selects Audio Type {string}")
     public void userSelectsAudioTypeAudioType(String audioType) {
         songDetailsPage.selectAudioType(audioType);
+    }
+
+    @Given("User has created a new playlist named {string} and selected the Add Songs option {string}")
+    public void userHasCreatedANewPlaylistNamedPlaylistNameAndSelectedTheAddSongsOption(String playlistName, String languageName) {
+        playlistsPage = libraryPage.goToPlaylistsPage(languageName);
+        playlistsDetailsPage = playlistsPage.createNewPlaylist(languageName);
+        playlistsDetailsPage.createPlaylist(playlistName, "", languageName);
+        playlistsDetailsPage.getAddSongsButton(languageName).click();
+    }
+
+    @When("User taps on Library and selects collection {string} and selects several songs {string}")
+    public void userTapsOnLibraryAndSelectsCollectionCollectionNameAndSelectsSeveralSongs(String collectionName, String languageName) {
+        playlistContentSearchPage.getLibraryOption(languageName).click();
+        libraryPage.goToCollectionPage(collectionName);
+        playlistContentSearchPage.getSelectAllCheckbox().click();
+    }
+
+    @And("User taps on the Add Selected button {string}")
+    public void userTapsOnTheAddSelectedButton(String languageName) {
+        playlistContentSearchPage.clickAddSelectedButton(languageName);
     }
 }

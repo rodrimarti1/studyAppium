@@ -75,12 +75,12 @@ public class Topics_Steps {
     @When("User taps on the More Options menu and chooses to add song called {string} with audio type {string} to a new playlist")
     public void userTapsOnTheMoreOptionsMenuAndChoosesToAddSongCalledSongNameWithAudioTypeAudioTypeToAPlaylist(String songName, String audioType) {
         playlistsPage = topicsDetailsPage.addSongToPlaylist(songName, audioType);
-        playlistsDetailsPage = playlistsPage.createNewPlaylist();
+        playlistsDetailsPage = playlistsPage.createNewPlaylist(null);
     }
 
-    @And("User creates a new playlist named {string}")
-    public void userCreatesANewPlaylistNamed(String playlistName) {
-        playlistsContentPage = playlistsDetailsPage.topicsCreatePlaylistAndView(playlistName, "");
+    @And("User creates a new playlist named {string} {string}")
+    public void userCreatesANewPlaylistNamed(String playlistName, String languageName) {
+        playlistsContentPage = playlistsDetailsPage.topicsCreatePlaylistAndView(playlistName, "", languageName);
     }
 
     @Then("User should see the song called {string} added to the playlist")
@@ -89,11 +89,11 @@ public class Topics_Steps {
     }
 
 
-    @Given("User has previously created a playlist called {string} and is now in the Topics screen and taps on Topic called {string}")
-    public void userHasPreviouslyCreatedAPlaylistCalledAndIsNowInTheTopicsScreenAndTapsOnTopicCalled(String playlistName, String topicName) {
+    @Given("User has previously created a playlist called {string} and is now in the Topics screen and taps on Topic called {string} {string}")
+    public void userHasPreviouslyCreatedAPlaylistCalledAndIsNowInTheTopicsScreenAndTapsOnTopicCalled(String playlistName, String topicName, String languageName) {
         playlistsPage = tabsPage.goToPlaylistsPage();
-        playlistsDetailsPage = playlistsPage.createNewPlaylist();
-        playlistsPage = playlistsDetailsPage.createPlaylist(playlistName, "");
+        playlistsDetailsPage = playlistsPage.createNewPlaylist(null);
+        playlistsPage = playlistsDetailsPage.createPlaylist(playlistName, "", languageName);
         playlistsDetailsPage.dismissConfirmationMessage();
         topicsPage = tabsPage.goToTopicsPage();
         topicsDetailsPage = topicsPage.clickTopicByName(topicName);

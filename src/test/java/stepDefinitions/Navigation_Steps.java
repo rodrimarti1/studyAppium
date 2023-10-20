@@ -21,7 +21,7 @@ public class Navigation_Steps {
     public TabsPage tabsPage = new TabsPage(driver);
     @Given("User is in the Library Page")
     public void userIsInTheLibraryPage() {
-        Assert.assertEquals(libraryPage.getLibraryPageTitle(), "Library");
+        Assert.assertEquals(libraryPage.getLibraryPageTitle(null), "Library");
     }
 
     @When("Navigation bar is visible")

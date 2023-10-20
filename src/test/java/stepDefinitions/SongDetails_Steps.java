@@ -5,10 +5,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.example.pageObjects.android.CollectionDetailsPage;
-import org.example.pageObjects.android.LibraryPage;
-import org.example.pageObjects.android.SongDetailsPage;
-import org.example.pageObjects.android.TabsPage;
+import org.example.pageObjects.android.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ScreenOrientation;
 import org.testng.Assert;
@@ -18,6 +15,7 @@ import static utils.DriverFactory.getDriver;
 public class SongDetails_Steps {
 
     private AndroidDriver driver = getDriver();
+    public BasePage basePage = new BasePage(driver);
     public LibraryPage libraryPage = new LibraryPage(driver);
     public TabsPage tabsPage = new TabsPage(driver);
     public CollectionDetailsPage collectionDetailsPage = new CollectionDetailsPage(driver);
@@ -60,7 +58,7 @@ public class SongDetails_Steps {
 
     @And("Next Song button is displayed")
     public void nextSongButtonIsDisplayed() {
-        Assert.assertTrue(songDetailsPage.getMiniPlayerNextButton().isDisplayed());
+        Assert.assertTrue(songDetailsPage.getMiniPlayerNextButton(null).isDisplayed());
     }
 
     @And("Current Time counter is displayed")
@@ -86,7 +84,7 @@ public class SongDetails_Steps {
 
     @And("User taps on the next song button")
     public void userTapsOnTheNextSongButton() {
-        songDetailsPage.getMiniPlayerNextButton().click();
+        songDetailsPage.getMiniPlayerNextButton(null).click();
     }
 
     @Then("Song next song named {string} should start playing")
@@ -97,8 +95,8 @@ public class SongDetails_Steps {
 
     @When("User taps on the next song button twice")
     public void userTapsOnTheNextSongButtonTwice() {
-        songDetailsPage.getMiniPlayerNextButton().click();
-        songDetailsPage.getMiniPlayerNextButton().click();
+        songDetailsPage.getMiniPlayerNextButton(null).click();
+        songDetailsPage.getMiniPlayerNextButton(null).click();
     }
 
     @And("User taps on the previous song button once")
@@ -157,10 +155,62 @@ public class SongDetails_Steps {
     @Given("User has selected and played collection {string}")
     public void userHasSelectedAndPlayedCollectionCollectionNameWithAudioTypeAudioType(String collectionName) {
         collectionDetailsPage = libraryPage.goToCollectionPage(collectionName);
-        collectionDetailsPage.getSongListPlayButton().click();
+        collectionDetailsPage.getSongListPlayButton(null).click();
     }
-    @And("User maximizes music player")
-    public void userMaximizesMusicPlayer() {
-        collectionDetailsPage.maximizeMusicPlayer();
+    @And("User maximizes music player {string}")
+    public void userMaximizesMusicPlayer(String languageName) {
+        collectionDetailsPage.maximizeMusicPlayer(languageName);
+    }
+
+    @Then("Take a screenshot of the {string} with file name {string}")
+    public void takeAScreenshotOfTheSheetMusicSongViewWithFileNameFileName(String featureName, String fileName) throws Exception {
+        String actualScreenshotName = featureName + "_" + fileName;
+        basePage.takeSnapShot(actualScreenshotName);
+    }
+
+    @And("Wait for Next Song button to be displayed {string}")
+    public void waitForNextSongButtonToBeDisplayed(String languageName) {
+        basePage.waitForElement(songDetailsPage.getMiniPlayerNextButton(languageName));
+    }
+
+    @Given("User has selected and played collection {string} and song {string} and waited for song views to load {string}")
+    public void userHasSelectedAndPlayedCollectionCollectionNameAndSongSongNameAndWaitedForSongViewsToLoad(String collectionName, String songName, String languageName) {
+        collectionDetailsPage = libraryPage.goToCollectionPage(collectionName);
+        songDetailsPage = collectionDetailsPage.goToSongDetailsPage(songName);
+
+        switch (languageName) {
+            case "Spanish" -> Assert.assertTrue(songDetailsPage.getSelectedSongViewByText("Partitura (de tamaño variable)").isDisplayed());
+            case "French" -> Assert.assertTrue(songDetailsPage.getSelectedSongViewByText("Partition (ajustable)").isDisplayed());
+            case "Portuguese" -> Assert.assertTrue(songDetailsPage.getSelectedSongViewByText("Partitura (redimensionável)").isDisplayed());
+            default -> Assert.assertTrue(songDetailsPage.getSelectedSongViewByText("Sheet Music (Resizable)").isDisplayed());
+        }
+
+        Assert.assertTrue(songDetailsPage.getMainPlayButton(languageName).isDisplayed());
+        collectionDetailsPage = songDetailsPage.clickBackButton();
+        songDetailsPage = collectionDetailsPage.goToSongDetailsPage(songName);
+    }
+
+    @And("User has selected the Sheet Music PDF song view {string}")
+    public void userHasSelectedTheSheetMusicPDFSongView(String languageName) throws InterruptedException {
+        Assert.assertTrue(songDetailsPage.getMainPlayButton(languageName).isDisplayed());
+
+        switch (languageName) {
+            case "Spanish" -> songDetailsPage.getSelectedSongViewByText("Partitura (de tamaño variable)").click();
+            case "French" -> songDetailsPage.getSelectedSongViewByText("Partition (ajustable)").click();
+            case "Portuguese" -> songDetailsPage.getSelectedSongViewByText("Partitura (redimensionável)").click();
+            default -> songDetailsPage.getSelectedSongViewByText("Sheet Music (Resizable)").click();
+        }
+        switch (languageName) {
+            case "Spanish", "Portuguese" -> songDetailsPage.getSelectedSongViewByText("Partitura (PDF)").click();
+            case "French" -> songDetailsPage.getSelectedSongViewByText("Partition (PDF)").click();
+            default -> songDetailsPage.getSelectedSongViewByText("Sheet Music (PDF)").click();
+        }
+    }
+
+
+    @When("User Sheet Music {string} song view is visible {string}")
+    public void userSheetMusicTypeSongViewIsVisible(String type, String languageName) {
+        Assert.assertTrue(songDetailsPage.getSelectedSongViewByText(type).isDisplayed());
+        Assert.assertTrue(songDetailsPage.getMainPlayButton(languageName).isDisplayed());
     }
 }

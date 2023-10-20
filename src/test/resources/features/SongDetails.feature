@@ -17,7 +17,7 @@ Feature: Song Details screen
   @songDetails
   Scenario Outline: User taps on the next song button
     Given User has selected and played collection <collectionName>
-    And User maximizes music player
+    And User maximizes music player "English"
     When User taps on the next song button
     Then Song next song named <nextSongName> should start playing
 
@@ -28,7 +28,7 @@ Feature: Song Details screen
   @songDetails
   Scenario Outline: User taps on the previous song button
     Given User has selected and played collection <collectionName>
-    And User maximizes music player
+    And User maximizes music player "English"
     When User taps on the next song button twice
     And User taps on the previous song button once
     Then Song previous song named <previousSongName> should start playing
@@ -58,3 +58,46 @@ Feature: Song Details screen
       | "Topics"| "Hymns" | "Now Let Us Rejoice" |
       | "Playlists"| "Hymns" | "Now Let Us Rejoice" |
       | "Downloads"| "Hymns" | "Now Let Us Rejoice" |
+
+  @releaseScreenshots_english
+  Scenario Outline: Take screenshot of the Sheet Music song view - English
+    Given User has selected and played collection <collectionName> and song <songName> and waited for song views to load <languageName>
+    And User has selected the Sheet Music PDF song view <languageName>
+    And User switches app language to <languageName> <languageSearch>
+    When User Sheet Music <viewType> song view is visible <languageName>
+    Then Take a screenshot of the <featureName> screen with file name <fileName>
+    Examples:
+      | languageName | languageSearch | collectionName | songName | viewType | featureName  | fileName |
+      | "English" | "English"         | "Hymns" | "The Morning Breaks"  | "Sheet Music (PDF)" | "sheetMusicSongView"  | "english" |
+
+  @releaseScreenshots_french
+  Scenario Outline: Take screenshot of the Sheet Music song view - French
+    Given User has selected and played collection <collectionName> and song <songName> and waited for song views to load <languageName>
+    And User has selected the Sheet Music PDF song view <languageName>
+    And User switches app language to <languageName> <languageSearch>
+    When User Sheet Music <viewType> song view is visible <languageName>
+    Then Take a screenshot of the <featureName> screen with file name <fileName>
+    Examples:
+      | languageName | languageSearch | collectionName | songName | viewType | featureName  | fileName |
+      | "French" | "Français"         | "Hymns" | "The Morning Breaks"  | "Partition (PDF)"  | "sheetMusicSongView"  | "french" |
+
+  @releaseScreenshots_portuguese
+  Scenario Outline: Take screenshot of the Sheet Music song view - Portuguese
+    Given User has selected and played collection <collectionName> and song <songName> and waited for song views to load <languageName>
+    And User has selected the Sheet Music PDF song view <languageName>
+    And User switches app language to <languageName> <languageSearch>
+    When User Sheet Music <viewType> song view is visible <languageName>
+    Then Take a screenshot of the <featureName> screen with file name <fileName>
+    Examples:
+      | languageName | languageSearch | collectionName | songName | viewType | featureName  | fileName |
+      | "Portuguese" | "Português"    | "Hymns" | "The Morning Breaks"  | "Partitura (PDF)" | "sheetMusicSongView"  | "portuguese" |
+
+  @releaseScreenshots_spanish
+  Scenario Outline: Take screenshot of the Sheet Music song view - Spanish
+    Given User has selected and played collection <collectionName> and song <songName> and waited for song views to load <languageName>
+    And User switches app language to <languageName> <languageSearch>
+    When User Sheet Music <viewType> song view is visible <languageName>
+    Then Take a screenshot of the <featureName> screen with file name <fileName>
+    Examples:
+      | languageName | languageSearch | collectionName | songName | viewType |featureName  | fileName |
+      | "Spanish" | "Español"         | "Hymns" | "The Morning Breaks"  | "Partitura (de tamaño variable)"    | "sheetMusicSongView"  | "spanish" |

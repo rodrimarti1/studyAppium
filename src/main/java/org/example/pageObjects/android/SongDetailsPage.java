@@ -24,7 +24,16 @@ public class SongDetailsPage extends BasePage {
     private WebElement miniPlayerPlayPauseButton;
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Next song']/following-sibling::android.widget.Button")
-    private WebElement miniPlayerNextButton;
+    private WebElement miniPlayerNextButtonEnglish;
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Siguiente canción']/following-sibling::android.widget.Button")
+    private WebElement miniPlayerNextButtonSpanish;
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Titre suivant']/following-sibling::android.widget.Button")
+    private WebElement miniPlayerNextButtonFrench;
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Próxima música']/following-sibling::android.widget.Button")
+    private WebElement miniPlayerNextButtonPortuguese;
 
     @AndroidFindBy(id = "org.lds.ldsmusic.alpha:id/currentTimeTextView")
     private WebElement miniPlayerCurrentTime;
@@ -44,6 +53,41 @@ public class SongDetailsPage extends BasePage {
     @AndroidFindBy(xpath = "(//android.view.ViewGroup[@resource-id='org.lds.ldsmusic.alpha:id/mediaPlaybackToolbar']/android.widget.TextView)[1]")
     private WebElement miniPlayerSongName;
 
+    @AndroidFindBy(accessibility = "Play")
+    private WebElement mainPlayButtonEnglish;
+
+    @AndroidFindBy(accessibility = "Reproducir")
+    private WebElement mainPlayButtonSpanish;
+
+    @AndroidFindBy(accessibility = "Lecture")
+    private WebElement mainPlayButtonFrench;
+
+    @AndroidFindBy(accessibility = "Reproduzir")
+    private WebElement mainPlayButtonPortuguese;
+
+    @AndroidFindBy(accessibility = "Back")
+    private WebElement backButton;
+
+    public WebElement getBackButton() {
+        return getAnyElement(backButton);
+    }
+
+    public CollectionDetailsPage clickBackButton() {
+        //clickOnElement(getBackButton());
+        driver.navigate().back();
+        return new CollectionDetailsPage(driver);
+    }
+
+    public WebElement getMainPlayButton(String languageName) {
+        return switch (languageName) {
+            case "English" -> getAnyElement(mainPlayButtonEnglish);
+            case "Spanish" -> getAnyElement(mainPlayButtonSpanish);
+            case "French" -> getAnyElement(mainPlayButtonFrench);
+            case "Portuguese" -> getAnyElement(mainPlayButtonPortuguese);
+            default -> getAnyElement(mainPlayButtonEnglish);
+        };
+    }
+
     public WebElement getMoreOptionsMenu() {
         return getAnyElement(moreOptionsMenu);
     }
@@ -60,8 +104,14 @@ public class SongDetailsPage extends BasePage {
         return getAnyElement(miniPlayerPlayPauseButton);
     }
 
-    public WebElement getMiniPlayerNextButton() {
-        return getAnyElement(miniPlayerNextButton);
+    public WebElement getMiniPlayerNextButton(String languageName) {
+        return switch (languageName) {
+            case "English" -> getAnyElement(miniPlayerNextButtonEnglish);
+            case "Spanish" -> getAnyElement(miniPlayerNextButtonSpanish);
+            case "French" -> getAnyElement(miniPlayerNextButtonFrench);
+            case "Portuguese" -> getAnyElement(miniPlayerNextButtonPortuguese);
+            default -> null;
+        };
     }
 
     public WebElement getMiniPlayerCurrentTime() {
@@ -112,5 +162,9 @@ public class SongDetailsPage extends BasePage {
     public PlaylistsPage selectAudioType(String audioType) {
         clickOnElement(getAnyElementByText(audioType));
         return new PlaylistsPage(driver);
+    }
+
+    public WebElement getSelectedSongViewByText(String songViewName) {
+        return getAnyElementByText(songViewName);
     }
 }

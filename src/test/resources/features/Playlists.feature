@@ -112,3 +112,51 @@ Feature: Playlists screen
       | Edit Song List    |
       | Delete Playlist   |
       | Settings         |
+
+  @releaseScreenshots_english
+  Scenario Outline: Take screenshot of playlists with several songs - English
+    Given User switches app language to <languageName> <languageSearch>
+    And User has created a new playlist named <playlistName> and selected the Add Songs option <languageName>
+    When User taps on Library and selects collection <collectionName> and selects several songs <languageName>
+    And User taps on the Add Selected button <languageName>
+    Then Play button is visible <languageName>
+    And Take a screenshot of the <featureName> screen with file name <fileName>
+    Examples:
+      | playlistName | collectionName | languageName | languageSearch | featureName | fileName |
+      | "My favorite hymns playlist" | "Hymns" | "English" | "English" | "playlistContent" | "english"|
+
+  @releaseScreenshots_spanish
+  Scenario Outline: Take screenshot of playlists with several songs - Spanish
+    Given User switches app language to <languageName> <languageSearch>
+    And User has created a new playlist named <playlistName> and selected the Add Songs option <languageName>
+    When User taps on Library and selects collection <collectionName> and selects several songs <languageName>
+    And User taps on the Add Selected button <languageName>
+    Then Play button is visible <languageName>
+    And Take a screenshot of the <featureName> screen with file name <fileName>
+    Examples:
+      | playlistName | collectionName | languageName | languageSearch | featureName | fileName |
+      | "Mis favoritos" | "Himnos" | "Spanish" | "Español" | "playlistContent" | "spanish"|
+
+  @releaseScreenshots_french
+  Scenario Outline: Take screenshot of playlists with several songs - French
+    Given User switches app language to <languageName> <languageSearch>
+    And User has created a new playlist named <playlistName> and selected the Add Songs option <languageName>
+    When User taps on Library and selects collection <collectionName> and selects several songs <languageName>
+    And User taps on the Add Selected button <languageName>
+    Then Play button is visible <languageName>
+    And Take a screenshot of the <featureName> screen with file name <fileName>
+    Examples:
+      | playlistName | collectionName | languageName | languageSearch | featureName | fileName |
+      | "Mes preferes" | "Cantiques" | "French" | "Français"   | "playlistContent" | "french"|
+
+  @releaseScreenshots_portuguese
+  Scenario Outline: Take screenshot of playlists with several songs - Portuguese
+    Given User switches app language to <languageName> <languageSearch>
+    And User has created a new playlist named <playlistName> and selected the Add Songs option <languageName>
+    When User taps on Library and selects collection <collectionName> and selects several songs <languageName>
+    And User taps on the Add Selected button <languageName>
+    Then Play button is visible <languageName>
+    And Take a screenshot of the <featureName> screen with file name <fileName>
+    Examples:
+      | playlistName | collectionName | languageName | languageSearch | featureName | fileName |
+      | "Meus favoritos" | "Hinos"  | "Portuguese" | "Português" | "playlistContent" | "portuguese"|

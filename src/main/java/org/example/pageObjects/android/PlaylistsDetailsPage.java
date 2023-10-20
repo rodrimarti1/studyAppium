@@ -14,16 +14,43 @@ public class PlaylistsDetailsPage extends BasePage {
     private WebElement newPlaylistPageTitle;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Title']/ancestor::android.widget.EditText")
-    private WebElement playlistName;
+    private WebElement playlistNameEnglish;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Title']/ancestor::android.widget.EditText")
+    private WebElement playlistNameSpanish;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Titre']/ancestor::android.widget.EditText")
+    private WebElement playlistNameFrench;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Título']/ancestor::android.widget.EditText")
+    private WebElement playlistNamePortuguese;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Description']/ancestor::android.widget.EditText")
-    private WebElement playlistDescription;
+    private WebElement playlistDescriptionEnglish;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Description']/ancestor::android.widget.EditText")
+    private WebElement playlistDescriptionSpanish;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Description']/ancestor::android.widget.EditText")
+    private WebElement playlistDescriptionFrench;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Description']/ancestor::android.widget.EditText")
+    private WebElement playlistDescriptionPortuguese;
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Back']")
     private WebElement playlistBackButton;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Save']")
-    private WebElement playlistSaveButton;
+    private WebElement playlistSaveButtonEnglish;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Guardar']")
+    private WebElement playlistSaveButtonSpanish;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Enregistrer']")
+    private WebElement playlistSaveButtonFrench;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Salvar']")
+    private WebElement playlistSaveButtonPortuguese;
 
     @AndroidFindBy(xpath = "//android.widget.Button[@content-desc='More options']")
     private WebElement playlistsEllipseMenu;
@@ -33,11 +60,11 @@ public class PlaylistsDetailsPage extends BasePage {
     }
 
     public WebElement getPlaylistName() {
-        return getAnyElement(playlistName);
+        return getAnyElement(playlistNameEnglish);
     }
 
     public WebElement getPlaylistDescription() {
-        return getAnyElement(playlistDescription);
+        return getAnyElement(playlistDescriptionEnglish);
     }
 
     public WebElement getPlaylistBackButton() {
@@ -45,7 +72,7 @@ public class PlaylistsDetailsPage extends BasePage {
     }
 
     public WebElement getPlaylistSaveButton() {
-        return getAnyElement(playlistSaveButton);
+        return getAnyElement(playlistSaveButtonEnglish);
     }
 
     public WebElement getConfirmationMessageByText(String confirmationText) {
@@ -61,8 +88,13 @@ public class PlaylistsDetailsPage extends BasePage {
         return new PlaylistsPage(driver);
     }
 
-    public WebElement getAddSongsButton() {
-        return getAnyElementByText("Add Songs");
+    public WebElement getAddSongsButton(String languageName) {
+        return switch (languageName) {
+            case "Spanish" -> getAnyElementByText("Agregar canciones");
+            case "French" -> getAnyElementByText("Ajouter des titres");
+            case "Portuguese" -> getAnyElementByText("Acrescentar músicas");
+            default -> getAnyElementByText("Add Songs");
+        };
     }
 
     public WebElement getPlaylistsEllipseMenu() {
@@ -73,37 +105,52 @@ public class PlaylistsDetailsPage extends BasePage {
         return getAnyElementByText(optionName);
     }
 
-    public void setPlaylistName(String name) {
-        sendKeysToElement(playlistName, name);
+    public void setPlaylistName(String name, String languageName) {
+        switch (languageName) {
+            case "Spanish" -> sendKeysToElement(playlistNameSpanish, name);
+            case "French" -> sendKeysToElement(playlistNameFrench, name);
+            case "Portuguese" -> sendKeysToElement(playlistNamePortuguese, name);
+            default -> sendKeysToElement(playlistNameEnglish, name);
+        }
     }
 
-    public void setPlaylistDescription(String description) {
-        sendKeysToElement(playlistDescription, description);
+    public void setPlaylistDescription(String description, String languageName) {
+        switch (languageName) {
+            case "Spanish" -> sendKeysToElement(playlistDescriptionSpanish, description);
+            case "French" -> sendKeysToElement(playlistDescriptionFrench, description);
+            case "Portuguese" -> sendKeysToElement(playlistDescriptionPortuguese, description);
+            default -> sendKeysToElement(playlistDescriptionEnglish, description);
+        }
     }
 
-    public void clickSaveButton() {
-        clickOnElement(playlistSaveButton);
+    public void clickSaveButton(String languageName) {
+        switch (languageName) {
+            case "Spanish" -> clickOnElement(playlistSaveButtonSpanish);
+            case "French" -> clickOnElement(playlistSaveButtonFrench);
+            case "Portuguese" -> clickOnElement(playlistSaveButtonPortuguese);
+            default -> clickOnElement(playlistSaveButtonEnglish);
+        }
     }
 
-    public PlaylistsPage createPlaylist(String name, String description) {
-        setPlaylistName(name);
-        setPlaylistDescription(description);
-        clickSaveButton();
+    public PlaylistsPage createPlaylist(String name, String description, String languageName) {
+        setPlaylistName(name, languageName);
+        setPlaylistDescription(description, languageName);
+        clickSaveButton(languageName);
         return new PlaylistsPage(driver);
     }
 
-    public PlaylistsContentPage topicsCreatePlaylistAndView(String name, String description) {
-        setPlaylistName(name);
-        setPlaylistDescription(description);
-        clickSaveButton();
+    public PlaylistsContentPage topicsCreatePlaylistAndView(String name, String description, String languageName) {
+        setPlaylistName(name, languageName);
+        setPlaylistDescription(description, languageName);
+        clickSaveButton(languageName);
         clickOnElement(getAnyElementByText("View Playlist"));
         return new PlaylistsContentPage(driver);
     }
 
-    public TopicsDetailsPage topicsCreatePlaylistAndDone(String name, String description) {
-        setPlaylistName(name);
-        setPlaylistDescription(description);
-        clickSaveButton();
+    public TopicsDetailsPage topicsCreatePlaylistAndDone(String name, String description, String languageName) {
+        setPlaylistName(name, languageName);
+        setPlaylistDescription(description, languageName);
+        clickSaveButton(languageName);
         clickOnElement(getAnyElementByText("View Playlist"));
         return new TopicsDetailsPage(driver);
     }

@@ -8,9 +8,9 @@ public class LibraryTests extends BaseTest {
 
     @Test()
     public void checkLibraryPageUIComponents() {
-        String title = libraryPage.getLibraryPageTitle();
+        String title = libraryPage.getLibraryPageTitle(null);
         Assert.assertEquals(title, "Library");
-        boolean isMoreOptionsVisible = libraryPage.getMoreOptionsMenu().isDisplayed();
+        boolean isMoreOptionsVisible = libraryPage.getMoreOptionsMenu(null).isDisplayed();
         Assert.assertTrue(isMoreOptionsVisible);
         boolean isNavBarVisible = libraryPage.getNavbar().isDisplayed();
         Assert.assertTrue(isNavBarVisible);
