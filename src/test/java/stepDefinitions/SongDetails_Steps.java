@@ -58,7 +58,7 @@ public class SongDetails_Steps {
 
     @And("Next Song button is displayed")
     public void nextSongButtonIsDisplayed() {
-        Assert.assertTrue(songDetailsPage.getMiniPlayerNextButton(null).isDisplayed());
+        Assert.assertTrue(songDetailsPage.getMiniPlayerNextButton("English").isDisplayed());
     }
 
     @And("Current Time counter is displayed")
@@ -84,7 +84,7 @@ public class SongDetails_Steps {
 
     @And("User taps on the next song button")
     public void userTapsOnTheNextSongButton() {
-        songDetailsPage.getMiniPlayerNextButton(null).click();
+        songDetailsPage.getMiniPlayerNextButton("English").click();
     }
 
     @Then("Song next song named {string} should start playing")
@@ -95,8 +95,8 @@ public class SongDetails_Steps {
 
     @When("User taps on the next song button twice")
     public void userTapsOnTheNextSongButtonTwice() {
-        songDetailsPage.getMiniPlayerNextButton(null).click();
-        songDetailsPage.getMiniPlayerNextButton(null).click();
+        songDetailsPage.getMiniPlayerNextButton("English").click();
+        songDetailsPage.getMiniPlayerNextButton("English").click();
     }
 
     @And("User taps on the previous song button once")
@@ -155,7 +155,7 @@ public class SongDetails_Steps {
     @Given("User has selected and played collection {string}")
     public void userHasSelectedAndPlayedCollectionCollectionNameWithAudioTypeAudioType(String collectionName) {
         collectionDetailsPage = libraryPage.goToCollectionPage(collectionName);
-        collectionDetailsPage.getSongListPlayButton(null).click();
+        collectionDetailsPage.getSongListPlayButton("English").click();
     }
     @And("User maximizes music player {string}")
     public void userMaximizesMusicPlayer(String languageName) {
@@ -180,14 +180,10 @@ public class SongDetails_Steps {
 
         switch (languageName) {
             case "Spanish" -> Assert.assertTrue(songDetailsPage.getSelectedSongViewByText("Partitura (de tamaño variable)").isDisplayed());
-            case "French" -> Assert.assertTrue(songDetailsPage.getSelectedSongViewByText("Partition (ajustable)").isDisplayed());
-            case "Portuguese" -> Assert.assertTrue(songDetailsPage.getSelectedSongViewByText("Partitura (redimensionável)").isDisplayed());
+            case "French" -> Assert.assertTrue(songDetailsPage.getSelectedSongViewByText("Partition (PDF)").isDisplayed());
+            case "Portuguese" -> Assert.assertTrue(songDetailsPage.getSelectedSongViewByText("Partitura (PDF)").isDisplayed());
             default -> Assert.assertTrue(songDetailsPage.getSelectedSongViewByText("Sheet Music (Resizable)").isDisplayed());
         }
-
-        Assert.assertTrue(songDetailsPage.getMainPlayButton(languageName).isDisplayed());
-        collectionDetailsPage = songDetailsPage.clickBackButton();
-        songDetailsPage = collectionDetailsPage.goToSongDetailsPage(songName);
     }
 
     @And("User has selected the Sheet Music PDF song view {string}")

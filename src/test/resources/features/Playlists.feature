@@ -123,7 +123,7 @@ Feature: Playlists screen
     And Take a screenshot of the <featureName> screen with file name <fileName>
     Examples:
       | playlistName | collectionName | languageName | languageSearch | featureName | fileName |
-      | "My favorite hymns playlist" | "Hymns" | "English" | "English" | "playlistContent" | "english"|
+      | "My favorite hymns playlist" | "Hymns" | "English" | "English" | "5_playlistContent" | "english"|
 
   @releaseScreenshots_spanish @playlistScreenshotSpanish @playlistScreenshot
   Scenario Outline: Take screenshot of playlists with several songs - Spanish
@@ -135,7 +135,7 @@ Feature: Playlists screen
     And Take a screenshot of the <featureName> screen with file name <fileName>
     Examples:
       | playlistName | collectionName | languageName | languageSearch | featureName | fileName |
-      | "Mis favoritos" | "Himnos" | "Spanish" | "Español" | "playlistContent" | "spanish"|
+      | "Mis favoritos" | "Himnos" | "Spanish" | "Español" | "5_playlistContent" | "spanish"|
 
   @releaseScreenshots_french @playlistScreenshotFrench @playlistScreenshot
   Scenario Outline: Take screenshot of playlists with several songs - French
@@ -147,7 +147,7 @@ Feature: Playlists screen
     And Take a screenshot of the <featureName> screen with file name <fileName>
     Examples:
       | playlistName | collectionName | languageName | languageSearch | featureName | fileName |
-      | "Mes preferes" | "Cantiques" | "French" | "Français"   | "playlistContent" | "french"|
+      | "Mes preferes" | "Cantiques" | "French" | "Français"   | "5_playlistContent" | "french"|
 
   @releaseScreenshots_portuguese @playlistScreenshotPortuguese @playlistScreenshot
   Scenario Outline: Take screenshot of playlists with several songs - Portuguese
@@ -159,4 +159,4 @@ Feature: Playlists screen
     And Take a screenshot of the <featureName> screen with file name <fileName>
     Examples:
       | playlistName | collectionName | languageName | languageSearch | featureName | fileName |
-      | "Meus favoritos" | "Hinos"  | "Portuguese" | "Português" | "playlistContent" | "portuguese"|
+      | "Meus favoritos" | "Hinos"  | "Portuguese" | "Português" | "5_playlistContent" | "portuguese"|

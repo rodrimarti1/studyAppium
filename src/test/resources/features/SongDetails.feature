@@ -62,42 +62,38 @@ Feature: Song Details screen
   @releaseScreenshots_english @songDetailsScreenshotEnglish @songDetailsScreenshot
   Scenario Outline: Take screenshot of the Sheet Music song view - English
     Given User has selected and played collection <collectionName> and song <songName> and waited for song views to load <languageName>
-    And User has selected the Sheet Music PDF song view <languageName>
-    And User switches app language to <languageName> <languageSearch>
     When User Sheet Music <viewType> song view is visible <languageName>
     Then Take a screenshot of the <featureName> screen with file name <fileName>
     Examples:
-      | languageName | languageSearch | collectionName | songName | viewType | featureName  | fileName |
-      | "English" | "English"         | "Hymns" | "The Morning Breaks"  | "Sheet Music (PDF)" | "sheetMusicSongView"  | "english" |
+      | languageName | collectionName | songName | viewType | featureName  | fileName |
+      | "English" | "Hymns" | "The Morning Breaks"  | "Sheet Music (Resizable)" | "3_sheetMusicSongView"  | "english" |
 
   @releaseScreenshots_french @songDetailsScreenshotFrench @songDetailsScreenshot
   Scenario Outline: Take screenshot of the Sheet Music song view - French
-    Given User has selected and played collection <collectionName> and song <songName> and waited for song views to load <languageName>
-    And User has selected the Sheet Music PDF song view <languageName>
-    And User switches app language to <languageName> <languageSearch>
-    When User Sheet Music <viewType> song view is visible <languageName>
+    Given User switches app language to <languageName> <languageSearch>
+    When User has selected and played collection <collectionName> and song <songName> and waited for song views to load <languageName>
+    And User Sheet Music <viewType> song view is visible <languageName>
     Then Take a screenshot of the <featureName> screen with file name <fileName>
     Examples:
       | languageName | languageSearch | collectionName | songName | viewType | featureName  | fileName |
-      | "French" | "Français"         | "Hymns" | "The Morning Breaks"  | "Partition (PDF)"  | "sheetMusicSongView"  | "french" |
+      | "French" | "Français"         | "Cantiques" | "Le jour paraît, chassant la nuit"  | "Partition (PDF)"  | "3_sheetMusicSongView"  | "french" |
 
   @releaseScreenshots_portuguese @songDetailsScreenshotPortuguese @songDetailsScreenshot
   Scenario Outline: Take screenshot of the Sheet Music song view - Portuguese
-    Given User has selected and played collection <collectionName> and song <songName> and waited for song views to load <languageName>
-    And User has selected the Sheet Music PDF song view <languageName>
-    And User switches app language to <languageName> <languageSearch>
-    When User Sheet Music <viewType> song view is visible <languageName>
+    Given User switches app language to <languageName> <languageSearch>
+    When User has selected and played collection <collectionName> and song <songName> and waited for song views to load <languageName>
+    And User Sheet Music <viewType> song view is visible <languageName>
     Then Take a screenshot of the <featureName> screen with file name <fileName>
     Examples:
       | languageName | languageSearch | collectionName | songName | viewType | featureName  | fileName |
-      | "Portuguese" | "Português"    | "Hymns" | "The Morning Breaks"  | "Partitura (PDF)" | "sheetMusicSongView"  | "portuguese" |
+      | "Portuguese" | "Português"    | "Hinos" | "A Alva Rompe"  | "Partitura (PDF)" | "3_sheetMusicSongView"  | "portuguese" |
 
   @releaseScreenshots_spanish @songDetailsScreenshotSpanish @songDetailsScreenshot
   Scenario Outline: Take screenshot of the Sheet Music song view - Spanish
-    Given User has selected and played collection <collectionName> and song <songName> and waited for song views to load <languageName>
-    And User switches app language to <languageName> <languageSearch>
-    When User Sheet Music <viewType> song view is visible <languageName>
+    Given User switches app language to <languageName> <languageSearch>
+    When User has selected and played collection <collectionName> and song <songName> and waited for song views to load <languageName>
+    And User Sheet Music <viewType> song view is visible <languageName>
     Then Take a screenshot of the <featureName> screen with file name <fileName>
     Examples:
       | languageName | languageSearch | collectionName | songName | viewType |featureName  | fileName |
-      | "Spanish" | "Español"         | "Hymns" | "The Morning Breaks"  | "Partitura (de tamaño variable)"    | "sheetMusicSongView"  | "spanish" |
+      | "Spanish" | "Español"         | "Himnos" | "Ya rompe el alba"  | "Partitura (de tamaño variable)"    | "3_sheetMusicSongView"  | "spanish" |

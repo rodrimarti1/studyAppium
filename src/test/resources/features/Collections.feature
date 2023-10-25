@@ -11,7 +11,7 @@ Feature: Collection Details screen
     Then Take a screenshot of the <featureName> screen with file name <fileName>
     Examples:
       | collectionName | languageName | languageSearch | featureName | fileName |
-      | "Hymns"   | "English"  | "English"  |"collectionContent" | "english" |
+      | "Hymns"   | "English"  | "English"  |"2_collectionContent" | "english" |
 
   @releaseScreenshots_spanish @collectionContentSpanish @collectionContent
   Scenario Outline: Take screenshot of collection content view - Spanish
@@ -21,7 +21,7 @@ Feature: Collection Details screen
     Then Take a screenshot of the <featureName> screen with file name <fileName>
     Examples:
       | collectionName | languageName | languageSearch | featureName | fileName |
-      | "Hymns"   | "Spanish"  | "Español"  | "collectionContent" | "spanish" |
+      | "Hymns"   | "Spanish"  | "Español"  | "2_collectionContent" | "spanish" |
 
   @releaseScreenshots_french @collectionContentFrench @collectionContent
   Scenario Outline: Take screenshot of collection content view - French
@@ -31,7 +31,7 @@ Feature: Collection Details screen
     Then Take a screenshot of the <featureName> screen with file name <fileName>
     Examples:
       | collectionName | languageName | languageSearch | featureName | fileName |
-      | "Hymns"   | "French"  | "Français"  | "collectionContent" | "french" |
+      | "Hymns"   | "French"  | "Français"  | "2_collectionContent" | "french" |
 
   @releaseScreenshots_portuguese @collectionContentPortuguese @collectionContent
   Scenario Outline: Take screenshot of collection content view - Portuguese
@@ -41,7 +41,7 @@ Feature: Collection Details screen
     Then Take a screenshot of the <featureName> screen with file name <fileName>
     Examples:
       | collectionName | languageName | languageSearch | featureName | fileName |
-      | "Hymns"   | "Portuguese"  | "Português" | "collectionContent" | "portuguese" |
+      | "Hymns"   | "Portuguese"  | "Português" | "2_collectionContent" | "portuguese" |
 
   @releaseScreenshots_english @maximizedPlayerEnglish @maximizedPlayer
   Scenario Outline: Take screenshot of maximized music player - English
@@ -53,7 +53,7 @@ Feature: Collection Details screen
     Then Take a screenshot of the <featureName> screen with file name <fileName>
     Examples:
       | collectionName | languageName | languageSearch | featureName | fileName |
-      | "Hymns"   | "English"  | "English" | "maximizedPlayer" | "english" |
+      | "Hymns"   | "English"  | "English" | "4_maximizedPlayer" | "english" |
 
   @releaseScreenshots_spanish @maximizedPlayerSpanish @maximizedPlayer
   Scenario Outline: Take screenshot of maximized music player - Spanish
@@ -65,7 +65,7 @@ Feature: Collection Details screen
     Then Take a screenshot of the <featureName> screen with file name <fileName>
     Examples:
       | collectionName | languageName | languageSearch | featureName | fileName |
-      | "Hymns"   | "Spanish"  | "Español" | "maximizedPlayer" | "spanish" |
+      | "Hymns"   | "Spanish"  | "Español" | "4_maximizedPlayer" | "spanish" |
 
   @releaseScreenshots_french @maximizedPlayerFrench @maximizedPlayer
   Scenario Outline: Take screenshot of maximized music player - French
@@ -77,7 +77,7 @@ Feature: Collection Details screen
     Then Take a screenshot of the <featureName> screen with file name <fileName>
     Examples:
       | collectionName | languageName | languageSearch | featureName | fileName |
-      | "Hymns"   | "French"  | "Français" | "maximizedPlayer" | "french" |
+      | "Hymns"   | "French"  | "Français" | "4_maximizedPlayer" | "french" |
 
   @releaseScreenshots_portuguese @maximizedPlayerPortuguese @maximizedPlayer
   Scenario Outline: Take screenshot of maximized music player - Portuguese
@@ -89,4 +89,4 @@ Feature: Collection Details screen
     Then Take a screenshot of the <featureName> screen with file name <fileName>
     Examples:
       | collectionName | languageName | languageSearch | featureName | fileName |
-      | "Hymns"   | "Portuguese"  | "Português" | "maximizedPlayer" | "portuguese" |
+      | "Hymns"   | "Portuguese"  | "Português" | "4_maximizedPlayer" | "portuguese" |

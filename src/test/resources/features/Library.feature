@@ -22,7 +22,7 @@ Feature: Library Screen
     Then Take a screenshot of the <featureName> screen with file name <fileName>
     Examples:
       | languageName | languageSearch | featureName  | fileName |
-      | "English"    | "English"      | "library"    |"english" |
+      | "English"    | "English"      | "1_library"    |"english" |
 
   @releaseScreenshots_spanish @libraryScreenshotSpanish @libraryScreenshot
   Scenario Outline: Take screenshot of the Library screen - Spanish
@@ -31,7 +31,7 @@ Feature: Library Screen
     Then Take a screenshot of the <featureName> screen with file name <fileName>
     Examples:
       | languageName | languageSearch | featureName  | fileName |
-      | "Spanish"    | "Español"      |"library"    |"spanish"  |
+      | "Spanish"    | "Español"      |"1_library"    |"spanish"  |
 
   @releaseScreenshots_french @libraryScreenshotFrench @libraryScreenshot
   Scenario Outline: Take screenshot of the Library screen - French
@@ -40,7 +40,7 @@ Feature: Library Screen
     Then Take a screenshot of the <featureName> screen with file name <fileName>
     Examples:
       | languageName | languageSearch | featureName  | fileName |
-      | "French"    | "Français" |"library"  |"french" |
+      | "French"    | "Français" | "1_library"  |"french" |
 
   @releaseScreenshots_portuguese @libraryScreenshotPortuguese @libraryScreenshot
   Scenario Outline: Take screenshot of the Library screen - Portuguese
@@ -49,4 +49,4 @@ Feature: Library Screen
     Then Take a screenshot of the <featureName> screen with file name <fileName>
     Examples:
       | languageName | languageSearch | featureName  | fileName |
-      | "Portuguese"    | "Português"  | "library"    |"portuguese"  |
+      | "Portuguese"    | "Português"  | "1_library"    |"portuguese"  |
