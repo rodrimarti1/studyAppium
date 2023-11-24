@@ -80,7 +80,7 @@ public class TopicsDetailsPage extends BasePage {
     }
 
     public void clickMoreOptionBySongName(String songName) {
-        clickOnElement(By.xpath("//android.widget.TextView[@text='"+ songName +"']/following-sibling::android.widget.Button[@content-desc='More options']"));
+        clickOnElement(By.xpath("//android.widget.Button[contains(@content-desc, '"+ songName +"')]"));
     }
 
     public void performActionOnSpecificSong(String songName, String actionName, String audioType) {

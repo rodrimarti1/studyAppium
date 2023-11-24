@@ -62,7 +62,7 @@ public class PlaylistContentSearchPage extends BasePage {
     }
 
     public void selectSongByName(String songName) {
-        clickOnElement(driver.findElement(By.xpath("//android.view.View/android.widget.TextView[contains(@text, '"+ songName +"')]/following-sibling::android.widget.CheckBox")));
+        clickOnElement(driver.findElement(By.xpath("//android.view.View/android.widget.TextView[contains(@text, '"+ songName +"')]/parent::android.view.View//android.widget.CheckBox")));
     }
 
     public void clickAddSelectedButton(String languageName) {

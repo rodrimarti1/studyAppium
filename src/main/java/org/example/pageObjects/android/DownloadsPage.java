@@ -65,19 +65,19 @@ public class DownloadsPage extends BasePage {
     }
 
     public void clickMoreOptionBySongName(String songName) {
-        clickOnElement(By.xpath("//android.widget.TextView[@text='"+ songName +"']/following-sibling::android.widget.Button[@content-desc='More options']"));
+        clickOnElement(By.xpath("//android.widget.Button[contains(@content-desc, '"+ songName +"')]"));
     }
 
     public void deleteDownloadedSong(String songName) {
         clickMoreOptionBySongName(songName);
         clickOnElement(getAnyElementByText("Remove Download"));
-        clickOnElement(getAnyElementByText("Delete Song"));
+        clickOnElement(getAnyElementByText("Ok"));
     }
 
     public void leaveDownloadedSong(String songName) {
         clickMoreOptionBySongName(songName);
         clickOnElement(getAnyElementByText("Remove Download"));
-        clickOnElement(getAnyElementByText("Leave Song"));
+        clickOnElement(getAnyElementByText("Cancel"));
     }
 
     public SongDetailsPage viewSongDetails(String songName) {

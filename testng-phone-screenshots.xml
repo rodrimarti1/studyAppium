@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Release Screenshots Test Suite">
+    <test verbose="2" preserve-order="true" name="Release Screenshots Tests">
+        <parameter name="deviceType" value="phone" />
+        <classes>
+            <class name="runners.ScreenshotsRunner" />
+           <!--<class name="runners.MainRunner" />-->
+        </classes>
+    </test>
+</suite>

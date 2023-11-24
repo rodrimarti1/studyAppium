@@ -19,7 +19,7 @@ public class TopicsPage extends BasePage {
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='More options']")
     private WebElement moreOptions;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Find by name']/parent::android.view.View/parent::android.widget.EditText")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Find by name']/parent::android.widget.EditText")
     private WebElement searchBar;
 
     public String getTopicsTitle() {

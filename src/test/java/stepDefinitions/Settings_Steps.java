@@ -36,7 +36,7 @@ public class Settings_Steps {
         for(int i = 0; i < optionsList.size(); i++) {
             elementsFound.add(settingsPage.getOptionByText(optionsList.get(i)));
         }
-        Assert.assertEquals(elementsFound.size(), 10);
+        Assert.assertEquals(elementsFound.size(), 5);
     }
 
     @When("User taps on the Settings screen back button")
@@ -46,7 +46,7 @@ public class Settings_Steps {
 
     @Then("User is taken back to the Library screen")
     public void userIsTakenBackToTheLibraryScreen() {
-        String actualTitle = libraryPage.getLibraryPageTitle(null);
+        String actualTitle = libraryPage.getLibraryPageTitle("English");
         Assert.assertEquals(actualTitle, "Library");
     }
 }

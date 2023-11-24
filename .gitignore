@@ -12,4 +12,4 @@ out/
 exportToHTML/
 Test Runs/
 target/
-screenshots/
+*.png

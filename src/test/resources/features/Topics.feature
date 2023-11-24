@@ -31,19 +31,19 @@ Feature: Topics screen
   Scenario Outline: User navigates to a topic and adds a song to a new playlist
     Given User is in the Topics screen and taps on Topic called "Accountability"
     When User taps on the More Options menu and chooses to add song called <songName> with audio type <audioType> to a new playlist
-    And User creates a new playlist named "Adding to playlist from Topics"
+    And User creates a new playlist named "Adding to playlist from Topics" <languageName>
     Then User should see the song called "We Are Sowing" added to the playlist
     Examples:
-      | songName | audioType |
-      | "We Are Sowing" | "Accompaniment" |
+      | songName | audioType | languageName |
+      | "We Are Sowing" | "Accompaniment" | "English" |
 
   @topics
   Scenario Outline: User navigates to a topic and adds a song to an existing playlist
-    Given User has previously created a playlist called "Existing playlist for testing" and is now in the Topics screen and taps on Topic called "Accountability"
+    Given User has previously created a playlist called "Existing playlist for testing" and is now in the Topics screen and taps on Topic called "Accountability" <languageName>
     When User taps on the More Options menu and chooses to add song called <songName> with audio type <audioType> to an existing playlist
     And User selects the existing playlist named "Existing playlist for testing"
     Then User should see the song called "We Are Sowing" added to the playlist
     Examples:
-      | songName | audioType |
-      | "We Are Sowing" | "Accompaniment" |
+      | songName | audioType | languageName |
+      | "We Are Sowing" | "Accompaniment" | "English" |
 

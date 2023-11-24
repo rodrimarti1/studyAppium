@@ -58,7 +58,8 @@ public class Search_Steps {
 
     @And("The app shouldn't crash")
     public void theAppShouldnTCrash() {
-        Assert.assertTrue(tabsPage.getLibraryButton().isDisplayed());
+        boolean isEmptyState = searchPage.getSearchEmptyState().isDisplayed();
+        Assert.assertTrue(isEmptyState);
     }
 
     @When("User taps on the back button")

@@ -82,7 +82,7 @@ public class CollectionDetailsPage extends BasePage {
 
     public void downloadSong(String songName, String audioType) {
         //selectAudioType("Words and Music");
-        clickOnElement(By.xpath("//android.widget.TextView[contains(@text, '"+ songName +"')]/following-sibling::android.widget.Button[@content-desc='More options']"));
+        clickOnElement(By.xpath("//android.widget.Button[contains(@content-desc, '"+ songName +"')]"));
         clickOnElement(getAnyElementByText("Download"));
         clickOnElement(getAnyElementByText(audioType));
     }

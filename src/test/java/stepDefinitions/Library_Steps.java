@@ -11,6 +11,8 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.Reporter;
+import org.testng.annotations.Parameters;
 
 import java.io.File;
 
@@ -36,7 +38,7 @@ public class Library_Steps {
     @Then("User should land in library page")
     public void user_should_land_in_library_page() {
         System.out.println("All library screen assertions");
-        String title = libraryPage.getLibraryPageTitle(null);
+        String title = libraryPage.getLibraryPageTitle("English");
         Assert.assertEquals(title, "Library");
         LanguagesPage languagePage = libraryPage.goToLanguagePage();
         languagePage.searchAndSelectLanguageByName("Portuguese");
@@ -56,14 +58,14 @@ public class Library_Steps {
 
     @When("User taps on the Ellipse Menu")
     public void userTapsOnTheEllipseMenu() {
-        boolean isMoreOptionsVisible = libraryPage.getMoreOptionsMenu(null).isDisplayed();
+        boolean isMoreOptionsVisible = libraryPage.getMoreOptionsMenu("English").isDisplayed();
         Assert.assertTrue(isMoreOptionsVisible);
 
     }
 
     @Then("Users should see Language and Settings options")
     public void usersShouldSeeLanguageAndSettingsOptions() {
-        libraryPage.getMoreOptionsMenu(null).click();
+        libraryPage.getMoreOptionsMenu("English").click();
 
         WebElement ellipseLanguagesOption = libraryPage.getEllipseMenuOptionByName("Language");
         String ellipseOptionLanguagesOptionLabel = ellipseLanguagesOption.getText();
@@ -90,9 +92,11 @@ public class Library_Steps {
         languagesPage.searchAndSelectLanguageByName(languageSearch);
     }
 
+    @Parameters("deviceType")
     @Then("Take a screenshot of the {string} screen with file name {string}")
     public void takeAScreenshotOfTheLibraryScreenWithFileNameFileName(String featureName, String fileName) throws Exception {
+        String deviceType = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("deviceType");
         String actualScreenshotName = featureName + "_" + fileName;
-        basePage.takeSnapShot(actualScreenshotName);
+        basePage.takeSnapShot(actualScreenshotName, deviceType);
     }
 }

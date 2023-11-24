@@ -9,14 +9,9 @@ Feature: Settings Screen
     Given User taps on the Ellipse Menu and selects Settings option
     When Settings page is visible
     Then User should be able to see the following options:
-      | Sheet Music |
-      | Size           |
-      | Theming |
-      | Adjust sheet music for dark mode |
-      | Lyrics  |
-      | Font Style |
       | Support    |
       | Send Feedback |
+      | Additional Info |
       | Featured Apps |
       | About |
 

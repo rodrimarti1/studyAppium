@@ -75,7 +75,7 @@ public class Topics_Steps {
     @When("User taps on the More Options menu and chooses to add song called {string} with audio type {string} to a new playlist")
     public void userTapsOnTheMoreOptionsMenuAndChoosesToAddSongCalledSongNameWithAudioTypeAudioTypeToAPlaylist(String songName, String audioType) {
         playlistsPage = topicsDetailsPage.addSongToPlaylist(songName, audioType);
-        playlistsDetailsPage = playlistsPage.createNewPlaylist(null);
+        playlistsDetailsPage = playlistsPage.createNewPlaylist("English");
     }
 
     @And("User creates a new playlist named {string} {string}")
@@ -92,7 +92,7 @@ public class Topics_Steps {
     @Given("User has previously created a playlist called {string} and is now in the Topics screen and taps on Topic called {string} {string}")
     public void userHasPreviouslyCreatedAPlaylistCalledAndIsNowInTheTopicsScreenAndTapsOnTopicCalled(String playlistName, String topicName, String languageName) {
         playlistsPage = tabsPage.goToPlaylistsPage();
-        playlistsDetailsPage = playlistsPage.createNewPlaylist(null);
+        playlistsDetailsPage = playlistsPage.createNewPlaylist("English");
         playlistsPage = playlistsDetailsPage.createPlaylist(playlistName, "", languageName);
         playlistsDetailsPage.dismissConfirmationMessage();
         topicsPage = tabsPage.goToTopicsPage();

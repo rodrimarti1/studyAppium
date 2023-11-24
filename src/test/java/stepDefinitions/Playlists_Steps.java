@@ -24,7 +24,7 @@ public class Playlists_Steps {
 
     @Given("User taps on the Playlists option in the navigation bar")
     public void userTapsOnThePlaylistsOptionInTheNavigationBar() {
-        playlistsPage = libraryPage.goToPlaylistsPage(null);
+        playlistsPage = libraryPage.goToPlaylistsPage("English");
     }
 
     @When("User lands in Playlists screen")

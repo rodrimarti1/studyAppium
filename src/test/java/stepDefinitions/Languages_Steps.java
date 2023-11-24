@@ -45,7 +45,7 @@ public class Languages_Steps {
 
     @Then("User should be taken to the library screen")
     public void userShouldBeTakenToTheLibraryScreen() {
-        String pageTitle = libraryPage.getLibraryPageTitle(null);
+        String pageTitle = libraryPage.getLibraryPageTitle("English");
         Assert.assertEquals(pageTitle, "Library");
     }
 

@@ -90,7 +90,7 @@ public class PlaylistsContentPage extends BasePage {
     }
 
     public void clickSongMoreOptionsMenu() {
-        clickOnElement(songMoreOptionsMenu);
+        clickOnElement(getAnyElement(By.xpath("(//android.widget.Button[contains(@content-desc, 'More option')])[1]")));
     }
 
     public PlaylistsContentPage clickOnOptionByName(String optionName) {

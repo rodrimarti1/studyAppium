@@ -73,8 +73,7 @@ public class SongDetailsPage extends BasePage {
     }
 
     public CollectionDetailsPage clickBackButton() {
-        //clickOnElement(getBackButton());
-        driver.navigate().back();
+        clickOnElement(getBackButton());
         return new CollectionDetailsPage(driver);
     }
 

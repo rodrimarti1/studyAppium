@@ -9,6 +9,8 @@ import org.example.pageObjects.android.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ScreenOrientation;
 import org.testng.Assert;
+import org.testng.Reporter;
+import org.testng.annotations.Parameters;
 
 import static utils.DriverFactory.getDriver;
 
@@ -162,10 +164,12 @@ public class SongDetails_Steps {
         collectionDetailsPage.maximizeMusicPlayer(languageName);
     }
 
+    @Parameters("deviceType")
     @Then("Take a screenshot of the {string} with file name {string}")
     public void takeAScreenshotOfTheSheetMusicSongViewWithFileNameFileName(String featureName, String fileName) throws Exception {
+        String deviceType = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("deviceType");
         String actualScreenshotName = featureName + "_" + fileName;
-        basePage.takeSnapShot(actualScreenshotName);
+        basePage.takeSnapShot(actualScreenshotName, deviceType);
     }
 
     @And("Wait for Next Song button to be displayed {string}")
@@ -208,5 +212,10 @@ public class SongDetails_Steps {
     public void userSheetMusicTypeSongViewIsVisible(String type, String languageName) {
         Assert.assertTrue(songDetailsPage.getSelectedSongViewByText(type).isDisplayed());
         Assert.assertTrue(songDetailsPage.getMainPlayButton(languageName).isDisplayed());
+    }
+
+    @And("User goes back to the Collection content screen")
+    public void userGoesBackToTheCollectionContentScreen() {
+        collectionDetailsPage = songDetailsPage.clickBackButton();
     }
 }

@@ -18,6 +18,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class BasePage {
@@ -69,15 +70,39 @@ public class BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(element)).sendKeys(textToType);
     }
 
-    public void takeSnapShot(String screenshotName) throws Exception {
+    public void takeSnapShot(String screenshotName, String deviceType) throws Exception {
 
         File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 
         try {
-            String screenshotDir = "screenshots/";
-            File destination = new File(screenshotDir + screenshotName + ".png");
-            org.apache.commons.io.FileUtils.copyFile(screenshot, destination);
-            System.out.println("Screenshot saved to: " + destination.getAbsolutePath());
+            final String screenshotDirEnglish = "screenshots/en-US/graphics/";
+            final String screenshotDirSpanish = "screenshots/es-ES/graphics/";
+            final String screenshotDirFrench = "screenshots/fr-FR/graphics/";
+            final String screenshotDirPortuguese = "screenshots/pt-PT/graphics/";
+            final String screenshotDeviceType = deviceType + "-screenshots/";
+
+            if (screenshotName.contains("english")) {
+                String[] newFileName = screenshotName.split("_", 0);
+                File destination = new File(screenshotDirEnglish + screenshotDeviceType + newFileName[0] + ".png");
+                org.apache.commons.io.FileUtils.copyFile(screenshot, destination);
+                System.out.println("Screenshot saved to: " + destination.getAbsolutePath());
+            } else if (screenshotName.contains("spanish")) {
+                String[] newFileName = screenshotName.split("_", 0);
+                File destination = new File(screenshotDirSpanish + screenshotDeviceType + newFileName[0] + ".png");
+                org.apache.commons.io.FileUtils.copyFile(screenshot, destination);
+                System.out.println("Screenshot saved to: " + destination.getAbsolutePath());
+            } else if (screenshotName.contains("french")) {
+                String[] newFileName = screenshotName.split("_", 0);
+                File destination = new File(screenshotDirFrench + screenshotDeviceType + newFileName[0] + ".png");
+                org.apache.commons.io.FileUtils.copyFile(screenshot, destination);
+                System.out.println("Screenshot saved to: " + destination.getAbsolutePath());
+            } else if (screenshotName.contains("portuguese")) {
+                String[] newFileName = screenshotName.split("_", 0);
+                File destination = new File(screenshotDirPortuguese + screenshotDeviceType + newFileName[0] + ".png");
+                org.apache.commons.io.FileUtils.copyFile(screenshot, destination);
+                System.out.println("Screenshot saved to: " + destination.getAbsolutePath());
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }

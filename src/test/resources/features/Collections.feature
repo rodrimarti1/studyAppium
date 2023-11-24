@@ -43,49 +43,41 @@ Feature: Collection Details screen
       | collectionName | languageName | languageSearch | featureName | fileName |
       | "Hymns"   | "Portuguese"  | "Português" | "2_collectionContent" | "portuguese" |
 
-  @releaseScreenshots_english @maximizedPlayerEnglish @maximizedPlayer
+  @releaseScreenshots_english @maximizedPlayerEnglish @musicPlayer
   Scenario Outline: Take screenshot of maximized music player - English
     Given User has navigated to the collection <collectionName>
     When User switches app language to <languageName> <languageSearch>
     And User plays the song-list <languageName>
-    And User maximizes music player <languageName>
-    And Wait for Next Song button to be displayed <languageName>
     Then Take a screenshot of the <featureName> screen with file name <fileName>
     Examples:
       | collectionName | languageName | languageSearch | featureName | fileName |
       | "Hymns"   | "English"  | "English" | "4_maximizedPlayer" | "english" |
 
-  @releaseScreenshots_spanish @maximizedPlayerSpanish @maximizedPlayer
+  @releaseScreenshots_spanish @maximizedPlayerSpanish @musicPlayer
   Scenario Outline: Take screenshot of maximized music player - Spanish
     Given User has navigated to the collection <collectionName>
     When User switches app language to <languageName> <languageSearch>
     And User plays the song-list <languageName>
-    And User maximizes music player <languageName>
-    And Wait for Next Song button to be displayed <languageName>
     Then Take a screenshot of the <featureName> screen with file name <fileName>
     Examples:
       | collectionName | languageName | languageSearch | featureName | fileName |
       | "Hymns"   | "Spanish"  | "Español" | "4_maximizedPlayer" | "spanish" |
 
-  @releaseScreenshots_french @maximizedPlayerFrench @maximizedPlayer
+  @releaseScreenshots_french @maximizedPlayerFrench @musicPlayer
   Scenario Outline: Take screenshot of maximized music player - French
     Given User has navigated to the collection <collectionName>
     When User switches app language to <languageName> <languageSearch>
     And User plays the song-list <languageName>
-    And User maximizes music player <languageName>
-    And Wait for Next Song button to be displayed <languageName>
     Then Take a screenshot of the <featureName> screen with file name <fileName>
     Examples:
       | collectionName | languageName | languageSearch | featureName | fileName |
       | "Hymns"   | "French"  | "Français" | "4_maximizedPlayer" | "french" |
 
-  @releaseScreenshots_portuguese @maximizedPlayerPortuguese @maximizedPlayer
+  @releaseScreenshots_portuguese @maximizedPlayerPortuguese @musicPlayer
   Scenario Outline: Take screenshot of maximized music player - Portuguese
     Given User has navigated to the collection <collectionName>
     When User switches app language to <languageName> <languageSearch>
     And User plays the song-list <languageName>
-    And User maximizes music player <languageName>
-    And Wait for Next Song button to be displayed <languageName>
     Then Take a screenshot of the <featureName> screen with file name <fileName>
     Examples:
       | collectionName | languageName | languageSearch | featureName | fileName |
