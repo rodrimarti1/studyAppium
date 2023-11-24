@@ -8,11 +8,11 @@ Feature: Song Details screen
     Given User has selected collection <collectionName> and song <songName>
     When User taps on the More Options
     And User taps on the Play button
-    Then Mini player is displayed
+    Then Mini player is displayed <languageName>
 
     Examples:
-      | collectionName | songName |
-      | "Hymns" | "The Morning Breaks" |
+      | collectionName | songName | languageName |
+      | "Hymns" | "The Morning Breaks" | "English" |
 
   @songDetails
   Scenario Outline: User taps on the next song button
@@ -41,23 +41,23 @@ Feature: Song Details screen
   Scenario Outline: Songs should keep playing after screen rotation
     Given User has selected and played collection <collectionName> and song <songName>
     When User rotates phone screen
-    Then Song should keep playing
+    Then Song should keep playing <languageName>
 
     Examples:
-      | collectionName | songName |
-      | "Hymns" | "Now Let Us Rejoice" |
+      | collectionName | songName | languageName |
+      | "Hymns" | "Now Let Us Rejoice" | "English" |
 
   @songDetails
   Scenario Outline: Songs should keep playing after switching tabs
     Given User has selected and played collection <collectionName> and song <songName>
     When User switches to the <tabName> tab
-    Then Song should keep playing
+    Then Song should keep playing <languageName>
 
     Examples:
-      | tabName | collectionName | songName |
-      | "Topics"| "Hymns" | "Now Let Us Rejoice" |
-      | "Playlists"| "Hymns" | "Now Let Us Rejoice" |
-      | "Downloads"| "Hymns" | "Now Let Us Rejoice" |
+      | tabName | collectionName | songName | languageName |
+      | "Topics"| "Hymns" | "Now Let Us Rejoice" | "English" |
+      | "Playlists"| "Hymns" | "Now Let Us Rejoice" | "English" |
+      | "Downloads"| "Hymns" | "Now Let Us Rejoice" | "English" |
 
   @releaseScreenshots_english @songDetailsScreenshotEnglish @songDetailsScreenshot
   Scenario Outline: Take screenshot of the Sheet Music song view - English

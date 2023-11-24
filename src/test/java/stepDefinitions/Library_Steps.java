@@ -85,8 +85,7 @@ public class Library_Steps {
         libraryPage.getMoreOptionsMenu(languageName).click();
         switch (languageName) {
             case "English" -> libraryPage.getEllipseMenuOptionByName("Language").click();
-            case "Spanish" -> libraryPage.getEllipseMenuOptionByName("Idioma").click();
-            case "Portuguese" -> libraryPage.getEllipseMenuOptionByName("Português").click();
+            case "Spanish", "Portuguese" -> libraryPage.getEllipseMenuOptionByName("Idioma").click();
             case "French" -> libraryPage.getEllipseMenuOptionByName("Langue").click();
         }
         languagesPage.searchAndSelectLanguageByName(languageSearch);

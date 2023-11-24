@@ -25,6 +25,6 @@ public class CollectionDetails_Steps {
     @And("User plays the song-list {string}")
     public void userPlaysTheSonglist(String languageName) {
         collectionDetailsPage.getSongListPlayButton(languageName).click();
-        Assert.assertTrue(songDetailsPage.getMiniPlayer().isDisplayed());
+        Assert.assertTrue(songDetailsPage.getMiniPlayer(languageName).isDisplayed());
     }
 }

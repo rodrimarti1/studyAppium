@@ -38,9 +38,9 @@ public class SongDetails_Steps {
         libraryPage.getEllipseMenuOptionByName("Play").click();
     }
 
-    @Then("Mini player is displayed")
-    public void miniPlayerIsDisplayed() {
-        Assert.assertTrue(songDetailsPage.getMiniPlayer().isDisplayed());
+    @Then("Mini player is displayed {string}")
+    public void miniPlayerIsDisplayed(String languageName) {
+        Assert.assertTrue(songDetailsPage.getMiniPlayer(languageName).isDisplayed());
     }
 
     @And("More Options button is displayed")
@@ -125,9 +125,9 @@ public class SongDetails_Steps {
         driver.rotate(ScreenOrientation.LANDSCAPE);
     }
 
-    @Then("Song should keep playing")
-    public void songShouldKeepPlaying() {
-        boolean isMusicPlayerDisplayed = songDetailsPage.getMiniPlayer().isDisplayed();
+    @Then("Song should keep playing {string}")
+    public void songShouldKeepPlaying(String languageName) {
+        boolean isMusicPlayerDisplayed = songDetailsPage.getMiniPlayer(languageName).isDisplayed();
         Assert.assertTrue(isMusicPlayerDisplayed);
     }
 
@@ -142,12 +142,12 @@ public class SongDetails_Steps {
         }
     }
 
-    @And("User goes back to collection {string} and song {string}")
-    public void userGoesBackToCollectionCollectionNameAndSongSongName(String collectionName, String songName) throws InterruptedException {
+    @And("User goes back to collection {string} and song {string} {string}")
+    public void userGoesBackToCollectionCollectionNameAndSongSongName(String collectionName, String songName, String languageName) throws InterruptedException {
         tabsPage.goToLibraryPage();
         collectionDetailsPage = libraryPage.goToCollectionPage(collectionName);
         songDetailsPage = collectionDetailsPage.goToSongDetailsPage(songName);
-        Assert.assertTrue(songDetailsPage.getMiniPlayer().isDisplayed());
+        Assert.assertTrue(songDetailsPage.getMiniPlayer(languageName).isDisplayed());
         Thread.sleep(2000);
         String actualMiniPlayerCurrentTime = songDetailsPage.getMiniPlayerCurrentTime().getText();
         Assert.assertNotEquals(actualMiniPlayerCurrentTime, "00:00");

@@ -15,7 +15,16 @@ public class SongDetailsPage extends BasePage {
     private WebElement moreOptionsMenu;
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Audio Track']")
-    private WebElement miniPlayer;
+    private WebElement miniPlayerEnglish;
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Pista de audio']")
+    private WebElement miniPlayerSpanish;
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Faixa de áudio']")
+    private WebElement miniPlayerPortuguese;
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Piste audio']")
+    private WebElement miniPlayerFrench;
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Previous song']")
     private WebElement miniPlayerPreviousButton;
@@ -79,7 +88,6 @@ public class SongDetailsPage extends BasePage {
 
     public WebElement getMainPlayButton(String languageName) {
         return switch (languageName) {
-            case "English" -> getAnyElement(mainPlayButtonEnglish);
             case "Spanish" -> getAnyElement(mainPlayButtonSpanish);
             case "French" -> getAnyElement(mainPlayButtonFrench);
             case "Portuguese" -> getAnyElement(mainPlayButtonPortuguese);
@@ -91,8 +99,13 @@ public class SongDetailsPage extends BasePage {
         return getAnyElement(moreOptionsMenu);
     }
 
-    public WebElement getMiniPlayer() {
-        return getAnyElement(miniPlayer);
+    public WebElement getMiniPlayer(String languageName) {
+        return switch (languageName) {
+            case "Spanish" -> getAnyElement(miniPlayerSpanish);
+            case "Portuguese" -> getAnyElement(miniPlayerPortuguese);
+            case "French" -> getAnyElement(miniPlayerFrench);
+            default -> getAnyElement(miniPlayerEnglish);
+        };
     }
 
     public WebElement getMiniPlayerPreviousButton() {
