@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
+import org.testng.Assert;
 
 import java.time.Duration;
 
@@ -46,6 +47,9 @@ public class CollectionDetailsPage extends BasePage {
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Topics']")
     private WebElement topicsFilter;
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Done']")
+    private WebElement doneDownloadButton;
+
     public SongDetailsPage goToSongDetailsPage(String songName) {
         clickOnElement(getAnyElement(By.xpath("//android.widget.TextView[contains(@text, '"+ songName +"')]")));
         return new SongDetailsPage(driver);
@@ -80,11 +84,24 @@ public class CollectionDetailsPage extends BasePage {
         swipeAction(miniMusicPlayer, "up");
     }
 
+    public WebElement getDoneDownloadButton() {
+        return getAnyElement(doneDownloadButton);
+    }
+
+    public void selectAudioTypeForDownload(String audioType) {
+        clickOnElement(getAnyElement(By.xpath("//android.widget.TextView[@text='"+ audioType +"']/parent::android.view.View//android.view.View[@content-desc='Download Song']")));
+    }
+
+    public WebElement getRemoveDownloadByAudioType(String audioType) {
+        return getAnyElement(By.xpath("//android.widget.TextView[@text='"+ audioType +"']/parent::android.view.View//android.view.View[@content-desc='Remove Download']"));
+    }
+
     public void downloadSong(String songName, String audioType) {
-        //selectAudioType("Words and Music");
         clickOnElement(By.xpath("//android.widget.Button[contains(@content-desc, '"+ songName +"')]"));
-        clickOnElement(getAnyElementByText("Download"));
-        clickOnElement(getAnyElementByText(audioType));
+        clickOnElement(getAnyElementByText("Download / Remove"));
+        selectAudioTypeForDownload(audioType);
+        Assert.assertTrue(getRemoveDownloadByAudioType(audioType).isDisplayed());
+        getDoneDownloadButton().click();
     }
 
     public boolean isSongDownloaded(String songName) {

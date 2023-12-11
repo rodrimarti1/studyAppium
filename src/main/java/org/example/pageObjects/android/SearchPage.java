@@ -23,7 +23,7 @@ public class SearchPage extends BasePage {
     @AndroidFindBy(accessibility = "Back")
     private WebElement backButton;
 
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Clear']")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Cancel']")
     private WebElement clearButton;
 
     @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc='No search results found.']")

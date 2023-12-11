@@ -27,7 +27,11 @@ public class TopicsPage extends BasePage {
     }
 
     public WebElement getSearchIcon() {
-        return searchIcon;
+        return getAnyElement(searchIcon);
+    }
+
+    public WebElement getSearchBar() {
+        return getAnyElement(searchBar);
     }
 
     public WebElement getMoreOptions() {

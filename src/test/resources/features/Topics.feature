@@ -3,12 +3,12 @@ Feature: Topics screen
   As a user
   I have to tap on Topics tab in the navigation menu
 
-  @topics
+  @topics1
   Scenario: User lands in the Topics page
     Given User is in the Library Page
     When User navigates to the Topics tab
     Then User should see the word "Topics" in the Topics page title
-    And User should see the Search icon in the top right corner of the Topics Page
+    And User should see the Topics Search bar with text Find by name
     And User should see the More Options menu in the top right corner of the Topics Page
 
   @topics
@@ -17,14 +17,14 @@ Feature: Topics screen
     When User enters valid criteria "god" in the search bar
     Then User should see search result with name "Child of God" returned
 
-  @topics
+  @topics1
   Scenario Outline: User navigates to a topic and downloads a song
     Given User is in the Topics screen and taps on Topic called "Accountability"
     When User taps on the More Options menu for the song called <songName> and chooses to <action> it audio type <audioType>
     Then User should see the green checkmark indicating the song called "We Are Sowing" was downloaded
     Examples:
       | songName | action | audioType |
-      | "We Are Sowing" | "Download" | "Accompaniment" |
+      | "We Are Sowing" | "Download / Remove" | "Accompaniment" |
 
   #This test will keep failing unless LMFA-674 is fixed
   @topics

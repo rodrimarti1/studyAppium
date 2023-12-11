@@ -72,9 +72,9 @@ public class Downloads_Steps {
         Assert.assertEquals(actualTitleText, expectedTitleText);
     }
 
-    @And("User should see the Search icon in top right corner")
-    public void userShouldSeeTheSearchIconInTopRightCorner() {
-        Assert.assertTrue(downloadsPage.getSearchIcon().isDisplayed());
+    @And("User should see the Downloads Search bar with text Find by name")
+    public void userShouldSeeTheDownloadsSearchBarWithNameSearchByName() {
+        Assert.assertTrue(downloadsPage.getSearchBar().isDisplayed());
     }
 
     @And("User should see the More Options menu in the top right corner")

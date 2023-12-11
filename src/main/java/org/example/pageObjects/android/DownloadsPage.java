@@ -14,10 +14,10 @@ public class DownloadsPage extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Downloads']")
     private WebElement downloadsPageTitle;
 
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Search']")
-    private WebElement searchIcon;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Find by name']")
+    private WebElement searchBar;
 
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Search']/parent::*/following-sibling::android.view.View/*[@content-desc='More options']")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='More options']")
     private WebElement moreOptionsMenu;
 
     @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc='No songs are currently downloaded to this device.']")
@@ -36,8 +36,8 @@ public class DownloadsPage extends BasePage {
         return getAnyElement(downloadsPageTitle).getText();
     }
 
-    public WebElement getSearchIcon() {
-        return getAnyElement(searchIcon);
+    public WebElement getSearchBar() {
+        return getAnyElement(searchBar);
     }
 
     public WebElement getMoreOptionsMenu() {

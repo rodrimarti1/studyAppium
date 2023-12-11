@@ -4,6 +4,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 public class TopicsDetailsPage extends BasePage {
 
@@ -31,6 +32,9 @@ public class TopicsDetailsPage extends BasePage {
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Shuffle']")
     private WebElement shuffleButton;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Done']")
+    private WebElement doneDownloadButton;
 
     public WebElement getMoreOptionsTopBar() {
         return moreOptionsTopBar;
@@ -83,10 +87,24 @@ public class TopicsDetailsPage extends BasePage {
         clickOnElement(By.xpath("//android.widget.Button[contains(@content-desc, '"+ songName +"')]"));
     }
 
+    public WebElement getDoneDownloadButton() {
+        return getAnyElement(doneDownloadButton);
+    }
+
+    public void selectAudioTypeForDownload(String audioType) {
+        clickOnElement(getAnyElement(By.xpath("//android.widget.TextView[@text='"+ audioType +"']/parent::android.view.View//android.view.View[@content-desc='Download Song']")));
+    }
+
+    public WebElement getRemoveDownloadByAudioType(String audioType) {
+        return getAnyElement(By.xpath("//android.widget.TextView[@text='"+ audioType +"']/parent::android.view.View//android.view.View[@content-desc='Remove Download']"));
+    }
+
     public void performActionOnSpecificSong(String songName, String actionName, String audioType) {
         clickMoreOptionBySongName(songName);
         clickOnElement(getAnyElementByText(actionName));
-        clickOnElement(getAnyElementByText(audioType));
+        selectAudioTypeForDownload(audioType);
+        Assert.assertTrue(getRemoveDownloadByAudioType(audioType).isDisplayed());
+        getDoneDownloadButton().click();
     }
 
     public PlaylistsPage addSongToPlaylist(String songName, String audioType) {

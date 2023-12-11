@@ -31,9 +31,9 @@ public class Topics_Steps {
         Assert.assertEquals(actualPageTitle, expectedPageTitle);
     }
 
-    @And("User should see the Search icon in the top right corner of the Topics Page")
-    public void userShouldSeeTheSearchIconInTheTopRightCornerOfTheTopicsPage() {
-        Assert.assertTrue(topicsPage.getSearchIcon().isDisplayed());
+    @And("User should see the Topics Search bar with text Find by name")
+    public void userShouldSeeTheTopicsSearchBarWithNameFindByName() {
+        Assert.assertTrue(topicsPage.getSearchBar().isDisplayed());
     }
 
     @And("User should see the More Options menu in the top right corner of the Topics Page")

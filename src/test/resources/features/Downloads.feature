@@ -8,7 +8,7 @@ Feature: Downloads screen
     Given User is in the Library Page
     When User navigates to the Downloads tab
     Then User should see the word "Downloads" in the title
-    And User should see the Search icon in top right corner
+    And User should see the Downloads Search bar with text Find by name
     And User should see the More Options menu in the top right corner
 
   @downloads
